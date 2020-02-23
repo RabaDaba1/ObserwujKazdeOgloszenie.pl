@@ -1,0 +1,40 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+#brand {
+	font-size: 1.3rem;
+	font-weight: 500;
+	color: white;
+}
+
+.nav-link {
+	font-size: 1.1rem;
+	font-weight: 400;
+	color: white;
+	opacity: 0.95;
+}
+
+.navbar {
+	background: rgb(16,81,217);
+	background: linear-gradient(0deg, rgba(16,81,217,1) 0%, rgba(16,92,226,1) 100%);
+	min-height: 60px;
+}
+
+/* #btn-login {
+	background: linear-gradient(270deg, rgba(136,72,209,1) 0%, rgba(84,119,231,1) 98%);
+	border-radius: 25px;
+	font-size: 1rem;
+	border: none;
+	font-weight: 500;
+} */
+
+@media only screen and (max-width: 600px) {
+	.nav-link {
+		font-size: 1rem;
+	}
+	
+	#brand {
+		font-size: 1rem;
+	}
+}

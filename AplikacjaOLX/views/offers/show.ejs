@@ -1,0 +1,133 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/stylesheets/offers/show.css">
+
+
+<div class="container">
+	<div class="offer-card">
+		<div class="controls">
+			<a href="/offers" class="button btn-fine btn-dim" role="button"><i class="fas fa-arrow-left"></i> Wróć</a>
+			<form class="d-inline" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
+				<button class="button btn-fine btn-delete-dim" role="button"><i class="fas fa-trash"></i> Usuń</button>
+			</form>
+			<a href="<%= offer._id %>/update" class="button btn-fine btn-update-dim mr-sm-2" role="button"><i class="fas fa-tasks"></i> Aktualizuj</a>
+		</div>
+		
+		<%- include("../partials/messages") %>
+		
+		<section id="offer">
+			<div class="row mt-4">
+				<div class="col-lg-7 d-flex align-items-end">
+					<div class="title-box">
+						<p class="text-secondary mb-0">Tytuł</p>
+						<h1><%= offer.title.slice(0, 25) %>...</h1>
+					</div>
+				</div>
+				<div class="col-lg-5 d-flex align-items-end justify-content-between info-section">
+					<div class="tab">
+						<p class="tag">Cena</p>
+						<p class="value">
+							<% if(offer.offerType === "PURCHASE") { %>
+							<%= offer.price %><span class="currency">zł</span>
+							<% } else if(offer.offerType === "EXCHANGE" || offer.offerType === "FREE") { %>
+							brak
+							<% } %>
+						</p>
+					</div>
+					<div class="separator"></div>
+					<div class="tab">
+						<p class="tag">Do negocjacji</p>
+						<p class="value"> 
+							<% if(offer.isNegotiable) { %>
+							tak
+							<% } else { %>
+							nie
+							<% } %>
+						</p>
+					</div>
+					<div class="separator"></div>
+					<div class="tab">
+						<p class="tag">Wyświetlenia</p>
+						<p class="value"><%= offer.views %></p>
+					</div>
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-7">
+					<div id="image-container">
+						<div id="carousel-1" class="carousel slide mb-3" data-interval="false" data-ride="carousel">
+						  <ol class="carousel-indicators">
+							 <% offer.images.forEach((image, index) => { %>
+								<li data-target="#carousel-1" data-slide-to="<%= index %>" class="<% if(index === 0) { %> active <% } %>"></li>
+							  <% }); %>
+						  </ol>
+						  <div class="carousel-inner">
+							  <% offer.images.forEach((image, index) => { %>
+								<div class="carousel-item <% if(index === 0) { %> active <% } %>">
+								  <img src="<%= image %>" class="d-block carousel-image" alt="Xbox One X 1TB">
+								</div>
+							  <% }); %>
+						  </div>
+						  <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						  </a>
+						  <a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						  </a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 mt-3 px-2">
+					<h2>Opis</h2>
+					<p class="text-secondary"><%= offer.title %></p>
+					<hr class="my-2">
+					<div class="overflow-auto" id="description-container">
+						<%= offer.description %>
+					</div>
+				</div>
+			</div>
+			<div class="d-none">
+				<% if(offer.price !== 0) { %>
+				<div id="priceChartData">
+					<%= JSON.stringify({
+						data: priceChart.data,
+						dates: priceChart.dates
+					}) %>
+				</div>
+				<% } %>
+				<div id="viewsChartData">
+					<%= JSON.stringify({
+						data: viewsChart.data,
+						dates: viewsChart.dates
+					}) %>
+				</div>
+			</div>
+			<% if(offer.price !== 0) { %>
+			<div class="row mt-4 my-2">
+				<div class="col-12">
+					<canvas id="priceChart"></canvas>
+				</div>
+			</div>
+			<% } %>
+			
+			<div class="row mt-3 my-2">
+				<div class="col-12">
+					<canvas id="viewsChart"></canvas>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="/js/chart.js"></script>
+<script>
+	if(document.querySelector('#priceChartData')) {
+		generateChart("#priceChartData", "#priceChart", "PRICE");
+	}
+	generateChart("#viewsChartData", "#viewsChart", "VIEWS");
+</script>
+<%- include("../partials/footer") %>

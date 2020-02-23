@@ -1,0 +1,133 @@
+body {
+	/* background-color: #F5F5F5; */
+}
+
+.controls { margin-bottom: 1rem; }
+
+.controls .button-dim { float: left; }
+
+.controls .btn-update-dim { float: right; }
+
+.controls form{ float: right; }
+
+/* OFFER CONTAINER */
+#image-container {
+	background-color: #F5F5F5;
+}
+
+#description-container {
+	max-height: 270px;
+}
+
+.carousel-image {
+	margin: auto;
+    max-width: 100%;
+    max-height: 400px;
+}
+
+.offer-card {
+	background: #fafafa;
+	border-radius: 18px;
+	width: 100%;
+	height: 100%;
+	padding: 1rem;
+	-webkit-box-shadow: 0px 0px 30px -17px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 30px -17px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 30px -17px rgba(0,0,0,0.75);
+}
+
+.title-box h1 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	color: #272727;
+}
+
+/* DATA TOP */
+.tab {
+	display: inline-block;
+	width: 30%;
+}
+
+.info-section .separator {
+	height: 35px;
+	width: 1px;
+	display: inline-block;
+	margin: 0 5px;
+	margin-bottom: 14px;
+	background: #707070;
+}
+
+.info-section .tag {
+	font-size: 1.1rem;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.info-section .value {
+	color: #272727;
+	font-size: 2rem;
+	text-align: center;
+	margin: 0;
+}
+
+.info-section .currency {
+	color: #272727;
+	font-size: 1rem;
+	display: inline;
+}
+
+canvas { height: 70vw !important; max-height: 550px; min-height: 200px; }
+
+/* MEDIA */
+@media only screen and (max-width: 1200px) {
+	.title-box h1 { font-size: 1.9rem; }
+	
+	.info-section .separator { height: 25px; }
+	
+	#offer-price { font-size: 1.9rem; }
+	
+	.tab .tag { font-size: 0.75rem; }
+	.tab .value { font-size: 1.5rem; }
+	
+	.offer-container { box-shadow: 0 1px 10px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.14); }
+}
+
+@media only screen and (max-width: 990px) {
+	.tab {
+		margin-bottom: 3vh;
+	}
+	
+	.info-section .separator {
+		margin-bottom: 32px;
+	}
+	
+	.title-box h1 {
+		margin-bottom: 3vh;
+		margin-left: 10px;
+	}
+	
+	.title-box p { margin-left: 10px; }
+}
+
+@media only screen and (max-width: 600px) {
+	.controls {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.controls form { order: 10; }
+	
+	.title-box h1 { font-size: 1.25rem; }
+	.title-box p { font-size: .75rem; }
+
+	.tab .tag { font-size: .75rem; }
+	.tab .value { font-size: 1.5rem; }
+	.tab .currency { font-size: .8rem; }
+}
+
+@media only screen and (max-width: 450px) {
+	.button {
+		padding: .2rem .6rem;
+		font-size: .8rem;
+	}
+}

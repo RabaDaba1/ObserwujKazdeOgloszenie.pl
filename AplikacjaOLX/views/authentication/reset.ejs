@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/stylesheets/myui/form.css">
+
+<form action="/reset/<%= token %>" method="POST" class="myui-form">
+	<h1>Zmień hasło</h1>
+	
+	<%- include("../partials/messages") %>
+	
+	<div class="form-field">
+		<input name="password" type="password" required="required"/>
+		<span data-placeholder="Nowe hasło"></span>
+	</div>
+	<div class="form-field">
+		<input name="confirmedPassword" type="password" required="required"/>
+		<span data-placeholder="Potwierdź hasło"></span>
+	</div>
+	
+	<button type="submit" class="button btn-fine btn-form">Zmień hasło</button>
+	
+	<a href="/" class="form shadow-btn"><i class="fas fa-arrow-left"></i> Wróć</a>
+</form>
+
+<script src="/js/myui/form.js"></script>
+<%- include("../partials/footer") %>

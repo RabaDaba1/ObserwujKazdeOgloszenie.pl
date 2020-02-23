@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/stylesheets/myui/form.css">
+
+<form action="/login" method="POST" class="myui-form">
+	<h1>Logowanie</h1>
+	
+	<%- include("../partials/messages") %>
+	
+	<div class="form-field">
+		<input name="username" type="text" required="required" pattern=".{3,}" title="3 characters minimum"/>
+		<span data-placeholder="Nazwa użytkownika"></span>
+	</div>
+	<div class="form-field">
+		<input name="password" type="password" required="required" pattern=".{3,}" title="3 characters minimum"/>
+		<span data-placeholder="Hasło"></span>
+	</div>
+	
+	<button type="submit" class="button btn-fine btn-form">Zaloguj się</button>
+	
+	<a href="/" class="form shadow-btn"><i class="fas fa-arrow-left"></i> Wróć</a>
+</form>
+
+<script src="/js/myui/form.js"></script>
+<%- include("../partials/footer") %>

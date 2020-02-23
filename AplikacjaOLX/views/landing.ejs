@@ -1,0 +1,29 @@
+<%- include("./partials/header") %>
+<link rel="stylesheet" href="/stylesheets/landing.css">
+
+<div class="container">
+	<%- include("./partials/messages") %>
+	
+	<h1 class="display-2 text-primary text-center mb-4">
+		Strona główna
+	</h1>
+
+	<h3 class="text-secondary text-center mb-4">
+		<% if(!currentUser) { %>
+		Aby dodawać i oglądać ogłoszenia musisz się zalogować
+		<% } else { %>
+		Miło Cię widzieć <%= currentUser.username %>!
+		<% } %>
+	</h3>
+</div>
+
+<div class="d-flex justify-content-center">
+	<% if(!currentUser) { %>
+	<a class="btn btn-lg btn-outline-primary mr-1" href="/login">Zaloguj się</a>
+	<a class="btn btn-lg btn-outline-success ml-1" href="/register">Zarejestruj się</a>
+	<% } else { %>
+	<a class="btn btn-lg btn-outline-success ml-1" href="/offers">Moje ogłoszenia</a>
+	<% } %>
+</div>
+<script src="/js/"></script>
+<%- include("./partials/footer") %>

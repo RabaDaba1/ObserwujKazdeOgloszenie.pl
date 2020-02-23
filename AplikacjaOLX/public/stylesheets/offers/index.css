@@ -1,0 +1,177 @@
+.container {
+	position: relative;
+}
+
+/* BANNER */
+.banner {
+	position: relative;
+	width: 95%;
+	height: 180px;
+	background-color: #fafafa;
+	margin: 3rem auto;
+	border-radius: 0.5rem;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 5px 8px rgba(0, 0, 0, 0.24);
+}
+
+.banner-bg {
+	position: absolute;
+	top: 0; right: 4rem; bottom: 2rem; left: 0;
+	width: 90%;
+	margin: auto;
+	height: 180px;
+	border-radius: 0.5rem;
+	background-image: linear-gradient(90deg, #0F5CDC 0%, #2DACC7 95%);
+	z-index: -2;
+	/* linear-gradient(90deg, rgba(8,0,136,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%); */
+}
+
+.banner-bg-add {
+	position: absolute;
+	top: 0; right: 4rem; bottom: 2rem; left: 0;
+	width: 90%;
+	margin: auto;
+	height: 180px;
+	border-radius: 0.5rem;
+	background-image: linear-gradient(90deg, rgba(22,168,66,1) 0%, rgba(113,228,66,1) 100%);
+	-webkit-box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
+	-moz-box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
+	box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
+	opacity: 0;
+	z-index: -1;
+	transition: opacity 0.8s ease-in-out;
+}
+
+/* TITLE */
+.title {
+	position: relative;
+	z-index: 1;
+	border-left: 5px solid #1055dc;
+	margin 0;
+	padding: 10px 0 10px 1.5vw;
+	color: #1055dc;
+	top: 2rem;
+	font-size: 2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	transition: color 0.75s ease-in-out, border-color 1s ease-in-out;
+}
+
+/* ADD BUTTON */
+.add-button {
+	display: inline-block;
+	position: absolute;
+	bottom: 22px;
+    left: 1.75vw;
+	padding: .375rem .75rem;
+    font-size: 1.25rem;
+	border-radius: 0.5rem;
+	font-weight: 500;
+	color: #fafafa;
+	background-image: linear-gradient(270deg, #0F5DDC 0%, #1E86D1 100%);
+	transition: padding-left 0.35s ease-in-out;
+	z-index: 1;
+}
+
+.add-button:hover {
+	text-decoration: none;
+	color: white;
+	padding-left: 2rem;
+}
+
+
+.add-button::before {
+	position: absolute;
+	content: "\f067 ";
+	font: normal normal normal 14px/1 FontAwesome;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	font-size: 1.1rem;
+	border-radius: 0.5rem;
+	background-image: linear-gradient(90deg, rgba(22,168,66,1) 0%, rgba(113,228,66,1) 100%);
+	z-index: -1;
+	-webkit-box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
+	-moz-box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
+	box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
+	transition: opacity 0.35s ease-in-out;
+	opacity: 0;
+	padding: 14px 0 14px 14px;
+}
+
+.add-button:hover::before {
+	transition: opacity 0.75s ease-in-out;
+	opacity: 1;
+}
+
+
+/* CARD */
+.card:hover, .input:hover {
+    box-shadow: 0 0px 10px rgba(0,0,0,0.25), 0 0px 4px rgba(0,0,0,0.22);
+}
+
+.offer {
+	border-radius: .5rem;
+    box-shadow: 0 0px 8px rgba(0,0,0,0.19), 0 0px 2px rgba(0,0,0,0.23);
+	transition: box-shadow 0.2s;
+}
+
+.offer.changes::after {
+	content: attr(data-placeholder);
+	position: absolute;
+	top: -.5rem; right: -.5rem;
+	background-color: #d62424;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 100rem;
+	padding-top: 3px;
+	width: 30px;
+	height: 30px;
+	font-size: 1.1rem;
+	font-weight: 500;
+}
+
+.offers-image {
+	border-radius: .5rem .5rem 0 0;
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+#offers--link-btn {
+	display: inline-block;
+}
+
+
+@media only screen and (max-width: 600px) {
+	.title { font-size: 1.75rem; top: 1.5rem; }
+	
+	.add-button { font-size: 1.1rem; margin-left: .5rem; }
+	.add-button:hover { padding-left: 2rem; } 
+	.add-button::before { font-size: 1rem; padding: 12px 0 12px 12px; }
+	
+	.banner { height: 150px; }
+	.banner-bg { height: 150px; right: 1rem; bottom: 1.5rem; }
+	.banner-bg-add { height: 150px; right: 1rem; bottom: 1.5rem; }
+	
+	#search-input { width: 70%; }
+	
+	.display-4 { font-size: 3rem; }
+}
+
+@media only screen and (max-width: 400px) {
+	.title { font-size: 1.5rem; }
+	.offers-image { height: 200px; }
+	.card-body .description { font-size: .9rem; }
+	.card-body .button {
+		padding: .2rem .6rem;
+		font-size: .9rem;
+	}
+}
+
+@media only screen and (max-width: 350px) {
+	.title { font-size: 1.3rem; }	
+}
