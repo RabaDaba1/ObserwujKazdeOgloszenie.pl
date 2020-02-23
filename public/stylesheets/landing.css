@@ -1,0 +1,63 @@
+nav.mb-4 { margin: 0 !important;}
+
+.main-jumbotron {
+    width: 100%; height: 650px;
+    padding: 75px 20vw;
+    background-color: #1243D6;
+}
+
+.main-jumbotron img {
+    position: absolute;
+    top: 100px; right: 15vw;
+    transform: scale(0.95);
+}
+
+.main-header {
+    width: 600px;
+    color: white;
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+.under-header {
+    width: 500px;
+    color: white;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.msg { position: relative; z-index: -20;}
+
+.about-owner {
+    display: none;
+    margin: 300px;
+    padding: 45px 50px;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    border-radius: 2rem;
+    background-color: #fafafa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #272727;
+}
+
+.about-owner img {
+    width: 300px;
+    height: 300px;
+    border-radius: 1000rem;
+    object-fit: cover;
+    margin: auto 0;
+}
+
+.about-owner h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.about-owner .info {
+    margin-top: 15px;
+}
+
+.about-owner h3 { font-size: 1.75rem; }
+.about-owner p { font-size: 1.2rem; }

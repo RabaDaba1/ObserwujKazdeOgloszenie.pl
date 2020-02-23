@@ -27,7 +27,7 @@ body {
 
 
 .form-field input {
-	font-size: 1rem;
+	font-size: 1.2rem;
 	color: #333;
 	border: none;
 	width: 100%;
@@ -43,6 +43,7 @@ body {
 	top: 50%;
 	left: 5px;
 	color: #adadad;
+	font-size: 1.15rem;
 	transform: translateY(-50%);
 	z-index: -1;
 	transition: .5s;
@@ -67,6 +68,14 @@ body {
 	width: 100%;
 }
 
+.input-link.shadow-btn {
+	position: relative;
+	bottom: .5rem;
+	padding: 0;
+	font-size: 1rem;
+	color: rgba(173, 173, 173, 0.8);
+}
+
 .btn-form {
 	display: block;
 	margin: 50px auto 0;
@@ -80,7 +89,7 @@ body {
 	100% { transform: scale(1); }
 }
 
-.shadow-btn {
+.form.shadow-btn {
 	position: absolute;
 	bottom: -50px;
 	left: 0;
@@ -102,7 +111,9 @@ body {
 	}
 	
 	.form-field span::before { font-size: 1.25rem; }
-	
+
+	.input-link.shadow-btn { font-size: 1.1rem; }
+
 	.btn-form {
 		display: block;
 		width: 60%;
@@ -115,7 +126,7 @@ body {
 		width: 450px;
 	}
 	
-	.shadow-btn {bottom: -40px;}
+	.form.shadow-btn {bottom: -40px;}
 }
 
 @media only screen and (max-width: 600px) {
@@ -124,6 +135,8 @@ body {
 	}
 	
 	.myui-form h1 { font-size: 1.85rem; }
+
+	.btn-form { margin-top: 30px; }
 }
 
 @media only screen and (max-width: 450px) {

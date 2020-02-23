@@ -30,8 +30,8 @@
 				</ul>
 				<ul class="nav">
 					<% if(!currentUser) { %>
-					<li><a class="mr-1 btn btn-outline-light" id="btn-login" href="/login">Zaloguj się</a></li>
-					<li><a class="btn btn-outline-light ml-1" href="/register">Zarejestruj się</a></li>
+					<li><a class="mr-1 button-outline my-auto" id="btn-login" href="/login">Zaloguj się</a></li>
+					<li><a class="button-outline my-auto ml-1" href="/register">Zarejestruj się</a></li>
 					<% } else { %>
 					<li><a class="nav-link text-light">Zalogowano jako <%= currentUser.username %></a></li>
 					<li><a class="button-outline my-auto ml-1" href="/logout">Wyloguj się</a></li>

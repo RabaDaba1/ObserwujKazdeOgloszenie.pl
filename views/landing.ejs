@@ -1,29 +1,48 @@
 <%- include("./partials/header") %>
 <link rel="stylesheet" href="/stylesheets/landing.css">
 
-<div class="container">
-	<%- include("./partials/messages") %>
+
+<div class="main-jumbotron">
+		<h1 class="main-header ">
+			<% if(!currentUser) { %>
+				Nie trać czasu na OLX-a!
+			<% } else { %>
+				Miło Cię widzieć <%= currentUser.username %>!
+			<% } %>
+		</h1>
+		<p class="under-header">
+			Kupujesz na OLX? Na bierząco obserwujesz ogłoszenia? Już nie musisz tracić na to czasu, ponieważ my zrobimy to za ciebie! Kliknij guzik na dole żeby dowiedzieć się więcej 
+		</p>
 	
-	<h1 class="display-2 text-primary text-center mb-4">
-		Strona główna
-	</h1>
+		<div class="buttons">
+			<% if(!currentUser) { %>
+			<a class="button-fill btn-large mr-1" href="/login">Zaloguj się</a>
+			<a class="button-fill btn-fill-green btn-large ml-1" href="/register">Zarejestruj się</a>
+			<% } else { %>
+			<a class="button-fill btn-fill-green btn-large" href="/offers">Moje ogłoszenia</a>
+			<% } %>
+		</div>
 
-	<h3 class="text-secondary text-center mb-4">
-		<% if(!currentUser) { %>
-		Aby dodawać i oglądać ogłoszenia musisz się zalogować
-		<% } else { %>
-		Miło Cię widzieć <%= currentUser.username %>!
-		<% } %>
-	</h3>
+		<img src="/images/main.png" alt="">
+	</div>
 </div>
 
-<div class="d-flex justify-content-center">
-	<% if(!currentUser) { %>
-	<a class="btn btn-lg btn-outline-primary mr-1" href="/login">Zaloguj się</a>
-	<a class="btn btn-lg btn-outline-success ml-1" href="/register">Zarejestruj się</a>
-	<% } else { %>
-	<a class="btn btn-lg btn-outline-success ml-1" href="/offers">Moje ogłoszenia</a>
-	<% } %>
+<div class="container mt-5 msg">
+	<%- include("./partials/messages") %>
 </div>
-<script src="/js/"></script>
+
+<div class="about-owner">
+	<div class="row">
+		<div class="col-lg-5">
+			<img src="/images/owner.JPG" alt="owner">
+		</div>
+		<div class="col-lg-7 info">
+			<h1>O właścicielu</h1>
+			<hr>
+			<h3>Kacper Rabczewski</h3>
+			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In ipsa natus omnis esse non animi aspernatur est perferendis dicta officia. Sequi explicabo saepe asperiores ipsa atque excepturi labore veniam voluptatem.</p>
+		</div>
+	</div>
+</div>
+
 <%- include("./partials/footer") %>
