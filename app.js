@@ -2,6 +2,7 @@
 const 	express =            	require('express'),
 		app =                   express(),
 		flash =					require('connect-flash'),
+		dotenv =				require('dotenv').config(),
 		expressSanitizer =      require('express-sanitizer'),
 		methodOverride =        require('method-override'),
 		bodyParser =            require('body-parser'),
