@@ -47,10 +47,11 @@ router.post('/forgot', async(req, res) => {
 		
 		await email('resetPassword', user.email, user.username, user.resetPasswordToken);
 		req.flash('success', 'Email został wysłany, sprawdź skrzynkę i spam');
+		res.redirect('/');
 	} else {
 		req.flash('warning', 'Nie ma użtkownika z takim emailem, spróbuj ponownie');
+		res.redirect('/forgot');
 	}
-	res.redirect('/');
 });
 
 router.get('/reset/:token', async(req, res) => {
