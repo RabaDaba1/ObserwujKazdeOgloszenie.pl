@@ -1,0 +1,1 @@
+# ObserwujKazdeOgloszenie.pl
