@@ -106,6 +106,31 @@
 			</div>
 			<% if(offer.price !== 0) { %>
 			<div class="row mt-4 my-2">
+				<div class="col-12 table-box">
+					<div class="table" <% if (!offer.changes.changes.length) { %> style="height: 250px;" <% } %>>
+						<table cellpadding="10">
+							<tr>
+								<th>Kategoria</th>
+								<th>Podstawowa</th>
+								<th>Zmieniona</th>
+								<th>Data</th>
+							</tr>
+							<% if (offer.changes.changes.length > 0) { %>
+								<% offer.changes.changes.forEach(change => { %>
+									<tr class="change-data">
+										<td><%= offer.translate(change.type) %></td>
+										<td><%= change.from %></td>
+										<td><%= change.to %></td>
+										<td><%= new Date(change.date).toString() %></td></tr>
+								<% }) %>	
+							<% } else { %>
+								<p class="table-err-icon"><i class="far fa-frown"></i></p>
+								<p class="table-err-msg">W twoim ogłoszeniu nic się jeszcze nie zmieniło</p>
+							<% } %> 
+							
+						</table>
+					</div>
+				</div>
 				<div class="col-12">
 					<canvas id="priceChart"></canvas>
 				</div>
@@ -123,11 +148,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.4"></script>
+
 <script src="/js/chart.js"></script>
-<script>
-	if(document.querySelector('#priceChartData')) {
-		generateChart("#priceChartData", "#priceChart", "PRICE");
-	}
-	generateChart("#viewsChartData", "#viewsChart", "VIEWS");
-</script>
 <%- include("../partials/footer") %>

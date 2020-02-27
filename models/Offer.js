@@ -3,9 +3,10 @@ const mongoose = require("mongoose"),
 	  rp =		require("request-promise"),
 	  axios = 	require("axios");
 
-// FUNCTION CONVERT DATES TO READABLE
+const offerParams = ['link', 'title', 'images', 'price', 'offerType', 'isNegotiable', 'views', 'description', 'createdOlx'];
+
+// CONVERT DATES TO READABLE
 const convertDate = dateInMs => new Date(dateInMs).toString().split(' ').slice(1, 4).join(' ');
-const convertDates = msArr => msArr.map(dateInMs => convertDate(dateInMs));
 
 // CHART SUBDOCUMENT
 const chartSchema = new mongoose.Schema({
@@ -105,9 +106,8 @@ offerSchema.methods.updateOffer = async function() {
 	try {
 		const updatedOffer = await this.model(this.constructor.modelName).scrape(this.link);
 
-		const offerParams = ['link', 'title', 'images', 'price', 'offerType', 'isNegotiable', 'views', 'description', 'createdOlx'];
-
 		offerParams.forEach(el => {
+			// If change occured
 			if(this[el] !== updatedOffer[el]) {
 				const currDate = Date.now();
 				if(el === 'price') {
@@ -159,7 +159,16 @@ offerSchema.statics.updateAll = async function() {
 	}
 };
 
+// TRANSLATE CHANGE TYPE TO PL
+offerSchema.methods.translate = function (type) {
+	const offerParamsPL = ['Link', 'Tytuł', 'Zdjęcia', 'Cena', 'Typ ogłoszenia', 'Do negocjacji', 'Wyświetlenia', 'Data wstawienia'];
+	
+	return offerParamsPL[offerParams.indexOf(type)];
+};
+
 // METHOD CONVERT DATES TO READABLE
+offerSchema.methods.convertDate = function (dateInMs) { return convertDate(dateInMs)};
+
 offerSchema.methods.convertDates = function() {
 	this.charts.views.convertedDates = this.charts.views.dates.map(dateInMs => convertDate(dateInMs));
 	this.charts.price.convertedDates = this.charts.price.dates.map(dateInMs => convertDate(dateInMs));
