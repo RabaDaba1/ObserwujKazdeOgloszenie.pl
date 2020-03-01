@@ -2,59 +2,19 @@
 <link rel="stylesheet" href="/stylesheets/offers/show.css">
 
 
-<div class="container">
+<div class="mycontainer">
+	<div id="header">
+		<a href="/offers" class="back-btn shadow-btn"><i class="fas fa-arrow-left"></i> Wróć</a>
+		<h1><%= offer.title%></h1>
+	</div>
 	<div class="offer-card">
-		<div class="controls">
-			<a href="/offers" class="button btn-fine btn-dim" role="button"><i class="fas fa-arrow-left"></i> Wróć</a>
-			<form class="d-inline" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
-				<button class="button btn-fine btn-delete-dim" role="button"><i class="fas fa-trash"></i> Usuń</button>
-			</form>
-			<a href="<%= offer._id %>/update" class="button btn-fine btn-update-dim mr-sm-2" role="button"><i class="fas fa-tasks"></i> Aktualizuj</a>
-		</div>
 		
 		<%- include("../partials/messages") %>
 		
 		<section id="offer">
-			<div class="row mt-4">
-				<div class="col-lg-7 d-flex align-items-end">
-					<div class="title-box">
-						<p class="text-secondary mb-0">Tytuł</p>
-						<h1><%= offer.title.slice(0, 25) %>...</h1>
-					</div>
-				</div>
-				<div class="col-lg-5 d-flex align-items-end justify-content-between info-section">
-					<div class="tab">
-						<p class="tag">Cena</p>
-						<p class="value">
-							<% if(offer.offerType === "PURCHASE") { %>
-							<%= offer.price %><span class="currency">zł</span>
-							<% } else if(offer.offerType === "EXCHANGE" || offer.offerType === "FREE") { %>
-							brak
-							<% } %>
-						</p>
-					</div>
-					<div class="separator"></div>
-					<div class="tab">
-						<p class="tag">Do negocjacji</p>
-						<p class="value"> 
-							<% if(offer.isNegotiable) { %>
-							tak
-							<% } else { %>
-							nie
-							<% } %>
-						</p>
-					</div>
-					<div class="separator"></div>
-					<div class="tab">
-						<p class="tag">Wyświetlenia</p>
-						<p class="value"><%= offer.views %></p>
-					</div>
-					<hr>
-				</div>
-			</div>
 			<div class="row">
-				<div class="col-lg-7">
-					<div id="image-container">
+				<div class="col-lg-6">
+					<div id="images">
 						<div id="carousel-1" class="carousel slide mb-3" data-interval="false" data-ride="carousel">
 						  <ol class="carousel-indicators">
 							 <% offer.images.forEach((image, index) => { %>
@@ -79,15 +39,51 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-5 mt-3 px-2">
-					<h2>Opis</h2>
-					<p class="text-secondary"><%= offer.title %></p>
-					<hr class="my-2">
-					<div class="overflow-auto" id="description-container">
+				<div class="col-lg-6">
+					<div id="main-info" class="mybox">
+						<div class="tab">
+							<p class="tag">Cena</p>
+							<p class="value">
+								<% if(offer.offerType === "PURCHASE") { %>
+								<%= offer.price %><span class="currency">zł</span>
+								<% } else { %>
+								brak
+								<% } %>
+							</p>
+						</div>
+						<div class="tab">
+							<p class="tag">Do negocjacji</p>
+							<p class="value"> 
+								<% if(offer.isNegotiable) { %>
+								tak
+								<% } else { %>
+								nie
+								<% } %>
+							</p>
+						</div>
+						<div class="tab">
+							<p class="tag">Wyświetlenia</p>
+							<p class="value"><%= offer.views %> </p>
+							<div class="stats">
+								<%
+									const viewsData = offer.charts.views.data; 
+									const last24hViews = viewsData[viewsData.length - 1] - viewsData[viewsData.length - 48];
+									
+									if (last24hViews) { %>
+										<img src="/images/up-arrow.png">
+										<p>+<%= last24hViews %></p>
+									<% } %>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="mybox" id="description">
 						<%= offer.description %>
 					</div>
 				</div>
 			</div>
+
 			<div class="d-none">
 				<% if(offer.price !== 0) { %>
 				<div id="priceChartData">
@@ -104,44 +100,77 @@
 					}) %>
 				</div>
 			</div>
-			<% if(offer.price !== 0) { %>
-			<div class="row mt-4 my-2">
-				<div class="col-12 table-box">
-					<div class="table" <% if (!offer.changes.changes.length) { %> style="height: 250px;" <% } %>>
-						<table cellpadding="10">
-							<tr>
-								<th>Kategoria</th>
-								<th>Podstawowa</th>
-								<th>Zmieniona</th>
-								<th>Data</th>
-							</tr>
-							<% if (offer.changes.changes.length > 0) { %>
-								<% offer.changes.changes.forEach(change => { %>
-									<tr class="change-data">
-										<td><%= offer.translate(change.type) %></td>
-										<td><%= change.from %></td>
-										<td><%= change.to %></td>
-										<td><%= new Date(change.date).toString() %></td></tr>
-								<% }) %>	
-							<% } else { %>
-								<p class="table-err-icon"><i class="far fa-frown"></i></p>
-								<p class="table-err-msg">W twoim ogłoszeniu nic się jeszcze nie zmieniło</p>
-							<% } %> 
-							
-						</table>
-					</div>
-				</div>
-				<div class="col-12">
-					<canvas id="priceChart"></canvas>
-				</div>
-			</div>
-			<% } %>
 			
-			<div class="row mt-3 my-2">
-				<div class="col-12">
-					<canvas id="viewsChart"></canvas>
-				</div>
-			</div>
+			<section class="analytics">
+				<div class="row">
+					<div class="col-lg-8">
+						<div id="charts" class="mybox">
+							<div class="chart-info">
+								<div class="views-info active">
+									<p class="type">Wyświetlenia</p>
+									<p class="data"><%= offer.views %></p>
+								</div>
+								<div class="price-info" <% if(offer.offerType !== "PURCHASE") { %> disabled <% } %>>
+									<p class="type">Cena</p>
+									<p class="data">
+									<% if(offer.offerType === "PURCHASE") { %>
+										<%= offer.price %><span>zł</span>
+									<% } else { %>
+										brak
+									<% } %>
+									</p>
+								</div>
+							</div>
+							<canvas id="viewsChart" class="active"></canvas>
+							<canvas id="priceChart"></canvas>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div id="changes">
+							<div class="count">
+								<h1>Wszystkie zmiany</h1>
+								<h2><%= offer.changes.count %> </h2>
+							</div>
+							<div class="table">
+								<h3>Ostatnie</h3>
+								<table cellpadding="0">
+									<tr>
+										<th>Typ</th>
+										<th>Oryginalna</th>
+										<th>Zmieniona</th>
+									</tr>
+									<% if (offer.changes.changes.length > 0) { %>
+										<% offer.changes.changes.forEach(change => { %>
+											<tr class="data">
+												<td><%= offer.translate(change.type) %></td>
+												<% if (change.type === 'price') { %>
+													<td><%= change.from %>zł</td>
+													<td><%= change.to %>zł</td>
+												<% } else if (change.type === 'description' || change.type === 'title') { %>
+													<td>Kliknij</td>
+													<td>Kliknij</td>
+												<% } %> 
+												
+										<% }) %>	
+									<% } else { %>
+										<p class="table-err-msg">Twoje ogłoszenie nie ma historii zmian</p>
+									<% } %> 
+									
+								</table>
+							</div>
+						</div>
+						<div id="controls" class="mybox">
+							<a href="<%= offer._id %>/update" role="button" class='update-btn'>Aktualizuj</a>
+							
+							<a href="<%= offer.link %>" role="button" class='redirect-btn'>Zobacz</a>
+
+							<form class="d-inline" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
+								<button role="button" class='delete-btn'>Usuń</button>
+							</form>
+						</div>
+					</div>
+				</div>	
+			</section>
 		</section>
 	</div>
 </div>
@@ -151,5 +180,5 @@
 <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.4"></script>
 
-<script src="/js/chart.js"></script>
+<script src="/js/offers/show.js"></script>
 <%- include("../partials/footer") %>

@@ -3,7 +3,7 @@ const mongoose = require("mongoose"),
 	  rp =		require("request-promise"),
 	  axios = 	require("axios");
 
-const offerParams = ['link', 'title', 'images', 'price', 'offerType', 'isNegotiable', 'views', 'description', 'createdOlx'];
+const offerParams = ['link', 'title', 'price', 'offerType', 'isNegotiable', 'views', 'description'];
 
 // CONVERT DATES TO READABLE
 const convertDate = dateInMs => new Date(dateInMs).toString().split(' ').slice(1, 4).join(' ');
@@ -28,7 +28,8 @@ const offerSchema = new mongoose.Schema({
 	negotiationTag: String,
 	views: Number,
 	description: String,
-    createdApp: {type: Number, default: Date.now(), get: convertDate},
+	createdApp: {type: Number, default: Date.now(), get: convertDate},
+	createdOlx: String,
 	changes: {
 		count: {type: Number, default: 0},
 		unseen: {type: Number, default: 0},
@@ -78,8 +79,6 @@ offerSchema.statics.scrape = async(link) => {
 		negotiations ? isNegotiable = true : isNegotiable = false;
 
 		createdOlx = $('#offerdescription > div.offer-titlebox > div.offer-titlebox__details > em').text().trim();
-		createdOlx = createdOlx.split(',');
-		createdOlx = createdOlx[2];
 
 		if(isNegotiable) negotiationTag = 'Do negocjacji';
 
@@ -92,7 +91,8 @@ offerSchema.statics.scrape = async(link) => {
 			isNegotiable: isNegotiable,
 			negotiationTag: negotiationTag,
 			views: views,
-			description: description
+			description: description,
+			createdOlx
 		};
 	} catch (err) {
 		console.log("==============SCRAPE OFFER ERR==============");
