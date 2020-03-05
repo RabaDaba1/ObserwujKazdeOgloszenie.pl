@@ -90,6 +90,21 @@ BUTTONS
 .shadow-btn:focus { outline: none; color: #5e5e5e;}
 .shadow-btn:hover { text-decoration: none; color: #5e5e5e;}
 
+.mybtn {
+	display: inline-block;
+	text-align: center;
+    vertical-align: middle;
+	padding: .375rem .75rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+	color: white;
+	background-color: #4783EB;
+	text-decoration: none;
+	user-select: none;
+	outline: none;
+	cursor: pointer;
+}
+
 .btn-fine { border-radius: 0.8rem; }
 .btn-fine:hover {
     box-shadow: none;

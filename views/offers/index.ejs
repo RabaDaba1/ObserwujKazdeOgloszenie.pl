@@ -2,13 +2,9 @@
 <link rel="stylesheet" href="/stylesheets/offers/index.css">
 
 <div class="container">
-	<div id="banner-container">
-		<div class="banner">
-			<a class="add-button" role="button" href="/offers/new" <% if(!currentUser.isVerified) { %> disabled <% } %>>Dodaj ogłoszenie</a>
-			<h1 class="title">Twoje ogłoszenia</h1>
-		</div>
-		<div class="banner-bg"></div>
-		<div class="banner-bg-add"></div>
+	<div class="banner">
+		<h1 class="title">Twoje ogłoszenia</h1>
+		<a class="add-button" role="button" href="/offers/new" <% if(!currentUser.isVerified) { %> disabled <% } %>>Dodaj ogłoszenie</a>
 	</div>
 </div>
 <div class="container">

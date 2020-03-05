@@ -29,8 +29,7 @@
 	display: flex;
 	width: 100%;
 	margin: 70px 0 0;
-	padding: 8px 20px;
-	padding-left: 40px;
+	padding: 8px 40px;
 	background-color: #105BE1;
 	align-items: center;
 }
@@ -69,6 +68,9 @@
 
 .carousel-image {
 	margin: auto;
+	object-fit: cover;
+	background-size: cover;
+    background-position: center;
     width: 100%;
     height: 500px;
 }
@@ -572,18 +574,31 @@
 }
 
 @media only screen and (max-width: 991px) {
-	.mycontainer { width: 95%; }
+	.mycontainer { width: 100%; margin-top: 0;}
+
+	.mybox {
+		padding: 10px 12px;
+		border: none;
+		width: 100%;
+	}
+
+	.offer-card {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	#offer { margin-top: 10px; }
 
 	#header .shadow-btn { font-size: 14px; top: -35px;}
 
-	.carousel-image { height: 285px; width: auto; }
+	.carousel-image { width: 80%; height: auto;}
 
-	#main-info { width: 95%; height: 72px; }
+	#main-info { width: 95%; height: 72px; margin-top: 10px;}
 
 	#description { width: 95%; height: 220px; }
 
 	#charts { height: 300px; width: 95%; }
-	#charts canvas { height: 250px !important; }
+	#charts canvas { height: 200px !important; }
 
 	#changes {
 		width: 95%;
@@ -600,8 +615,8 @@
 }
 
 @media only screen and (max-width: 520px) {
-	.mybox { padding: 10px 12px; }
 
+	#header { padding: 8px 20px; }
 	#header h1 { font-size: 21px; }
 
 	#main-info .tag { font-size: 13px; }
@@ -611,11 +626,9 @@
 
 	#description { font-size: 15px; }
 
-	#charts .chart-info { display: flex; justify-content: space-between; padding-left: 10px;}
+	#charts .chart-info { display: flex; justify-content: space-around; padding-left: 10px;}
 
 	.chart-info .type { font-size: 14px; margin-bottom: 1px !important; }
 	.chart-info .data { font-size: 16px; }
 	.chart-info .data span { font-size: 13px; }
-
-	#charts canvas { height: 200px !important; }
 }
