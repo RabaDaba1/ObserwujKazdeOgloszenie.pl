@@ -3,7 +3,12 @@ const express = 			  require("express"),
 	  passport =              require("passport"),
 	  passportLocalMongoose = require("passport-local-mongoose"),
 	  User =				  require("../models/User"),
-	  email =				require("../public/js/email/index");
+	  email =				require("../public/js/email/index"),
+	  middleware = require("../middleware");
+
+router.get('/mypage', middleware.isLoggedIn, async(req, res) => {
+	res.render('mypage');
+});
 
 // AUTHENTICATION ROUTES
 router.get("/auth/:token", async(req, res) => {

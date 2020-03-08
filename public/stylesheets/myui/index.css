@@ -4,17 +4,57 @@
 	display: border-box;
 }
 
+.mycontainer {
+	margin: 80px auto;
+	width: 1640px;
+}
+
+* ::-webkit-scrollbar {
+	width: 5px;
+}
+  
+* ::-webkit-scrollbar-track {
+	background-color: transparent; 
+}
+
+* ::-webkit-scrollbar-thumb {
+	background-color: rgb(187, 187, 187);
+	border-radius: 20px;
+	height: 10%;
+}
+
+.mybox {
+	background-color: #F6F6F6;
+	border-left: #105BE1 solid 3px;
+	padding: 30px 40px;
+	margin: 0 auto;
+}
+
 /*
 BUTTONS
 */
-.button {
+.button, .button-fill, .button-outline, .mybtn, .shadow-btn, .button-simple {
 	display: inline-block;
 	text-align: center;
-    vertical-align: middle;
+	vertical-align: middle;
 	padding: .25rem 1.2rem;
-    font-size: 1rem;
-    font-weight: 500;
+	font-size: 1rem;
+	font-weight: 500;
 	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	outline: none;
+	user-select: none;
+	transition: .25s ease-in-out;
+}
+
+.button:hover,.button-fill:hover,.button-outline:hover,.button-fill:hover,.shadow-btn:hover,.mybtn:hover,.button-simple:hover {
+	outline: none;
+	text-decoration: none;
+	color: white;
+}
+
+.button {
     color: rgb(24, 89, 209);
 	background-image: linear-gradient(
         rgba(255, 255, 255, 0),
@@ -26,90 +66,54 @@ BUTTONS
     background-origin: border-box;
     background-clip: content-box, border-box;
     box-shadow: 2px 1000px 1px #fff inset;
-	user-select: none;
-	outline: none;
-	cursor: pointer;
 }
-.button:focus { outline: none; }
+
 .button:hover {
     box-shadow: none;
-    color: white;
-    text-decoration: none;
     transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 }
 
+.button-simple {
+	background-color: #2368E5;
+	font-size: 20px;
+	font-weight: 500;
+}
+
 .button-fill {
-	display: inline-block;
-	text-align: center;
-    vertical-align: middle;
-	padding: .25rem 1.2rem;
-    font-size: 1rem;
     font-weight: 600;
-	text-decoration: none;
-	color: white;
 	background-image: linear-gradient(135deg, #23AEEB 0%, #4783EB 105%);
 	border-radius: 2rem;
-	user-select: none;
-	outline: none;
-	cursor: pointer;
 }
-.button-fill:focus { outline: none; }
-.button-fill:hover { text-decoration: none; color: white; }
 
 .button-outline {
-	display: inline-block;
-	text-align: center;
-    vertical-align: middle;
 	padding: .375rem .75rem;
-	font-size: 1rem;
-	font-weight: 500;
-	text-decoration: none;
-	color: white;
 	background-color: transparent;
 	border: solid 1px white;
 	border-radius: .5rem;
-	cursor: pointer;
-	outline: none;
-	user-select: none;
 	transition: .25s ease-in-out;
 }
-.button-outline:focus { outline: none; }
-.button-outline:hover { color: inherit; background-color: white; text-decoration: none; }
+
+.button-outline:hover { color: inherit; background-color: white; }
 
 .shadow-btn {
-	display: inline-block;
-	padding: .25rem 1.2rem;
     font-size: 1.25rem;
     font-weight: 400;
 	color: #5e5e5e;
-	text-decoration: none;
-	user-select: none;
-	outline: none;
-	cursor: pointer;
 }
-.shadow-btn:focus { outline: none; color: #5e5e5e;}
-.shadow-btn:hover { text-decoration: none; color: #5e5e5e;}
+.shadow-btn:focus, .shadow-btn:hover  { color: #5e5e5e; }
 
 .mybtn {
-	display: inline-block;
-	text-align: center;
-    vertical-align: middle;
 	padding: .375rem .75rem;
     font-size: 1.25rem;
     font-weight: 400;
 	color: white;
 	background-color: #4783EB;
-	text-decoration: none;
-	user-select: none;
-	outline: none;
-	cursor: pointer;
 }
 
 .btn-fine { border-radius: 0.8rem; }
 .btn-fine:hover {
     box-shadow: none;
     color: white;
-    text-decoration: none;
     transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 }
 
@@ -127,7 +131,7 @@ BUTTONS
 
 
 @media only screen and (max-width: 900px) {
-	.shadow-btn {font-size: 1rem; padding: .25rem 1.4rem;}
+	.shadow-btn { font-size: 1rem; padding: .25rem 1.4rem; }
 }
 
 @media only screen and (max-width: 500px) {

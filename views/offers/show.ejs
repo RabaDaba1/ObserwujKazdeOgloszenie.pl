@@ -1,6 +1,31 @@
 <%- include("../partials/header") %>
 <link rel="stylesheet" href="/stylesheets/offers/show.css">
 
+<% offer.changes.changes.reverse(); %> 
+
+<div id="myModal">
+	<div class="myModal-content">
+		<div class="header">
+			<h1>Porównaj</h1>
+			<span class="close-myModal"><i class="fas fa-times"></i></span>
+			<p class="info">Dodane wyrazy: <span class="line-count-inserted"></span></p>
+			<p class="info">Usunięte wyrazy: <span class="line-count-deleted"></span></p>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6 old">
+				<h3>Stare</h3>
+			</div>
+			<div class="col-lg-6 new">
+				<h3>Nowe</h3>
+			</div>
+		</div>
+	</div>
+	<div id="myModalData" class="d-none">
+		<div class="old"><%= JSON.stringify(offer.changes.changes.map(el => el.from)) %></div>
+		<div class="new"><%= JSON.stringify(offer.changes.changes.map(el => el.to)) %></div>
+	</div>
+</div>
 
 <div class="mycontainer">
 	<div id="header">
@@ -140,17 +165,19 @@
 										<th>Zmieniona</th>
 									</tr>
 									<% if (offer.changes.changes.length > 0) { %>
-										<% offer.changes.changes.forEach(change => { %>
+										<% offer.changes.changes.forEach(change => {  console.log(change);%>
 											<tr class="data">
-												<td><%= offer.translate(change.type) %></td>
+													<td><%= offer.translate(change.type) %></td>
 												<% if (change.type === 'price') { %>
 													<td><%= change.from %>zł</td>
 													<td><%= change.to %>zł</td>
 												<% } else if (change.type === 'description' || change.type === 'title') { %>
-													<td>Kliknij</td>
-													<td>Kliknij</td>
-												<% } %> 
-												
+													<td><button data-offertype="<%= offer.translate(change.type).toLowerCase() %>" class="open-myModal">Zobacz</button></td>
+													<td><button data-offertype="<%= offer.translate(change.type).toLowerCase() %>" class="open-myModal">Zobacz</button></td>
+												<% } else { %>
+													<td><%= change.from %></td>
+													<td><%= change.to %></td>
+												<% } %>
 										<% }) %>	
 									<% } else { %>
 										<p class="table-err-msg">Twoje ogłoszenie nie ma historii zmian</p>
@@ -180,5 +207,6 @@
 <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.4"></script>
 
+<script src="/js/PatienceDiff.js"></script>
 <script src="/js/offers/show.js"></script>
 <%- include("../partials/footer") %>

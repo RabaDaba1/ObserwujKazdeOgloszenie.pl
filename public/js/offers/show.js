@@ -4,7 +4,13 @@ const DOMStrings = {
 	priceChart: document.querySelector('#priceChart'),
 	viewChart: document.querySelector('#viewsChart'),
 	viewsChartData: JSON.parse(document.querySelector('#viewsChartData').textContent),
-	priceChartData: JSON.parse(document.querySelector('#priceChartData').textContent)
+	priceChartData: JSON.parse(document.querySelector('#priceChartData').textContent),
+	modal: document.getElementById("myModal"),
+	modalDataNew: document.querySelector("#myModalData .new").textContent,
+	modalDataOld: document.querySelector("#myModalData .old").textContent,
+	openModal: Array.from(document.querySelectorAll(".open-myModal")),
+	closeModal: document.querySelector(".close-myModal"),
+	changesTableRows: Array.from(document.querySelectorAll("#changes table .data"))
 };
 
 const chartObjects = {};
@@ -127,32 +133,99 @@ const UIController = (function() {
 			const myChart = new Chart(ctx, chartMarkup);
 
 			return myChart;
-		}
-	}
-})();
+		},
+		switchCharts(chartHeaders, target) {
+			chartHeaders.forEach(el => el.classList.remove('active'));
+				target.classList.add('active');
 
-const controller = (function(UIController) {
-	const setupEventListeners = () => {
-		const chartInfoArr = [DOMStrings.chartViewsInfo, DOMStrings.chartPriceInfo];
-		const chartArr = [DOMStrings.priceChart, DOMStrings.viewChart];
-
-		chartInfoArr.forEach((el, i, arr)=> {
-			el.addEventListener("click", function() {
-				arr.forEach(el => el.classList.remove('active'));
-				this.classList.add('active');
-
+				const chartArr = [DOMStrings.priceChart,DOMStrings.viewChart];
 				chartArr.forEach(element => element.classList.remove('active'));
 
-				isPriceInfoActive = chartInfoArr[1].classList.contains('active');
-				isViewsInfoActive = chartInfoArr[0].classList.contains('active');
+				isPriceInfoActive = chartHeaders[1].classList.contains('active');
+				isViewsInfoActive = chartHeaders[0].classList.contains('active');
 
 				if(isViewsInfoActive) {
 					DOMStrings.viewChart.classList.add('active');
 				} else if(isPriceInfoActive) {
 					DOMStrings.priceChart.classList.add('active');
 				}
+		},
+		renderModal(button) {				
+			const	currentRowIndex = DOMStrings.changesTableRows.indexOf(button.parentNode.parentNode),
+					modalDataNew = JSON.parse(DOMStrings.modalDataNew)[currentRowIndex],
+					modalDataOld = JSON.parse(DOMStrings.modalDataOld)[currentRowIndex];
+
+			let processedNewData = modalDataNew.split(" "),
+				processedOldData = modalDataOld.split(" ");
+
+			const difference = patienceDiffPlus(processedOldData, processedNewData);
+			
+			let lastNewChanged = false,
+				lastOldChanged = false;
+			difference.lines.forEach(el => {
+				if(el.bIndex === -1) {
+					let markup;
+					lastOldChanged ? markup = processedOldData[el.aIndex] : markup = `<span class="highlight-deleted">${processedOldData[el.aIndex]}`;
+
+					processedOldData[el.aIndex] = markup;
+					lastOldChanged = true;
+				} else if (el.aIndex === -1) {
+					let markup;
+					lastNewChanged ? markup = processedNewData[el.bIndex] : markup = `<span class="highlight-added">${processedNewData[el.bIndex]}`
+					
+					processedNewData[el.bIndex] = markup;
+					lastNewChanged = true;
+				} else {
+					if(lastOldChanged) {
+						processedOldData[el.aIndex - 1] = processedOldData[el.aIndex - 1] + '</span>';
+					}
+
+					if(lastNewChanged) {
+						processedNewData[el.bIndex - 1] = processedNewData[el.bIndex - 1] + '</span>';
+					}
+					lastOldChanged = false;
+					lastNewChanged = false;
+				}
 			});
-		});
+			
+			document.querySelector(".myModal-content .old").insertAdjacentHTML('beforeend', `<p class="modal-text">${processedOldData.join(" ")}</p>`);
+			document.querySelector(".myModal-content .new").insertAdjacentHTML('beforeend', `<p class="modal-text">${processedNewData.join(" ")}</p>`);
+
+			document.querySelector(".myModal-content .old h3").textContent = `Stary ${button.dataset.offertype}`
+			document.querySelector(".myModal-content .new h3").textContent = `Nowy ${button.dataset.offertype}`
+
+			document.querySelector(".myModal-content .line-count-deleted").textContent = ' ' + difference.lineCountDeleted;
+			document.querySelector(".myModal-content .line-count-inserted").textContent = ' ' + difference.lineCountInserted;
+
+			DOMStrings.modal.style.display = 'block';
+		},
+		closeModal() {
+			DOMStrings.modal.style.display = 'none';
+
+			let modalTextCompare = Array.from(document.querySelectorAll(".modal-text"));
+			
+			modalTextCompare.forEach(el => {
+				el.parentNode.removeChild(el);
+			})
+		}
+	}
+})();
+
+const controller = (function(UIController) {
+	const setupEventListeners = () => {
+		const chartHeaders = [DOMStrings.chartViewsInfo, DOMStrings.chartPriceInfo];
+
+		chartHeaders.forEach((el, i, arr) => el.addEventListener("click", () => UIController.switchCharts(arr, el)));
+
+		if(DOMStrings.openModal.length > 0) {
+			DOMStrings.openModal.forEach(el => {
+				el.addEventListener('click', function() {
+					UIController.renderModal(this);
+				});
+			});
+		}
+
+		DOMStrings.closeModal.addEventListener('click', () => UIController.closeModal());
 	};
 
 	return {

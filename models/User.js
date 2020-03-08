@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
 	isVerified: {type: Boolean, default: false },
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
+	subscriptionPlan: {type: String, enum: ['free', 'premium'], default: 'free'},
 	messages: [{}]
 });
 

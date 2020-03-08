@@ -54,13 +54,13 @@ offerSchema.statics.scrape = async(link) => {
 		const $ = cheerio.load(response.data);
 
 		const title = 			$('#offerdescription > div.offer-titlebox > h1').text().trim(),
-			  description =		$("#textContent").text().trim(),
+			  description =		$("#textContent").text().trim().replace(/\n/g,"\r\n"),
 			  images = 			$(".vtop.bigImage").map((i, el) => $(el).attr('src')).get(),
 			  views = 		eval($("#offerbottombar > div:nth-child(3) > strong").text()); 
 
 		let price = $("#offeractions > div.price-label > strong").text().trim().replace('zł', '').replace(' ', '').replace(',', '.'),
 			offerType = "PURCHASE",
-			createdOlx, isNegotiable, negotiationTag;
+			createdOlx, isNegotiable;
 
 		if(price==='Zamienię') {
 			price = 0;
@@ -80,8 +80,6 @@ offerSchema.statics.scrape = async(link) => {
 
 		createdOlx = $('#offerdescription > div.offer-titlebox > div.offer-titlebox__details > em').text().trim();
 
-		if(isNegotiable) negotiationTag = 'Do negocjacji';
-
 		return {
 			link: link,
 			title: title,
@@ -89,7 +87,6 @@ offerSchema.statics.scrape = async(link) => {
 			price: price,
 			offerType: offerType,
 			isNegotiable: isNegotiable,
-			negotiationTag: negotiationTag,
 			views: views,
 			description: description,
 			createdOlx
@@ -161,7 +158,7 @@ offerSchema.statics.updateAll = async function() {
 
 // TRANSLATE CHANGE TYPE TO PL
 offerSchema.methods.translate = function (type) {
-	const offerParamsPL = ['Link', 'Tytuł', 'Zdjęcia', 'Cena', 'Typ ogłoszenia', 'Do negocjacji', 'Wyświetlenia', 'Data wstawienia'];
+	const offerParamsPL = ['Link', 'Tytuł', 'Cena', 'Typ ogłoszenia', 'Do negocjacji', 'Wyświetlenia', 'Opis'];
 	
 	return offerParamsPL[offerParams.indexOf(type)];
 };

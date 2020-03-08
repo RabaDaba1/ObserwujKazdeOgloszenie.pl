@@ -1,28 +1,78 @@
-.mycontainer {
-	margin: 80px auto;
-	width: 1640px;
+/* MODAL */
+#myModal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0,0.4);
 }
 
-.mycontainer ::-webkit-scrollbar {
-	width: 5px;
-}
-  
-.mycontainer ::-webkit-scrollbar-track {
-	background-color: transparent; 
-}
-
-.mycontainer ::-webkit-scrollbar-thumb {
-	background-color: rgb(187, 187, 187);
-	border-radius: 20px;
-	height: 10%;
+.close-myModal {
+	color: #aaa;
+	float: right;
+	font-size: 20px;
+	font-weight: bold;
 }
 
-.mybox {
-	background-color: #F6F6F6;
-	border-left: #105BE1 solid 3px;
-	padding: 30px 40px;
-	margin: 0 auto;
+.close-myModal:hover,
+.close-myModal:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
 }
+
+.myModal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 40px 40px;
+	border: 1px solid #888;
+	width: 80%;
+}
+
+.myModal-content h1 {
+	display: inline-block;
+	font-size: 42px;
+	font-weight: 500;
+}
+
+.myModal-content .info {
+	float: right;
+	font-size: 25px;
+	font-weight: 400;
+	margin-right: 100px;
+}
+
+.myModal-content .line-count-deleted, .myModal-content .line-count-inserted {
+	position: relative;
+	left: 10px;
+	top: 5px;
+	font-family: 'Roboto';
+	font-weight: 300;
+	font-size: 36px;
+}
+
+.myModal-content .line-count-inserted {
+	color: #40DC3B;
+	margin-right: 120px;
+}
+
+.myModal-content .line-count-deleted { color: #DF3737; }
+
+.myModal-content .header { margin-bottom: 40px; }
+
+.myModal-content .old, .myModal-content .new { overflow-y: auto; }
+
+.myModal-content .old h3, .myModal-content .new h3 { font-size: 34px; font-weight: 400; }
+.myModal-content .old p, .myModal-content .new p { font-size: 25px; font-weight: 300; font-family: 'Roboto'; }
+
+.highlight-deleted { background-color: rgb(223, 55, 55, 0.55); }
+
+.highlight-added { background-color: rgb(55, 223, 61, 0.55); }
 
 #header {
 	position: relative;
@@ -234,7 +284,7 @@
 	padding: 0 !important;
 	text-align: left;
 	font-weight: 100;
-	padding: 3px 0 !important;
+	padding: 5px 0 !important;
 	border-bottom: 1px solid white !important;
 }
 
@@ -247,6 +297,10 @@
 #changes .table th:nth-child(1) { width: 35%; }
 #changes .table td:nth-child(1) { width: 35%; }
 
+#changes table button {
+	all: unset;
+	cursor: pointer;
+}
 
 .table-err-msg {
 	position: absolute;

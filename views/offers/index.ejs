@@ -15,7 +15,7 @@
 	
 	<section id="offers">
 		<div class="row">
-		<% offers.forEach((offer, offerIndex) => { %>
+		<% offers.reverse().forEach((offer, offerIndex) => { %>
 			<div class="col-xl-4 col-lg-6 mb-4">
 				<div class="card offer mx-auto mt-1 <% if(offer.changes.unseen > 0) { %> changes <% } %>" data-placeholder="<%= offer.changes.unseen %>">
 				  <div class="card-img-top">
@@ -55,8 +55,8 @@
 					<hr class="m-0 mb-1">
 					<div class="offer-header d-flex justify-content-between">
 					  <p class="card-text mb-2 d-flex-inline"><small class="text-muted"><%= offer.createdApp %></small></p>
-					  <p class="card-text mb-2 d-flex-inline"><small class="text-muted"><% if(offer.negotiationTag) { %>
-							<%= offer.negotiationTag %>
+					  <p class="card-text mb-2 d-flex-inline"><small class="text-muted"><% if(offer.isNegotiable) { %>
+							Do negocjacji
 						<% } %></small></p>
 					</div>
 					<p class="card-text text-secondary description"><%= offer.description.slice(0, 150) %>...</p>

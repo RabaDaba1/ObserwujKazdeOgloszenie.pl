@@ -1,0 +1,80 @@
+.mybox {
+    background-color: #FCFCFC !important;
+}
+
+/* PROFILE SECTION */
+.profile {
+    margin-bottom: 40px;
+}
+
+#directory {
+    font-size: 22px;
+    font-weight: 400;
+    color: #888888;
+    margin-bottom: 15px;
+}
+
+.profile .mybox {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px !important;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#profile-text {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#profile-text h1 {
+    display: inline-block;
+    font-size: 34px;
+    font-weight: 500;
+    color: #272727;
+    margin-bottom: 10px;
+}
+
+#profile-text p {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 400;
+    color: #A2A2A2;
+}
+
+#profile-buttons {
+    margin-left: auto;
+    margin-bottom: auto;
+}
+
+#profile-buttons a {
+    margin-left: 10px;
+}
+
+
+/* DATA SECTION */
+.data .row {
+    margin-bottom: 25px;
+}
+
+.data .mybox h1 { font-size: 70px; font-weight: 300; }
+.data .mybox p { font-size: 25px; font-weight: 500; }
+
+#offers-added { border-color: #105BE1; }
+#offers-added h1 { color: #105BE1; }
+
+#week-change-count { border-color: #10E117; }
+#week-change-count h1 { color: #10E117; }
+
+#unseen-changes { border-color: #E11010; }
+#unseen-changes h1 { color: #E11010; }
+
+#when-last-change { border-color: #10D3E1; }
+#when-last-change h1 { color: #10D3E1; font-size: 65px; }
