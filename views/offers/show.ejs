@@ -1,21 +1,23 @@
 <%- include("../partials/header") %>
 <link rel="stylesheet" href="/stylesheets/offers/show.css">
+<link rel="stylesheet" href="/stylesheets/myui/modal.css">
 
 <% offer.changes.changes.reverse(); %> 
 
 <div id="myModal">
-	<div class="myModal-content">
+	<div class="myModal-content box-outline-outline">
 		<div class="header">
 			<h1>Porównaj</h1>
-			<span class="close-myModal"><i class="fas fa-times"></i></span>
 			<p class="info">Dodane wyrazy: <span class="line-count-inserted"></span></p>
 			<p class="info">Usunięte wyrazy: <span class="line-count-deleted"></span></p>
+			<span class="close-myModal"><i class="fas fa-times"></i></span>
 		</div>
 
 		<div class="row">
 			<div class="col-lg-6 old">
 				<h3>Stare</h3>
 			</div>
+			<hr class="separator">
 			<div class="col-lg-6 new">
 				<h3>Nowe</h3>
 			</div>
@@ -49,7 +51,7 @@
 						  <div class="carousel-inner">
 							  <% offer.images.forEach((image, index) => { %>
 								<div class="carousel-item <% if(index === 0) { %> active <% } %>">
-								  <img src="<%= image %>" class="d-block carousel-image" alt="Xbox One X 1TB">
+								  <img src="<%= image %>" class="d-block carousel-image" alt="<%= offer.title %>">
 								</div>
 							  <% }); %>
 						  </div>
@@ -65,8 +67,8 @@
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<div id="main-info" class="mybox">
-						<div class="tab">
+					<div id="main-info">
+						<div class="tab box-outline">
 							<p class="tag">Cena</p>
 							<p class="value">
 								<% if(offer.offerType === "PURCHASE") { %>
@@ -76,7 +78,7 @@
 								<% } %>
 							</p>
 						</div>
-						<div class="tab">
+						<div class="tab box-outline">
 							<p class="tag">Do negocjacji</p>
 							<p class="value"> 
 								<% if(offer.isNegotiable) { %>
@@ -86,24 +88,14 @@
 								<% } %>
 							</p>
 						</div>
-						<div class="tab">
+						<div class="tab box-outline">
 							<p class="tag">Wyświetlenia</p>
 							<p class="value"><%= offer.views %> </p>
-							<div class="stats">
-								<%
-									const viewsData = offer.charts.views.data; 
-									const last24hViews = viewsData[viewsData.length - 1] - viewsData[viewsData.length - 48];
-									
-									if (last24hViews) { %>
-										<img src="/images/up-arrow.png">
-										<p>+<%= last24hViews %></p>
-									<% } %>
-								</p>
-							</div>
 						</div>
 					</div>
 
-					<div class="mybox" id="description">
+					<div class="box-outline" id="description">
+						<p>Opis</p>
 						<%= offer.description %>
 					</div>
 				</div>
@@ -129,7 +121,7 @@
 			<section class="analytics">
 				<div class="row">
 					<div class="col-lg-8">
-						<div id="charts" class="mybox">
+						<div id="charts" class="box-outline">
 							<div class="chart-info">
 								<div class="views-info active">
 									<p class="type">Wyświetlenia</p>
@@ -149,6 +141,15 @@
 							<canvas id="viewsChart" class="active"></canvas>
 							<canvas id="priceChart"></canvas>
 						</div>
+						<div id="controls" class="box-outline">
+							<a href="<%= offer._id %>/update" role="button" class='button-simple-green'>Aktualizuj</a>
+							
+							<a href="<%= offer.link %>" role="button" class='button-simple-blue'>Zobacz</a>
+			
+							<form class="d-inline" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
+								<button role="button" class='button-simple-red'>Usuń</button>
+							</form>
+						</div>
 					</div>
 					<div class="col-lg-4">
 						<div id="changes">
@@ -165,7 +166,7 @@
 										<th>Zmieniona</th>
 									</tr>
 									<% if (offer.changes.changes.length > 0) { %>
-										<% offer.changes.changes.forEach(change => {  console.log(change);%>
+										<% offer.changes.changes.forEach(change => {  %>
 											<tr class="data">
 													<td><%= offer.translate(change.type) %></td>
 												<% if (change.type === 'price') { %>
@@ -174,6 +175,9 @@
 												<% } else if (change.type === 'description' || change.type === 'title') { %>
 													<td><button data-offertype="<%= offer.translate(change.type).toLowerCase() %>" class="open-myModal">Zobacz</button></td>
 													<td><button data-offertype="<%= offer.translate(change.type).toLowerCase() %>" class="open-myModal">Zobacz</button></td>
+												<% } else if(change.type === 'isNegotiable') {%>
+													<td><%= change.from ? 'tak' : 'nie'; %></td>
+													<td><%= change.to ? 'tak' : 'nie';%></td>
 												<% } else { %>
 													<td><%= change.from %></td>
 													<td><%= change.to %></td>
@@ -186,14 +190,16 @@
 								</table>
 							</div>
 						</div>
-						<div id="controls" class="mybox">
-							<a href="<%= offer._id %>/update" role="button" class='update-btn'>Aktualizuj</a>
-							
-							<a href="<%= offer.link %>" role="button" class='redirect-btn'>Zobacz</a>
-
-							<form class="d-inline" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
-								<button role="button" class='delete-btn'>Usuń</button>
-							</form>
+						<div id="owner" class="box-outline">
+							<p class="tag">Właściciel</p>
+							<div class="profile-info">
+								<img src="<%= offer.originalOwner.profileImage%>" alt="">
+								<div class="profile-text">
+									<p class="name"><%=offer.originalOwner.name%></p>
+									<p class="localization"><%= offer.originalOwner.localization %></p>
+								</div>
+							</div>
+							<a class="button-simple-blue" href="<%=offer.originalOwner.profileLink%>">Ogłoszenia użytkownika</a>
 						</div>
 					</div>
 				</div>	
@@ -202,6 +208,8 @@
 	</div>
 </div>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=/*process.env.MAPS_API_KEY*/%>&callback=initMap"
+  type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>

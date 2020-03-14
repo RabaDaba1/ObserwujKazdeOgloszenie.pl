@@ -1,7 +1,8 @@
 const express = require("express"),
 	  router = 	express.Router({mergeParams: true}),
 	  Offer = require("../models/Offer"),
-	  middleware = require("../middleware");
+	  middleware = require("../middleware"),
+	  User = require("../models/User");
 
 // INDEX
 router.get("/", middleware.isLoggedIn, (req, res) => {
@@ -26,13 +27,23 @@ router.post("/", middleware.isLoggedIn, async (req, res) => {
 		res.redirect("offers");
 	}
 	
+	const user = await User.findById(req.user._id);
+
+	if((user.subscriptionPlan === 'free' && user.offerCount >= 5) || (user.subscriptionPlan === 'premium' && user.offerCount >= 50)) {
+		let msg;
+		user.subscriptionPlan === 'free' ? msg = 'Aby dodawać więcej ogłoszeń musisz wykupić plan premium' : msg = 'Nie możesz dodawać wiecej niż 50 ogłoszeń';
+
+		req.flash('warning', msg);
+		res.redirect('/offers');
+	}
+
 	const ownerTitle = req.sanitize(req.body.title),
 		  link = req.sanitize(req.body.link);
 	try {
 		const offerData = await Offer.scrape(link);
-		let newOffer = await Offer.create(offerData);
+		const newOffer = await Offer.create(offerData);
 		newOffer.owner.id = req.user._id;
-
+		console.log(newOffer);
 		if(ownerTitle) newOffer.ownerTitle = ownerTitle;
 
 		// CHARTS
@@ -54,9 +65,13 @@ router.post("/", middleware.isLoggedIn, async (req, res) => {
 
 		await newOffer.save();
 		
+		user.offerCount++;
+		await user.save();
+
 		req.flash('success', 'Pomyślnie dodano ogłoszenie');
 		res.redirect("/offers");
 	} catch(err) {
+		console.log(err);
 		if(err.name === 'ValidationError') {
 			req.flash('error', 'Wystąpił błąd przy dodawaniu ogłoszenia :(. Upewnij się że twoje ogłoszenie istnieje a link zaczyna się od "https://www.olx.pl/"');
 			res.redirect("/offers");
@@ -70,7 +85,6 @@ router.get("/:id", middleware.checkOfferOwnership, async (req, res) => {
 		const offer = await Offer.findById(req.params.id).exec();
 		offer.changes.unseen = 0;
 		await offer.save();
-		await offer.save();
 		
 		res.render("offers/show", {offer: offer, priceChart: offer.charts.price, viewsChart: offer.charts.views});
 	} catch (err) {
@@ -83,6 +97,11 @@ router.get("/:id", middleware.checkOfferOwnership, async (req, res) => {
 router.delete("/:id", middleware.checkOfferOwnership, async (req, res) => {
 	try {
 		await Offer.findByIdAndRemove(req.params.id).exec();
+
+		const user = await User.findById(req.user._id).exec();
+		user.offerCount--;
+		await user.save();
+
 		req.flash('success', 'Pomyślnie usunięto ogłoszenie');
 		res.redirect("/offers");	
 	} catch (err) {

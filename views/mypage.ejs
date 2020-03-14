@@ -4,50 +4,65 @@
 <div class="mycontainer">
 	<section class="profile">
 		<p id="directory">Moja strona • <%= currentUser.username %> </p>
-		<div class="mybox">
-			<img src="https://images.unsplash.com/photo-1583655007812-89dae4370ccb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="" class="profile-img">
+		<div class="box-outline">
+		<img src="<% if(currentUser.profileImg==='default') { %> /images/user.jpg <% } %>" alt="" class="profile-img">
 			<div id="profile-text">
 				<h1>Miło Cię widzieć, <%= currentUser.username %>!</h1>
 				<p>Zobacz czy znaleźliśmy coś w twoich ogłoszeniach</p>
 			</div>
 			<div id="profile-buttons">
-				<a href="/myprofile" class="button-simple">Mój profil</a>
-				<a href="/offers" class="button-simple">Moje ogłoszenia</a>
+				<a href="/myprofile" class="button-simple-blue btn-medium">Mój profil</a>
+				<a href="/offers" class="button-simple-blue btn-medium">Moje ogłoszenia</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="data">
+	<section id="data">
 		<div class="row">
-			<div class="col-lg-7">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="mybox" id="offers-added">
-							<p>Liczba ogłoszeń</p>
-							<h1>7/25</h1>
-						</div>
+			<div class="col-lg-3 box-outline" id="main-info">
+					<div>
+						<p>Liczba ogłoszeń</p>
+						<h1>
+						<%= currentUser.offerCount %> / <% if (currentUser.subscriptionPlan === 'free') { %>
+							3
+						<% } else if (currentUser.subscriptionPlan === 'premium') { %>
+							50
+						<% } else { %>
+							100
+						<% } %> 
+					</h1>
 					</div>
-					<div class="col-lg-6">
-						<div class="mybox" id="week-change-count">
-							<p>Liczba zmian w ostatnim tyg.</p>
-							<h1>7</h1>
-						</div>
+					<div>
+						<p>Liczba zmian w ostatnim tyg.</p>
+						<h1><%= lastWeekChangeCount %></h1>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="mybox" id="unseen-changes">
-							<p>Zmiany do zobaczenia</p>
-							<h1>2</h1>
-						</div>
+					<div>
+						<p>Zmiany do zobaczenia</p>
+						<h1><%= unseenChanges %></h1>
 					</div>
-					<div class="col-lg-6">
-						<div class="mybox" id="when-last-change">
-							<p>Ostatnia zmiana</p>
-							<h1>Wczoraj</h1>
-						</div>
+					<div>
+						<p>Ostatnia zmiana</p>
+						<h1>
+							<% const changeTimeStamp = Date.now() - latestChange; %>
+							<%if (changeTimeStamp < 3600000) { %>
+								Około godziny temu
+							<% } else if(changeTimeStamp < 86400000) { %>
+								<% const hourTimeStamp = Math.round(changeTimeStamp / 3600000); %>
+								<% if(hourTimeStamp > 4 && hourTimeStamp < 22) { %>
+									<%= hourTimeStamp %> godzin temu
+								<% } else { %>
+									<%= hourTimeStamp %> godzin temu
+								<% } %>
+							<% } else if(changeTimeStamp > 86400000) { %>
+								<% const dayTimeStamp = Math.round(changeTimeStamp / 86400000); %>
+								<% if(dayTimeStamp < 1) { %>
+									<%=dayTimeStamp%> dzień temu
+								<% } else { %>
+									<%=dayTimeStamp%> dni temu
+								<% } %>
+							<% } %>
+						</h1>
 					</div>
-				</div>
 			</div>
 			<div class="col-lg-5">
 

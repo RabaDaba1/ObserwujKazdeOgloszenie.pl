@@ -4,7 +4,7 @@ const DOMStrings = {
 	priceChart: document.querySelector('#priceChart'),
 	viewChart: document.querySelector('#viewsChart'),
 	viewsChartData: JSON.parse(document.querySelector('#viewsChartData').textContent),
-	priceChartData: JSON.parse(document.querySelector('#priceChartData').textContent),
+	price: document.querySelector("#main-info .tab:nth-child(1) .value").textContent,
 	modal: document.getElementById("myModal"),
 	modalDataNew: document.querySelector("#myModalData .new").textContent,
 	modalDataOld: document.querySelector("#myModalData .old").textContent,
@@ -226,6 +226,12 @@ const controller = (function(UIController) {
 		}
 
 		DOMStrings.closeModal.addEventListener('click', () => UIController.closeModal());
+
+		window.addEventListener('click', function (event) {
+			if(event.target === DOMStrings.modal) {
+				UIController.closeModal();
+			}
+		});
 	};
 
 	return {
@@ -233,7 +239,12 @@ const controller = (function(UIController) {
 			setupEventListeners();
 
 			chartObjects.viewChart = UIController.renderChart("VIEWS");
-			chartObjects.priceChart = UIController.renderChart("PRICE");
+			if(DOMStrings.price.includes('brak')) {
+				DOMStrings.chartPriceInfo.style.display = 'none';
+			} else {
+				DOMStrings.priceChartData = JSON.parse(document.querySelector('#priceChartData').textContent);
+				chartObjects.priceChart = UIController.renderChart("PRICE");
+			}
 		}
 	}
 })(UIController);

@@ -1,5 +1,22 @@
+:root {
+	--main-blue: #4285F4;
+	--main-intense-blue: #2373f3;
+	--main-gray: #777;
+	--main-red: #DF3737;
+	--main-intense-red: #df2121;
+	--main-green: #37DF53;
+	--main-intense-green: #1ddb3d;
+	--main-border-color: #DADCE0;
+	--main-text-color: #272727;
+	--main-border-gray: .6px solid #DADCE0;
+	--main-border-blue: .6px solid #4285F4;
+	--main-border-green: .6px solid #37DF53;
+	--main-border-red: .6px solid #DF3737;
+}
+
 body {
 	font-family: 'Montserrat', sans-serif;
+	color: var(--main-text-color);
 }
 
 #brand {
@@ -17,7 +34,7 @@ body {
 
 .navbar {
 	background: rgb(16,81,217);
-	background: linear-gradient(0deg, rgba(16,81,217,1) 0%, rgba(16,92,226,1) 100%);
+	background: linear-gradient(0deg, #256FF2 0%, #3674F7 100%);
 	min-height: 60px;
 }
 

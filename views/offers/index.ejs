@@ -2,17 +2,17 @@
 <link rel="stylesheet" href="/stylesheets/offers/index.css">
 
 <div class="container">
-	<div class="banner">
+	<div class="header">
 		<h1 class="title">Twoje ogłoszenia</h1>
-		<a class="add-button" role="button" href="/offers/new" <% if(!currentUser.isVerified) { %> disabled <% } %>>Dodaj ogłoszenie</a>
+		<a class="button-simple-blue" role="button" href="/offers/new" <% if(!currentUser.isVerified) { %> disabled <% } %>>Dodaj ogłoszenie</a>
 	</div>
-</div>
-<div class="container">
+	<hr class="highlight">
+
 	<%- include("../partials/messages") %>
 	<% if(!currentUser.isVerified) { %>
 	<div class="alert alert-warning" role="alert">Aby dodawać i obserwować ogłoszenia musisz zweryfikować swoje konto - sprawdź czy nie wysłaliśmy Tobie emaila z potwierdzeniem (może być w spamie)</div>
 	<% } %>
-	
+
 	<section id="offers">
 		<div class="row">
 		<% offers.reverse().forEach((offer, offerIndex) => { %>
@@ -50,7 +50,7 @@
 							<%= offer.title.slice(0, 13) %>
 						<% } %>...
 						</h5>
-					  <h5 class="card-text tag-price d-inline-flex"><% if(offer.offerType === "PURCHASE") { %> <%= offer.price %>zł <% } else if(offer.offerType === "TRADE") { %> Zamienię <% } else if(offer.offerType === "FREE") { %> Za darmo <% } %></h5>
+					  <h5 class="card-text tag-price d-inline-flex"><% if(offer.offerType === "PURCHASE") { %> <%= offer.price %>zł <% } else if(offer.offerType === "EXCHANGE") { %> Zamienię <% } else if(offer.offerType === "FREE") { %> Za darmo <% } %></h5>
 					</div>
 					<hr class="m-0 mb-1">
 					<div class="offer-header d-flex justify-content-between">
@@ -61,10 +61,10 @@
 					</div>
 					<p class="card-text text-secondary description"><%= offer.description.slice(0, 150) %>...</p>
 					  
-					<a href="/offers/<%=offer._id %>" class="button btn-dim"><i class="fas fa-file-contract"></i> Więcej</a>
-					<a href="<%= offer.link %>" class="button btn-update-dim" id="offers--link-btn"><i class="fas fa-share-square"></i></a>
+					<a href="/offers/<%=offer._id %>" class="button-simple-blue"><i class="fas fa-file-contract"></i> Więcej</a>
+					<a href="<%= offer.link %>" class="button-simple-blue" id="offers--link-btn"><i class="fas fa-share-square"></i></a>
 					<form class="d-inline float-right" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
-						<button class="button btn-delete float-right ml-1"><i class="fas fa-trash"></i></button>
+						<button class="button-simple-blue float-right ml-1"><i class="fas fa-trash"></i></button>
 					</form>
 					  
 					</div>

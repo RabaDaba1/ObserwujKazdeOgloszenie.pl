@@ -22,7 +22,7 @@ router.post("/register", async(req, res) => {
     try {
 		User.findOne({email: req.body.email}, (err, foundUser) => {
 			if(foundUser) {
-				req.flash('warning', 'Ktoś już ma taki email :(');
+				req.flash('warning', 'Ten email jest zajęty');
 				res.redirect('/register');
 			}
 		});

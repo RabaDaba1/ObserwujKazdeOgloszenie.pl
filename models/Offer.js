@@ -39,6 +39,12 @@ const offerSchema = new mongoose.Schema({
 		price: chartSchema,
 		views: chartSchema
 	},
+	originalOwner: {
+		name: String,
+		profileLink: String,
+		profileImage: String,
+		localization: String
+	},
 	owner: {
 		id: {
 			type: mongoose.Schema.Types.ObjectId,
@@ -53,10 +59,14 @@ offerSchema.statics.scrape = async(link) => {
 		const response = await axios.get(link);
 		const $ = cheerio.load(response.data);
 
-		const title = 			$('#offerdescription > div.offer-titlebox > h1').text().trim(),
-			  description =		$("#textContent").text().trim().replace(/\n/g,"\r\n"),
-			  images = 			$(".vtop.bigImage").map((i, el) => $(el).attr('src')).get(),
-			  views = 		eval($("#offerbottombar > div:nth-child(3) > strong").text()); 
+		const title =				$('#offerdescription > div.offer-titlebox > h1').text().trim(),
+			  description =			$("#textContent").text().trim(),
+			  images =				$(".vtop.bigImage").map((i, el) => $(el).attr('src')).get(),
+			  views =				eval($("#offerbottombar > div:nth-child(3) > strong").text()),
+			  ownerName =			$('#offeractions > div.offer-sidebar__box > div.offer-user__details > h4 > a').text().trim(),
+			  ownerProfileLink =	$('#offeractions > div.offer-sidebar__box > div.offer-user__details > h4 > a').attr('href'),
+			  ownerProfileImage = 	$('#offeractions > div.offer-sidebar__box > div.offer-user__location > a > div > img').attr('src'),
+			  ownerLocalization =	$('#offeractions > div.offer-sidebar__box > div.offer-user__location > div > address > p').text().trim();
 
 		let price = $("#offeractions > div.price-label > strong").text().trim().replace('zł', '').replace(' ', '').replace(',', '.'),
 			offerType = "PURCHASE",
@@ -89,6 +99,12 @@ offerSchema.statics.scrape = async(link) => {
 			isNegotiable: isNegotiable,
 			views: views,
 			description: description,
+			originalOwner: {
+				name: ownerName,
+				profileLink: ownerProfileLink,
+				profileImage: ownerProfileImage,
+				localization: ownerLocalization
+			},
 			createdOlx
 		};
 	} catch (err) {

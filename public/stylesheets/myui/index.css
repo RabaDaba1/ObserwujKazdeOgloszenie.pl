@@ -23,9 +23,10 @@
 	height: 10%;
 }
 
-.mybox {
-	background-color: #F6F6F6;
-	border-left: #105BE1 solid 3px;
+.box-outline {
+	border: var(--main-border-gray);
+	background-color: #fff;
+	border-radius: 8px;
 	padding: 30px 40px;
 	margin: 0 auto;
 }
@@ -33,12 +34,14 @@
 /*
 BUTTONS
 */
-.button, .button-fill, .button-outline, .mybtn, .shadow-btn, .button-simple {
+.button, .button-fill, .button-outline, .shadow-btn, .button-simple-blue, .button-simple-gray, .button-simple-green, .button-simple-red {
+	all: unset;
 	display: inline-block;
 	text-align: center;
 	vertical-align: middle;
-	padding: .25rem 1.2rem;
-	font-size: 1rem;
+	padding: 4px 18px;
+	font-size: 16px;
+	border-radius: 8px;
 	font-weight: 500;
 	text-decoration: none;
 	color: white;
@@ -46,12 +49,18 @@ BUTTONS
 	outline: none;
 	user-select: none;
 	transition: .25s ease-in-out;
+	border: none;
 }
 
-.button:hover,.button-fill:hover,.button-outline:hover,.button-fill:hover,.shadow-btn:hover,.mybtn:hover,.button-simple:hover {
+.button:hover,.button-fill:hover,.button-outline:hover,.button-fill:hover,.shadow-btn:hover,.button-simple-gray:hover,.button-simple-blue:hover,.button-simple-green:hover,.button-simple-red:hover {
 	outline: none;
 	text-decoration: none;
 	color: white;
+}
+
+.button:focus,.button-fill:focus,.button-outline:focus,.button-fill:focus,.shadow-btn:focus,.button-simple-gray:focus,.button-simple-blue:focus,.button-simple-green:focus,.button-simple-red:focus {
+	outline: none;
+	text-decoration: none;
 }
 
 .button {
@@ -61,8 +70,7 @@ BUTTONS
         rgba(255, 255, 255, 0)
       ),
       linear-gradient(90deg, rgba(31,48,196,1) 0%, rgba(16,171,225,1) 95%);
-    border: solid 0.1rem transparent;
-	border-radius: 0.5rem;
+    border: solid 1.5px transparent;
     background-origin: border-box;
     background-clip: content-box, border-box;
     box-shadow: 2px 1000px 1px #fff inset;
@@ -73,11 +81,17 @@ BUTTONS
     transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 }
 
-.button-simple {
-	background-color: #2368E5;
-	font-size: 20px;
-	font-weight: 500;
-}
+.button-simple-gray { border: var(--main-border-gray); color: var(--main-gray); }
+.button-simple-gray:hover { color: var(--main-blue); border-color: var(--main-blue); }
+
+.button-simple-blue { border: var(--main-border-blue); color: var(--main-blue); }
+.button-simple-blue:hover { color: var(--main-intense-blue); border-color: var(--main-intense-blue); }
+
+.button-simple-green { border: var(--main-border-green); color: var(--main-green); }
+.button-simple-green:hover { color: var(--main-intense-green); border-color: var(--main-intense-green); }
+
+.button-simple-red { border: var(--main-border-red); color: var(--main-red); }
+.button-simple-red:hover { color: var(--main-intense-red); border-color: var(--main-intense-red); }
 
 .button-fill {
     font-weight: 600;
@@ -98,23 +112,13 @@ BUTTONS
 .shadow-btn {
     font-size: 1.25rem;
     font-weight: 400;
-	color: #5e5e5e;
+	color: var(--main-gray);
 }
 .shadow-btn:focus, .shadow-btn:hover  { color: #5e5e5e; }
 
-.mybtn {
-	padding: .375rem .75rem;
-    font-size: 1.25rem;
-    font-weight: 400;
-	color: white;
-	background-color: #4783EB;
-}
-
-.btn-fine { border-radius: 0.8rem; }
-.btn-fine:hover {
-    box-shadow: none;
-    color: white;
-    transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
+.btn-medium {
+	font-size: 18px;
+	padding: 5px 16px;
 }
 
 .btn-large {

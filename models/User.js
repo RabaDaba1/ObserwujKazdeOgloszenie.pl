@@ -6,13 +6,15 @@ const 	mongoose = require("mongoose"),
 const userSchema = new mongoose.Schema({
     username: String,
     password: String,
-	email: {type: String, unique: true},
+	email: { type: String, unique: true },
+	profileImg: {type: String, default: 'default' },
 	verificationToken: String,
 	verificationExpires: Date,
 	isVerified: {type: Boolean, default: false },
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
-	subscriptionPlan: {type: String, enum: ['free', 'premium'], default: 'free'},
+	subscriptionPlan: {type: String, enum: ['free', 'premium', 'god'], default: 'free'},
+	offerCount: {type: Number, default: 0},
 	messages: [{}]
 });
 

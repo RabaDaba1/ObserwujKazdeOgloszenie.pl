@@ -2,6 +2,8 @@
     background-color: #FCFCFC !important;
 }
 
+.row { margin: 0 !important; }
+
 /* PROFILE SECTION */
 .profile {
     margin-bottom: 40px;
@@ -14,16 +16,17 @@
     margin-bottom: 15px;
 }
 
-.profile .mybox {
+.profile .box-outline {
     display: flex;
     align-items: center;
     padding: 15px 30px !important;
 }
 
 .profile img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 100%;
+    margin-bottom: auto;
     object-fit: cover;
     background-size: cover;
     background-position: center;
@@ -52,29 +55,35 @@
 #profile-buttons {
     margin-left: auto;
     margin-bottom: auto;
+    float: right;
 }
 
 #profile-buttons a {
     margin-left: 10px;
 }
 
-
 /* DATA SECTION */
-.data .row {
+#data .row {
     margin-bottom: 25px;
 }
 
-.data .mybox h1 { font-size: 70px; font-weight: 300; }
-.data .mybox p { font-size: 25px; font-weight: 500; }
+#main-info {
+    margin: 0;
+}
 
-#offers-added { border-color: #105BE1; }
-#offers-added h1 { color: #105BE1; }
+#main-info p {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 23px;
+    color: var(--main-blue);
+    margin-bottom: 5px;
+}
 
-#week-change-count { border-color: #10E117; }
-#week-change-count h1 { color: #10E117; }
+#main-info div:last-child h1 { font-size: 44px; }
 
-#unseen-changes { border-color: #E11010; }
-#unseen-changes h1 { color: #E11010; }
-
-#when-last-change { border-color: #10D3E1; }
-#when-last-change h1 { color: #10D3E1; font-size: 65px; }
+#main-info h1 {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 50px;
+    color: var(--main-text-color);
+}
