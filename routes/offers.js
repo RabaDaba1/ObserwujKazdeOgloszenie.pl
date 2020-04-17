@@ -29,7 +29,7 @@ router.post("/", middleware.isLoggedIn, async (req, res) => {
 	
 	const user = await User.findById(req.user._id);
 
-	if((user.subscriptionPlan === 'free' && user.offerCount >= 5) || (user.subscriptionPlan === 'premium' && user.offerCount >= 50)) {
+	if((user.subscriptionPlan === 'free' && user.offerCount >= 3) || (user.subscriptionPlan === 'premium' && user.offerCount >= 50)) {
 		let msg;
 		user.subscriptionPlan === 'free' ? msg = 'Aby dodawać więcej ogłoszeń musisz wykupić plan premium' : msg = 'Nie możesz dodawać wiecej niż 50 ogłoszeń';
 
@@ -43,7 +43,7 @@ router.post("/", middleware.isLoggedIn, async (req, res) => {
 		const offerData = await Offer.scrape(link);
 		const newOffer = await Offer.create(offerData);
 		newOffer.owner.id = req.user._id;
-		console.log(newOffer);
+		
 		if(ownerTitle) newOffer.ownerTitle = ownerTitle;
 
 		// CHARTS

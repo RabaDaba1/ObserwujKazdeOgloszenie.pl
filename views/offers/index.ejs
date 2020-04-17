@@ -44,7 +44,7 @@
 				  </div>
 				  <div class="card-body">
 					<div class="offer-header d-flex justify-content-between">
-					  <h5 class="card-title d-inline-flex"><% if(offer.ownerTitle) { %>
+					  	<h5 class="card-title d-inline-flex"><% if(offer.ownerTitle) { %>
 							<%= offer.ownerTitle.slice(0, 13) %>
 						<% } else { %>
 							<%= offer.title.slice(0, 13) %>
@@ -59,13 +59,15 @@
 							Do negocjacji
 						<% } %></small></p>
 					</div>
-					<p class="card-text text-secondary description"><%= offer.description.slice(0, 150) %>...</p>
-					  
-					<a href="/offers/<%=offer._id %>" class="button-simple-blue"><i class="fas fa-file-contract"></i> Więcej</a>
-					<a href="<%= offer.link %>" class="button-simple-blue" id="offers--link-btn"><i class="fas fa-share-square"></i></a>
-					<form class="d-inline float-right" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
-						<button class="button-simple-blue float-right ml-1"><i class="fas fa-trash"></i></button>
-					</form>
+					<div class="content">
+						<p class="card-text text-secondary description"><%= offer.description %>...</p>
+						  
+						<a href="/offers/<%=offer._id %>" class="button-simple-blue"><i class="fas fa-file-contract"></i> Więcej</a>
+						<a href="<%= offer.link %>" class="button-simple-blue" id="offers--link-btn"><i class="fas fa-share-square"></i></a>
+						<form class="d-inline float-right" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
+							<button class="button-simple-blue float-right ml-1"><i class="fas fa-trash"></i></button>
+						</form>
+					</div>
 					  
 					</div>
 				</div>

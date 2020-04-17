@@ -1,25 +1,26 @@
 <%- include("./partials/header") %>
-<link rel="stylesheet" href="/stylesheets/mypage.css">
+<link rel="stylesheet" href="/stylesheets/mypage/main.css">
+<link rel="stylesheet" href="/stylesheets/mypage/statistics.css">
+<link rel="stylesheet" href="/stylesheets/mypage/profile.css">
 
 <div class="mycontainer">
-	<section class="profile">
+	<section id="header">
 		<p id="directory">Moja strona • <%= currentUser.username %> </p>
 		<div class="box-outline">
-		<img src="<% if(currentUser.profileImg==='default') { %> /images/user.jpg <% } %>" alt="" class="profile-img">
-			<div id="profile-text">
+		<img src="<% if(currentUser.profileImg==='default') { %> /images/user.jpg <% } %>" alt="" class="header-img">
+			<div id="header-text">
 				<h1>Miło Cię widzieć, <%= currentUser.username %>!</h1>
 				<p>Zobacz czy znaleźliśmy coś w twoich ogłoszeniach</p>
 			</div>
-			<div id="profile-buttons">
-				<a href="/myprofile" class="button-simple-blue btn-medium">Mój profil</a>
+			<div id="header-buttons">
+				<a href="" class="button-simple-blue btn-medium switch">Mój profil</a>
 				<a href="/offers" class="button-simple-blue btn-medium">Moje ogłoszenia</a>
 			</div>
 		</div>
 	</section>
-
-	<section id="data">
+	<section id="general-info">
 		<div class="row">
-			<div class="col-lg-3 box-outline" id="main-info">
+			<div class="col-lg-3 col-md-6 box-outline" id="main-info">
 					<div>
 						<p>Liczba ogłoszeń</p>
 						<h1>
@@ -69,6 +70,30 @@
 			</div>
 		</div>
 	</section>
+	<section id="profile-info">
+		<div class="box-outline">
+			<div class="row">
+				<div class="col-4">
+					<h3>Zdjęcie profilowe</h3>
+					<img src="<%= currentUser.profileImg %>" alt="Zdjęcie profilowe">
+					<button class="button-simple-blue">Zmień</button>
+				</div>
+				<div class="col-8">
+					<h3>Główne informacje</h3>
+					<div>
+						<p>Nazwa: <span><%= currentUser.username %></span></p>
+						<button class="button-simple-blue">Zmień</button>
+					</div>
+					<div>
+						<p>Hasło: zaszyfrowane</p>
+						<button class="button-simple-blue">Zmień</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
 
+
+<script src="/js/mypage.js"></script>
 <%- include("./partials/footer") %>

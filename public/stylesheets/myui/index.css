@@ -9,6 +9,22 @@
 	width: 1640px;
 }
 
+@media only screen and (max-width: 1920px) {
+	.mycontainer { width: 1320px; }
+}
+
+@media only screen and (max-width: 1400px) {
+	.mycontainer { width: 1060px; }
+}
+
+@media only screen and (max-width: 1120px) {
+	.mycontainer { width: 930px; }
+}
+
+@media only screen and (max-width: 991px) {
+	.mycontainer { width: 95%; margin-top: 0;}
+}
+
 * ::-webkit-scrollbar {
 	width: 5px;
 }
@@ -82,16 +98,16 @@ BUTTONS
 }
 
 .button-simple-gray { border: var(--main-border-gray); color: var(--main-gray); }
-.button-simple-gray:hover { color: var(--main-blue); border-color: var(--main-blue); }
+.button-simple-gray:hover { color: white; border-color: var(--main-blue); background-color: var(--main-intense-gray);}
 
 .button-simple-blue { border: var(--main-border-blue); color: var(--main-blue); }
-.button-simple-blue:hover { color: var(--main-intense-blue); border-color: var(--main-intense-blue); }
+.button-simple-blue:hover { color: white; border-color: var(--main-intense-blue); background-color: var(--main-intense-blue);}
 
 .button-simple-green { border: var(--main-border-green); color: var(--main-green); }
-.button-simple-green:hover { color: var(--main-intense-green); border-color: var(--main-intense-green); }
+.button-simple-green:hover { color: white; border-color: var(--main-intense-green); background-color: var(--main-intense-green);}
 
 .button-simple-red { border: var(--main-border-red); color: var(--main-red); }
-.button-simple-red:hover { color: var(--main-intense-red); border-color: var(--main-intense-red); }
+.button-simple-red:hover { color: white; border-color: var(--main-intense-red); background-color: var(--main-red);}
 
 .button-fill {
     font-weight: 600;

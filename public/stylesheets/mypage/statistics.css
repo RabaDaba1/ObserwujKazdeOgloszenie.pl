@@ -1,0 +1,24 @@
+#general-info .row {
+    margin-bottom: 25px;
+}
+
+#main-info {
+    margin: 0;
+}
+
+#main-info p {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 23px;
+    color: var(--main-blue);
+    margin-bottom: 5px;
+}
+
+#main-info div:last-child h1 { font-size: 44px; }
+
+#main-info h1 {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 50px;
+    color: var(--main-text-color);
+}
