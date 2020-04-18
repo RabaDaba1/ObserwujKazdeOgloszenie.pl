@@ -8,9 +8,10 @@
 .header .title {
 	display: inline-block;
 	margin: 0;
+	vertical-align: baseline;
 	font-family: 'Roboto';
 	font-size: 28px;
-	font-weight: 400;
+	font-weight: 300;
 	color: var(--main-text-color);
 }
 
@@ -21,53 +22,6 @@
 }
 
 .highlight { margin: 5px 0 40px; }
-
-/* ADD BUTTON */
-
-/* .add-button {
-	position: relative;
-	float: right;
-	padding: .375rem .75rem;
-    font-size: 1.25rem;
-	border-radius: 0.25rem;
-	font-weight: 500;
-	color: #fafafa;
-	background-image: linear-gradient(270deg, #0F5DDC 0%, #1E86D1 100%);
-	transition: padding-left 0.35s ease-in-out;
-	z-index: 1;
-}
-
-.add-button:hover {
-	text-decoration: none;
-	color: white;
-	padding-left: 2rem;
-}
-
-.add-button::before {
-	position: absolute;
-	content: "\f067 ";
-	font: normal normal normal 14px/1 FontAwesome;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	font-size: 1.1rem;
-	border-radius: 0.25rem;
-	background-image: linear-gradient(90deg, rgba(22,168,66,1) 0%, rgba(113,228,66,1) 100%);
-	z-index: -1;
-	-webkit-box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
-	-moz-box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
-	box-shadow: 0px 0px 73px -34px rgba(23,209,35,1);
-	transition: opacity 0.35s ease-in-out;
-	opacity: 0;
-	padding: 14px 0 14px 14px;
-}
-
-.add-button:hover::before {
-	transition: opacity 0.75s ease-in-out;
-	opacity: 1;
-} */
-
 
 /* CARD */
 .offer { border: var(--main-border-gray); }
@@ -149,11 +103,11 @@
 }
 
 @media only screen and (max-width: 450px) {
-	.header .title { font-size: 20px; }
+	.header .title { font-size: 18px; }
 	.header a { font-size: 13px; padding: 6px 14px; }
 
 	.offers-image { height: 200px; }
-
+	.card-title { font-size: 16px; }
 	.card-body .description { font-size: .9rem; }
 	.card-body .button {
 		padding: .2rem .6rem;
