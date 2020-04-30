@@ -1,0 +1,158 @@
+/*
+BUTTONS
+*/
+.button, .button-fill, .button-outline, .shadow-btn, .button-simple-blue, .button-simple-gray, .button-simple-green, .button-simple-red {
+	all: unset;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	padding: 4px 18px;
+	font-size: 16px;
+	border-radius: 8px;
+	font-weight: 500;
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	outline: none;
+	user-select: none;
+	transition: .25s ease-in-out;
+	border: none;
+}
+
+.button:hover,.button-fill:hover,.button-outline:hover,.button-fill:hover,.shadow-btn:hover,.button-simple-gray:hover,.button-simple-blue:hover,.button-simple-green:hover,.button-simple-red:hover {
+	outline: none;
+	text-decoration: none;
+	color: white;
+}
+
+.button:focus,.button-fill:focus,.button-outline:focus,.button-fill:focus,.shadow-btn:focus,.button-simple-gray:focus,.button-simple-blue:focus,.button-simple-green:focus,.button-simple-red:focus {
+	outline: none;
+	text-decoration: none;
+}
+
+.button {
+    color: rgb(24, 89, 209);
+	background-image: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      ),
+      linear-gradient(90deg, rgba(31,48,196,1) 0%, rgba(16,171,225,1) 95%);
+    border: solid 1.5px transparent;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+}
+
+.button:hover {
+    box-shadow: none;
+    transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
+}
+
+.button-simple-gray { border: var(--border-gray); color: var(--gray); }
+.button-simple-gray:hover { color: white; border-color: var(--blue); background-color: var(--intense-gray);}
+
+.button-simple-blue { border: var(--border-blue); color: var(--blue); }
+.button-simple-blue:hover { color: white; border-color: var(--intense-blue); background-color: var(--intense-blue);}
+
+.button-simple-green { border: var(--border-green); color: var(--green); }
+.button-simple-green:hover { color: white; border-color: var(--intense-green); background-color: var(--intense-green);}
+
+.button-simple-red { border: var(--border-red); color: var(--red); }
+.button-simple-red:hover { color: white; border-color: var(--intense-red); background-color: var(--red);}
+
+.button-fill {
+    font-weight: 600;
+	background-image: linear-gradient(135deg, #23AEEB 0%, #4783EB 105%);
+	border-radius: 2rem;
+}
+
+.button-outline {
+	padding: .375rem .75rem;
+	background-color: transparent;
+	border: solid 1px white;
+	border-radius: .5rem;
+	transition: .25s ease-in-out;
+}
+
+.button-outline:hover { color: inherit; background-color: white; }
+
+.shadow-btn {
+    font-size: 1.25rem;
+    font-weight: 400;
+	color: var(--gray);
+}
+.shadow-btn:focus, .shadow-btn:hover  { color: #5e5e5e; }
+
+.btn-medium {
+	font-size: 18px;
+	padding: 5px 16px;
+}
+
+.btn-large {
+	font-size: 1.5rem;
+	padding: .4rem 1.4rem;
+}
+
+@media only screen and (min-width: 995px) {
+	nav .button, .button-outline {
+		line-height: 1.65rem;
+		margin-top: auto; margin-bottom: auto;
+	}
+}
+
+
+@media only screen and (max-width: 900px) {
+	.shadow-btn { font-size: 1rem; padding: .25rem 1.4rem; }
+}
+
+@media only screen and (max-width: 500px) {
+	.btn-large {
+		font-size: 1.2rem;
+		padding: .3rem 1.1rem;
+	}
+}
+
+/*
+BUTTON COLORS
+*/
+.btn-update {
+    color: rgb(97, 194, 52);
+	background-image: linear-gradient(
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 0)
+	),linear-gradient(90deg, rgba(22,168,66,1) 0%, rgba(113,228,66,1) 100%);
+}
+
+.btn-delete {
+	color: rgba(201,32,32,1);
+	background-image: linear-gradient(
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 0)
+	),	linear-gradient(90deg, rgb(218, 50, 50) 0%, rgba(201,32,32,1) 100%);
+}
+
+.btn-dim {
+    color: rgb(24, 89, 209);
+	background-image: linear-gradient(
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 0)
+	),linear-gradient(90deg, rgba(17,80,210,1) 0%, rgba(52,128,213,1) 100%);
+}
+
+.btn-update-dim {
+    color: rgb(48,181,30);
+	background-image: linear-gradient(
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 0)
+	),linear-gradient(90deg, rgba(48,181,30,1) 0%, rgba(99,208,58,1) 100%);
+}
+
+.btn-delete-dim {
+	color: rgba(201,32,32,1);
+	background-image: linear-gradient(
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 0)
+	),	linear-gradient(90deg, rgb(218, 50, 50) 0%, rgba(201,32,32,1) 100%);
+}
+
+.btn-fill-green { background-image: linear-gradient(45deg, #1CE13D 0%, #39D534 105%); }

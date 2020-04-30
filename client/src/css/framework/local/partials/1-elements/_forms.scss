@@ -1,0 +1,145 @@
+.myui-form {
+	width: 560px;
+	background: #fff;
+	border: var(--border-gray);
+	padding: 60px 40px 40px;
+	border-radius: 8px;
+	position: relative;
+	top: 15%;
+	left: 50%;
+	transform: translate(-50%, 15%);
+}
+
+.myui-form h1 {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.form-field {
+	border-bottom: 2px solid #adadad;
+	position: relative;
+	margin: 35px 0;
+}
+
+
+.form-field input {
+	font-size: 1.2rem;
+	color: #333;
+	border: none;
+	width: 100%;
+	background: none;
+	outline: none;
+	padding: 0 5px;
+	height: 40px;
+}
+
+.form-field span::before {
+	content: attr(data-placeholder);
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	color: #adadad;
+	font-size: 1.15rem;
+	transform: translateY(-50%);
+	z-index: -1;
+	transition: .5s;
+}
+
+.form-field span::after {
+	content: '';
+	position: absolute;
+	width: 0%;
+	bottom: -2px;
+	left: 0;
+	height: 2px;
+	background: linear-gradient(90deg, rgba(17,80,210,1) 0%, rgba(52,128,213,1) 100%);
+	transition: .5s;
+}
+
+.focus + span::before {
+	top: -5px;
+}
+
+.focus + span::after {
+	width: 100%;
+}
+
+.input-link.shadow-btn {
+	position: relative;
+	bottom: .5rem;
+	padding: 0;
+	font-size: 1rem;
+	color: var(--gray);
+}
+
+.btn-form {
+	display: block;
+	margin: 50px auto 0;
+	min-height: 40px;
+	width: 75%;
+}
+
+@keyframes btn-onclick {
+	0% { transform: scale(1); }
+	50% { transform: scale(0.9); }
+	100% { transform: scale(1); }
+}
+
+.form.shadow-btn {
+	position: absolute;
+	bottom: -50px;
+	left: 0;
+}
+
+@media only screen and (min-width: 1250px) {
+	.myui-form {
+		width: 650px;
+		padding: 80px 50px 50px;
+	}
+	
+	.myui-form h1 {
+		font-size: 3.25rem;
+	}
+	
+	.form-field input {
+		font-size: 1.25rem;
+		height: 50px;
+	}
+	
+	.form-field span::before { font-size: 1.25rem; }
+
+	.input-link.shadow-btn { font-size: 1.1rem; }
+
+	.btn-form {
+		display: block;
+		width: 60%;
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	.myui-form {
+		width: 450px;
+	}
+	
+	.form.shadow-btn {bottom: -40px;}
+}
+
+@media only screen and (max-width: 600px) {
+	.myui-form {
+		width: 350px;
+	}
+	
+	.myui-form h1 { font-size: 1.85rem; }
+
+	.btn-form { margin-top: 30px; }
+}
+
+@media only screen and (max-width: 450px) {
+	.myui-form {
+		width: 300px;
+		padding: 40px 30px 30px;
+	}
+	
+	.myui-form h1 { font-size: 1.7rem; }
+}

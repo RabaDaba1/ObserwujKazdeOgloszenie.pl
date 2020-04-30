@@ -9,13 +9,13 @@ const 	express =            	require('express'),
 		mongoose =              require('mongoose'),
 		passport =              require('passport'),
 		LocalStrategy =         require('passport-local'),
-	  	User = 					require('./models/User'),
-		{ startUpdating } =		require('./public/js/scripts');
+	  	User = 					require('./server/models/User'),
+		{ startUpdating } =		require('./server/scripts/updater/index.js');
 
 // ROUTES
-const 	userRoutes = require('./routes/user'),
-		indexRoutes = require('./routes/index'),
-		offerRoutes = require('./routes/offers');
+const 	userRoutes = require('./server/routes/user'),
+		indexRoutes = require('./server/routes/index'),
+		offerRoutes = require('./server/routes/offers');
 // MONGODB CONNECT
 mongoose.connect(`mongodb+srv://Kacper:${process.env.DB_PASSWORD}@cluster0-xljwk.mongodb.net/aplikacjaOLX?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
@@ -33,7 +33,7 @@ mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/client/dist"));
 app.set("view engine", "ejs");
 app.use(flash());
 

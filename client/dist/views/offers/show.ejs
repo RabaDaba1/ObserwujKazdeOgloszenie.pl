@@ -1,0 +1,220 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/css/offers/show/main.css">
+<link rel="stylesheet" href="/css/offers/show/modal.css">
+
+<% offer.changes.changes.reverse(); %> 
+
+<div id="myModal">
+	<div class="myModal-content box-outline-outline">
+		<div class="header">
+			<h1>Porównaj</h1>
+			<p class="info">Dodane wyrazy: <span class="line-count-inserted"></span></p>
+			<p class="info">Usunięte wyrazy: <span class="line-count-deleted"></span></p>
+			<span class="close-myModal"><i class="fas fa-times"></i></span>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6 old">
+				<h3>Stare</h3>
+			</div>
+			<hr class="separator">
+			<div class="col-lg-6 new">
+				<h3>Nowe</h3>
+			</div>
+		</div>
+	</div>
+	<div id="myModalData" class="d-none">
+		<div class="old"><%= JSON.stringify(offer.changes.changes.map(el => el.from)) %></div>
+		<div class="new"><%= JSON.stringify(offer.changes.changes.map(el => el.to)) %></div>
+	</div>
+</div>
+
+<div class="mycontainer">
+	<div id="header">
+		<a href="/offers" class="back-btn shadow-btn"><i class="fas fa-arrow-left"></i> Wróć</a>
+		<h1><%= offer.title%></h1>
+	</div>
+	<div class="offer-card">
+		
+		<%- include("../partials/messages") %>
+		
+		<section id="offer">
+			<div class="row">
+				<div class="col-lg-6">
+					<div id="images">
+						<div id="carousel-1" class="carousel slide mb-3" data-interval="false" data-ride="carousel">
+						  <ol class="carousel-indicators">
+							 <% offer.images.forEach((image, index) => { %>
+								<li data-target="#carousel-1" data-slide-to="<%= index %>" class="<% if(index === 0) { %> active <% } %>"></li>
+							  <% }); %>
+						  </ol>
+						  <div class="carousel-inner">
+							  <% offer.images.forEach((image, index) => { %>
+								<div class="carousel-item <% if(index === 0) { %> active <% } %>">
+								  <img src="<%= image %>" class="d-block carousel-image" alt="<%= offer.title %>">
+								</div>
+							  <% }); %>
+						  </div>
+						  <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						  </a>
+						  <a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						  </a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div id="main-info">
+						<div class="tab box-outline">
+							<p class="tag">Cena</p>
+							<p class="value">
+								<% if(offer.offerType === "PURCHASE") { %>
+								<%= offer.price %><span class="currency">zł</span>
+								<% } else { %>
+								brak
+								<% } %>
+							</p>
+						</div>
+						<div class="tab box-outline">
+							<p class="tag">Do negocjacji</p>
+							<p class="value"> 
+								<% if(offer.isNegotiable) { %>
+								tak
+								<% } else { %>
+								nie
+								<% } %>
+							</p>
+						</div>
+						<div class="tab box-outline">
+							<p class="tag">Wyświetlenia</p>
+							<p class="value"><%= offer.views %> </p>
+						</div>
+					</div>
+
+					<div class="box-outline" id="description">
+						<p>Opis</p>
+						<%= offer.description %>
+					</div>
+				</div>
+			</div>
+
+			<div class="d-none">
+				<% if(offer.price !== 0) { %>
+				<div id="priceChartData">
+					<%= JSON.stringify({
+						data: priceChart.data,
+						dates: priceChart.dates
+					}) %>
+				</div>
+				<% } %>
+				<div id="viewsChartData">
+					<%= JSON.stringify({
+						data: viewsChart.data,
+						dates: viewsChart.dates
+					}) %>
+				</div>
+			</div>
+			
+			<section class="analytics">
+				<div class="row">
+					<div class="col-lg-8">
+						<div id="charts" class="box-outline">
+							<div class="chart-info">
+								<div class="views-info active">
+									<p class="type">Wyświetlenia</p>
+									<p class="data"><%= offer.views %></p>
+								</div>
+								<div class="price-info" <% if(offer.offerType !== "PURCHASE") { %> disabled <% } %>>
+									<p class="type">Cena</p>
+									<p class="data">
+									<% if(offer.offerType === "PURCHASE") { %>
+										<%= offer.price %><span>zł</span>
+									<% } else { %>
+										brak
+									<% } %>
+									</p>
+								</div>
+							</div>
+							<canvas id="viewsChart" class="active"></canvas>
+							<canvas id="priceChart"></canvas>
+						</div>
+						<div id="controls" class="box-outline">
+							<a href="<%= offer._id %>/update" role="button" class='button-simple-green'>Aktualizuj</a>
+							
+							<a href="<%= offer.link %>" role="button" class='button-simple-blue'>Zobacz</a>
+			
+							<form class="d-inline" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
+								<button role="button" class='button-simple-red'>Usuń</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div id="changes">
+							<div class="count">
+								<h1>Wszystkie zmiany</h1>
+								<h2><%= offer.changes.count %> </h2>
+							</div>
+							<div class="table">
+								<h3>Ostatnie</h3>
+								<table cellpadding="0">
+									<tr>
+										<th>Typ</th>
+										<th>Oryginalna</th>
+										<th>Zmieniona</th>
+									</tr>
+									<% if (offer.changes.changes.length > 0) { %>
+										<% offer.changes.changes.forEach(change => {  %>
+											<tr class="data">
+													<td><%= offer.translate(change.type) %></td>
+												<% if (change.type === 'price') { %>
+													<td><%= change.from %>zł</td>
+													<td><%= change.to %>zł</td>
+												<% } else if (change.type === 'description' || change.type === 'title') { %>
+													<td><button data-offertype="<%= offer.translate(change.type).toLowerCase() %>" class="open-myModal">Zobacz</button></td>
+													<td><button data-offertype="<%= offer.translate(change.type).toLowerCase() %>" class="open-myModal">Zobacz</button></td>
+												<% } else if(change.type === 'isNegotiable') {%>
+													<td><%= change.from ? 'tak' : 'nie'; %></td>
+													<td><%= change.to ? 'tak' : 'nie';%></td>
+												<% } else { %>
+													<td><%= change.from %></td>
+													<td><%= change.to %></td>
+												<% } %>
+										<% }) %>	
+									<% } else { %>
+										<p class="table-err-msg">Twoje ogłoszenie nie ma historii zmian</p>
+									<% } %> 
+									
+								</table>
+							</div>
+						</div>
+						<div id="owner" class="box-outline">
+							<p class="tag">Właściciel</p>
+							<div class="profile-info">
+								<img src="<%= offer.originalOwner.profileImage%>" alt="">
+								<div class="profile-text">
+									<p class="name"><%=offer.originalOwner.name%></p>
+									<p class="localization"><%= offer.originalOwner.localization %></p>
+								</div>
+							</div>
+							<a class="button-simple-blue" href="<%=offer.originalOwner.profileLink%>">Ogłoszenia użytkownika</a>
+						</div>
+					</div>
+				</div>	
+			</section>
+		</section>
+	</div>
+</div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=/*process.env.MAPS_API_KEY*/%>&callback=initMap"
+  type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.4"></script>
+
+<script src="/js/PatienceDiff.js"></script>
+<script src="/js/offers/show.js"></script>
+<%- include("../partials/footer") %>
