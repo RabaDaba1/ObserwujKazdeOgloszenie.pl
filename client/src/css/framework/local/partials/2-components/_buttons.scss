@@ -1,7 +1,7 @@
 /*
 BUTTONS
 */
-.button, .button-fill, .button-outline, .shadow-btn, .button-simple-blue, .button-simple-gray, .button-simple-green, .button-simple-red {
+.button, .button--fill, .button-outline, .button button--exit, .button-simple-blue, .button-simple-gray, .button-simple-green, .button-simple-red {
 	all: unset;
 	display: inline-block;
 	text-align: center;
@@ -19,13 +19,13 @@ BUTTONS
 	border: none;
 }
 
-.button:hover,.button-fill:hover,.button-outline:hover,.button-fill:hover,.shadow-btn:hover,.button-simple-gray:hover,.button-simple-blue:hover,.button-simple-green:hover,.button-simple-red:hover {
+.button:hover,.button--fill:hover,.button-outline:hover,.button--fill:hover,.button button--exit:hover,.button-simple-gray:hover,.button-simple-blue:hover,.button-simple-green:hover,.button-simple-red:hover {
 	outline: none;
 	text-decoration: none;
 	color: white;
 }
 
-.button:focus,.button-fill:focus,.button-outline:focus,.button-fill:focus,.shadow-btn:focus,.button-simple-gray:focus,.button-simple-blue:focus,.button-simple-green:focus,.button-simple-red:focus {
+.button:focus,.button--fill:focus,.button-outline:focus,.button--fill:focus,.button button--exit:focus,.button-simple-gray:focus,.button-simple-blue:focus,.button-simple-green:focus,.button-simple-red:focus {
 	outline: none;
 	text-decoration: none;
 }
@@ -60,7 +60,7 @@ BUTTONS
 .button-simple-red { border: var(--border-red); color: var(--red); }
 .button-simple-red:hover { color: white; border-color: var(--intense-red); background-color: var(--red);}
 
-.button-fill {
+.button--fill {
     font-weight: 600;
 	background-image: linear-gradient(135deg, #23AEEB 0%, #4783EB 105%);
 	border-radius: 2rem;
@@ -76,19 +76,19 @@ BUTTONS
 
 .button-outline:hover { color: inherit; background-color: white; }
 
-.shadow-btn {
+.button button--exit {
     font-size: 1.25rem;
     font-weight: 400;
 	color: var(--gray);
 }
-.shadow-btn:focus, .shadow-btn:hover  { color: #5e5e5e; }
+.button button--exit:focus, .button button--exit:hover  { color: #5e5e5e; }
 
-.btn-medium {
+.button--medium {
 	font-size: 18px;
 	padding: 5px 16px;
 }
 
-.btn-large {
+.button--large {
 	font-size: 1.5rem;
 	padding: .4rem 1.4rem;
 }
@@ -102,11 +102,11 @@ BUTTONS
 
 
 @media only screen and (max-width: 900px) {
-	.shadow-btn { font-size: 1rem; padding: .25rem 1.4rem; }
+	.button button--exit { font-size: 1rem; padding: .25rem 1.4rem; }
 }
 
 @media only screen and (max-width: 500px) {
-	.btn-large {
+	.button--large {
 		font-size: 1.2rem;
 		padding: .3rem 1.1rem;
 	}

@@ -1,4 +1,4 @@
-.box-outline { padding: 17.5px 25px; }
+.box box--outline { padding: 17.5px 25px; }
 
 #header {
 	position: relative;
@@ -352,10 +352,10 @@
 
 /* MEDIA */
 @media only screen and (max-width: 1920px) {
-	.box-outline { padding: 15px 25px; }
+	.box box--outline { padding: 15px 25px; }
 
 	#header h1 { font-size: 31px; }
-	#header .shadow-btn { font-size: 18px; top: -40px;}
+	#header .button button--exit { font-size: 18px; top: -40px;}
 
 	.offer-card {
 		padding: 18px 32px 40px;
@@ -443,10 +443,10 @@
 }
 
 @media only screen and (max-width: 1400px) {
-	.box-outline { padding: 15px 20px; }
+	.box box--outline { padding: 15px 20px; }
 
 	#header h1 { font-size: 27px; }
-	#header .shadow-btn { font-size: 16px; top: -32px;}
+	#header .button button--exit { font-size: 16px; top: -32px;}
 
 	.offer-card {
 		padding: 16px 27px 33px;
@@ -540,10 +540,10 @@
 }
 
 @media only screen and (max-width: 1120px) {
-	.box-outline { padding: 13px 18px; }
+	.box box--outline { padding: 13px 18px; }
 
 	#header h1 { font-size: 24px; }
-	#header .shadow-btn { font-size: 13px; top: -30px;}
+	#header .button button--exit { font-size: 13px; top: -30px;}
 
 	.offer-card {
 		padding: 14px 23px 29px;
@@ -633,9 +633,9 @@
 }
 
 @media only screen and (max-width: 991px) {
-	.mycontainer { margin-top: 0; }
+	.container { margin-top: 0; }
 
-	.box-outline {
+	.box box--outline {
 		padding: 10px 12px;
 	}
 
@@ -646,7 +646,7 @@
 
 	#offer { margin-top: 10px; }
 
-	#header .shadow-btn { font-size: 14px; top: -35px;}
+	#header .button button--exit { font-size: 14px; top: -35px;}
 
 	.carousel-image { width: 80%; height: auto;}
 

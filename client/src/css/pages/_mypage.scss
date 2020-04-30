@@ -5,24 +5,24 @@
 .row { margin: 0 !important; }
 
 /* PROFILE SECTION */
-#header {
+.user {
     margin-bottom: 40px;
 }
 
-#directory {
+.user__page-name {
     font-size: 22px;
     font-weight: 400;
     color: #888888;
     margin-bottom: 15px;
 }
 
-#header .box-outline {
+.user__content {
     display: flex;
     align-items: center;
     padding: 15px 30px !important;
 }
 
-#header img {
+.user__profile-icon {
     width: 90px;
     height: 90px;
     border-radius: 100%;
@@ -32,12 +32,12 @@
     background-position: center;
 }
 
-#header-text {
+.user__text {
     display: inline-block;
     margin-left: 20px;
 }
 
-#header-text h1 {
+.user__header {
     display: inline-block;
     font-size: 34px;
     font-weight: 500;
@@ -45,32 +45,24 @@
     margin-bottom: 10px;
 }
 
-#header-text p {
+.user__paragraph {
     margin-bottom: 0;
     font-size: 20px;
     font-weight: 400;
     color: #A2A2A2;
 }
 
-#header-buttons {
+.user__buttons {
     margin-left: auto;
     margin-bottom: auto;
     float: right;
 }
 
-#header-buttons a {
+.user__buttons a {
     margin-left: 10px;
 }
 
-#general-info .row {
-    margin-bottom: 25px;
-}
-
-#main-info {
-    margin: 0;
-}
-
-#main-info p {
+.statistics__item-header {
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 23px;
@@ -78,11 +70,10 @@
     margin-bottom: 5px;
 }
 
-#main-info div:last-child h1 { font-size: 44px; }
-
-#main-info h1 {
+.statistics__item-data {
     font-family: 'Roboto';
     font-weight: 300;
     font-size: 50px;
     color: var(--color-text);
 }
+.statistics__item-data:last-child { font-size: 44px; }

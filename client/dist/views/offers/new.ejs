@@ -3,22 +3,22 @@
 <link rel="stylesheet" href="/css/offers/new.css">
 
 <div class="container">	
-	<form class="myui-form" action="/offers" method="POST">
+	<form class="form" action="/offers" method="POST">
 		<h1>Dodaj ogłoszenie</h1>
 		<%- include("../partials/messages") %>
-		<div class="form-field">
+		<div class="form__inputs">
 			<input type="url" aria-describedby="link" name="link" required>
 			<span data-placeholder="Link do ogłoszenia"></span>
 		</div>
 		
-		<div class="form-field">
+		<div class="form__inputs">
 			<input type="text" aria-describedby="title" name="title">
 			<span data-placeholder="Twój tytuł ogłoszenia"></span>
 		</div>
 		
-	  	<button type="submit" class="button btn-update btn-fine btn-form">Dodaj</button>
+	  	<button type="submit" class="button btn-update btn-fine button--form">Dodaj</button>
 		
-		<a href="/offers" class="form shadow-btn"><i class="fas fa-arrow-left"></i> Wróć</a>
+		<a href="/offers" class="form button button--exit"><i class="fas fa-arrow-left"></i> Wróć</a>
 	</form>
 </div>
 

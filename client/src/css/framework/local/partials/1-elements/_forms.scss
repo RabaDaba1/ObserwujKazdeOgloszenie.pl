@@ -1,4 +1,4 @@
-.myui-form {
+.form {
 	width: 560px;
 	background: #fff;
 	border: var(--border-gray);
@@ -10,19 +10,19 @@
 	transform: translate(-50%, 15%);
 }
 
-.myui-form h1 {
+.form__header {
 	text-align: center;
 	margin-bottom: 50px;
 }
 
-.form-field {
+.form__inputs {
 	border-bottom: 2px solid #adadad;
 	position: relative;
 	margin: 35px 0;
 }
 
 
-.form-field input {
+.form__input {
 	font-size: 1.2rem;
 	color: #333;
 	border: none;
@@ -33,7 +33,7 @@
 	height: 40px;
 }
 
-.form-field span::before {
+.form__input-placeholder::before {
 	content: attr(data-placeholder);
 	position: absolute;
 	top: 50%;
@@ -45,7 +45,7 @@
 	transition: .5s;
 }
 
-.form-field span::after {
+.form__input-placeholder::after {
 	content: '';
 	position: absolute;
 	width: 0%;
@@ -64,15 +64,7 @@
 	width: 100%;
 }
 
-.input-link.shadow-btn {
-	position: relative;
-	bottom: .5rem;
-	padding: 0;
-	font-size: 1rem;
-	color: var(--gray);
-}
-
-.btn-form {
+.button--form {
 	display: block;
 	margin: 50px auto 0;
 	min-height: 40px;
@@ -85,32 +77,32 @@
 	100% { transform: scale(1); }
 }
 
-.form.shadow-btn {
+.button--exit {
 	position: absolute;
 	bottom: -50px;
 	left: 0;
 }
 
 @media only screen and (min-width: 1250px) {
-	.myui-form {
+	.form {
 		width: 650px;
 		padding: 80px 50px 50px;
 	}
 	
-	.myui-form h1 {
+	.form__header {
 		font-size: 3.25rem;
 	}
 	
-	.form-field input {
+	.form__input {
 		font-size: 1.25rem;
 		height: 50px;
 	}
 	
-	.form-field span::before { font-size: 1.25rem; }
+	.form__input-placeholder::before { font-size: 1.25rem; }
 
-	.input-link.shadow-btn { font-size: 1.1rem; }
+	.button--exit { font-size: 1.1rem; }
 
-	.btn-form {
+	.button--form {
 		display: block;
 		width: 60%;
 		font-size: 1.5rem;
@@ -118,28 +110,28 @@
 }
 
 @media only screen and (max-width: 900px) {
-	.myui-form {
+	.form {
 		width: 450px;
 	}
 	
-	.form.shadow-btn {bottom: -40px;}
+	.button--exit {bottom: -40px;}
 }
 
 @media only screen and (max-width: 600px) {
-	.myui-form {
+	.form {
 		width: 350px;
 	}
 	
-	.myui-form h1 { font-size: 1.85rem; }
+	.form__header { font-size: 1.85rem; }
 
-	.btn-form { margin-top: 30px; }
+	.button--form { margin-top: 30px; }
 }
 
 @media only screen and (max-width: 450px) {
-	.myui-form {
+	.form {
 		width: 300px;
 		padding: 40px 30px 30px;
 	}
 	
-	.myui-form h1 { font-size: 1.7rem; }
+	.form__header { font-size: 1.7rem; }
 }

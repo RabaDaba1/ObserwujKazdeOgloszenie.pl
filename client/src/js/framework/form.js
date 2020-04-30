@@ -1,4 +1,4 @@
-const formInputs = Array.from(document.querySelectorAll('.form-field input'));
+const formInputs = Array.from(document.querySelectorAll('.form__inputs input'));
 
 formInputs.forEach(input => {
 	input.addEventListener("focus", function() {
@@ -14,7 +14,7 @@ formInputs.forEach(input => {
 	});
 });
 
-document.querySelector('.btn-form').addEventListener('click', function() {
+document.querySelector('.form__button').addEventListener('click', function() {
 	this.style.animation = ".35s btn-onclick";
 	setTimeout(() => this.style.animation = "", 350);
 })

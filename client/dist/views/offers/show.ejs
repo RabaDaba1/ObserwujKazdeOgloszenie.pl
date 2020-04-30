@@ -5,7 +5,7 @@
 <% offer.changes.changes.reverse(); %> 
 
 <div id="myModal">
-	<div class="myModal-content box-outline-outline">
+	<div class="myModal-content box box--outline-outline">
 		<div class="header">
 			<h1>Porównaj</h1>
 			<p class="info">Dodane wyrazy: <span class="line-count-inserted"></span></p>
@@ -29,9 +29,9 @@
 	</div>
 </div>
 
-<div class="mycontainer">
+<div class="container">
 	<div id="header">
-		<a href="/offers" class="back-btn shadow-btn"><i class="fas fa-arrow-left"></i> Wróć</a>
+		<a href="/offers" class="back-btn button button--exit"><i class="fas fa-arrow-left"></i> Wróć</a>
 		<h1><%= offer.title%></h1>
 	</div>
 	<div class="offer-card">
@@ -68,7 +68,7 @@
 				</div>
 				<div class="col-lg-6">
 					<div id="main-info">
-						<div class="tab box-outline">
+						<div class="tab box box--outline">
 							<p class="tag">Cena</p>
 							<p class="value">
 								<% if(offer.offerType === "PURCHASE") { %>
@@ -78,7 +78,7 @@
 								<% } %>
 							</p>
 						</div>
-						<div class="tab box-outline">
+						<div class="tab box box--outline">
 							<p class="tag">Do negocjacji</p>
 							<p class="value"> 
 								<% if(offer.isNegotiable) { %>
@@ -88,13 +88,13 @@
 								<% } %>
 							</p>
 						</div>
-						<div class="tab box-outline">
+						<div class="tab box box--outline">
 							<p class="tag">Wyświetlenia</p>
 							<p class="value"><%= offer.views %> </p>
 						</div>
 					</div>
 
-					<div class="box-outline" id="description">
+					<div class="box box--outline" id="description">
 						<p>Opis</p>
 						<%= offer.description %>
 					</div>
@@ -121,7 +121,7 @@
 			<section class="analytics">
 				<div class="row">
 					<div class="col-lg-8">
-						<div id="charts" class="box-outline">
+						<div id="charts" class="box box--outline">
 							<div class="chart-info">
 								<div class="views-info active">
 									<p class="type">Wyświetlenia</p>
@@ -141,7 +141,7 @@
 							<canvas id="viewsChart" class="active"></canvas>
 							<canvas id="priceChart"></canvas>
 						</div>
-						<div id="controls" class="box-outline">
+						<div id="controls" class="box box--outline">
 							<a href="<%= offer._id %>/update" role="button" class='button-simple-green'>Aktualizuj</a>
 							
 							<a href="<%= offer.link %>" role="button" class='button-simple-blue'>Zobacz</a>
@@ -190,7 +190,7 @@
 								</table>
 							</div>
 						</div>
-						<div id="owner" class="box-outline">
+						<div id="owner" class="box box--outline">
 							<p class="tag">Właściciel</p>
 							<div class="profile-info">
 								<img src="<%= offer.originalOwner.profileImage%>" alt="">

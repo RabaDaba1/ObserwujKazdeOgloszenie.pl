@@ -7,7 +7,7 @@ const express = 			  	require("express"),
 	  email =					require("../scripts/email/index"),
 	  middleware = 				require("../middleware");
 
-router.get('/mypage', middleware.isLoggedIn, async(req, res) => {
+router.get('/user-page', middleware.isLoggedIn, async(req, res) => {
 	try {
 		const userOffers = await Offer.find({ owner: { id: req.user._id } }).exec();
 
@@ -24,7 +24,7 @@ router.get('/mypage', middleware.isLoggedIn, async(req, res) => {
 			}
 		});
 
-		res.render('mypage', { lastWeekChangeCount, unseenChanges, latestChange });
+		res.render('user-page', { lastWeekChangeCount, unseenChanges, latestChange });
 	} catch(err) {
 		console.log(err);
 	}
