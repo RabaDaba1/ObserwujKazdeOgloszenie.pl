@@ -32,7 +32,7 @@ const configs = [
         module: {
             rules: []
         },
-        plugins: []
+        plugins: [new CleanWebpackPlugin()]
     },
     // FRAMEWORK
     {
@@ -89,7 +89,7 @@ const fileLoader = {
 
 const ejsLoader = {
     test: /\.ejs$/,
-    use: ['ejs-loader']
+    use: ['html-loader']
 };
 
 const ejsFileLoader = {
@@ -132,10 +132,10 @@ configOptions.forEach((el, i) => {
     // Add File Loader
     if (el.fileLoader) pushRule(fileLoader, i);
 
-    // Add HTML Loader
+    // Add EJS Loader
     if (el.ejsLoader) pushRule(ejsLoader, i);
 
-    // Add HTML File Loader
+    // Add EJS File Loader
     if (el.ejsFileLoader) pushRule(ejsFileLoader, i)
 
     // Add MiniCssExtractPlugin
