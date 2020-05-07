@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ObserwujKażdąOfertę</title>
+	<link rel="stylesheet" href="/css/framework/main.css">
+</head>
+<body>
+	
+	<header>
+		<a class="logo" href="/">ObserwujKażdąOfertę.pl</a>
+		<nav>
+			<ul class="nav__links">
+				<% if(currentUser) { %>
+				<li><a href="/user-page">Moja strona</a></li>
+				<li><a href="/offers">Moje ogłoszenia</a></li>
+				<% } %>
+			</ul>
+		</nav>
+		<% if(!currentUser) { %>
+			<a class="cta cta--login" href="/login"><button>Zaloguj</button></a>
+			<a class="cta cta--register" href="/register"><button>Zarejestruj</button></a>
+		<% } else { %>
+			<a class="username">Zalogowano jako <%= currentUser.username %></a>
+			<a class="" href="/logout"><button>Wyloguj</button></a>
+		<% } %>
+	</header>

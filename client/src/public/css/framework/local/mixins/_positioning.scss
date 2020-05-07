@@ -1,0 +1,12 @@
+@mixin flex($direction: row, $align-items: center, $justify-content: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+};
+
+@mixin gridsplit($columns: 2, $rows: 1, $column-size: 1fr, $row-size: 1fr) {
+    display: grid;
+    grid-template-columns: repeat($columns, $column-size);
+    grid-template-rows: repeat($rows, $row-size);
+};

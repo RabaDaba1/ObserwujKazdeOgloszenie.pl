@@ -1,0 +1,93 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/css/offers/index.css">
+
+<div class="container">
+	<div class="header">
+		<h1 class="title">Twoje ogłoszenia</h1>
+		<a class="button-simple-blue" role="button" href="/offers/new" <% if(!currentUser.isVerified) { %> disabled <% } %>>Dodaj ogłoszenie</a>
+	</div>
+	<hr class="highlight">
+
+	<%- include("../partials/messages") %>
+	<% if(!currentUser.isVerified) { %>
+	<div class="alert alert-warning" role="alert">Aby dodawać i obserwować ogłoszenia musisz zweryfikować swoje konto - sprawdź czy nie wysłaliśmy Tobie emaila z potwierdzeniem (może być w spamie)</div>
+	<% } %>
+
+	<section id="offers">
+		<div class="row">
+		<% offers.reverse().forEach((offer, offerIndex) => { %>
+			<div class="col-xl-4 col-lg-6 mb-4">
+				<div class="card offer mx-auto mt-1 <% if(offer.changes.unseen > 0) { %> changes <% } %>" data-placeholder="<%= offer.changes.unseen %>">
+				  <div class="card-img-top">
+					<div id="carousel-<%= offerIndex %>" class="carousel slide" data-interval="false" data-ride="carousel">
+					  <ol class="carousel-indicators">
+						 <% offer.images.forEach((image, index) => { %>
+							<li data-target="#carousel-<%=offerIndex%>" data-slide-to="<%= index %>" class="<% if(index === 0) { %> active <% } %>"></li>
+						  <% }); %>
+					  </ol>
+					  <div class="carousel-inner">
+						  <% offer.images.forEach((image, index) => { %>
+							<div class="carousel-item <% if(index === 0) { %> active <% } %>">
+							  <img src="<%= image %>" class="d-block w-100 carousel-image offers-image" alt="Xbox One X 1TB">
+							</div>
+						  <% }); %>
+					  </div>
+					  <a class="carousel-control-prev" href="#carousel-<%= offerIndex %>" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carousel-<%= offerIndex %>" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					  </a>
+					</div>
+				  </div>
+				  <div class="card-body">
+					<div class="offer-header d-flex justify-content-between">
+					  	<h5 class="card-title d-inline-flex"><% if(offer.ownerTitle) { %>
+							<%= offer.ownerTitle.slice(0, 13) %>
+						<% } else { %>
+							<%= offer.title.slice(0, 13) %>
+						<% } %>...
+						</h5>
+					  <h5 class="card-text tag-price d-inline-flex"><% if(offer.offerType === "PURCHASE") { %> <%= offer.price %>zł <% } else if(offer.offerType === "EXCHANGE") { %> Zamienię <% } else if(offer.offerType === "FREE") { %> Za darmo <% } %></h5>
+					</div>
+					<hr class="m-0 mb-1">
+					<div class="offer-header d-flex justify-content-between">
+					  <p class="card-text mb-2 d-flex-inline"><small class="text-muted"><%= offer.createdApp %></small></p>
+					  <p class="card-text mb-2 d-flex-inline"><small class="text-muted"><% if(offer.isNegotiable) { %>
+							Do negocjacji
+						<% } %></small></p>
+					</div>
+					<div class="content">
+						<p class="card-text text-secondary description"><%= offer.description %>...</p>
+						  
+						<a href="/offers/<%=offer._id %>" class="button-simple-blue"><i class="fas fa-file-contract"></i> Więcej</a>
+						<a href="<%= offer.link %>" class="button-simple-blue" id="offers--link-btn"><i class="fas fa-share-square"></i></a>
+						<form class="d-inline float-right" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
+							<button class="button-simple-blue float-right ml-1"><i class="fas fa-trash"></i></button>
+						</form>
+					</div>
+					  
+					</div>
+				</div>
+			</div>
+		<% }) %>
+		</div>
+	</section>
+</div>
+
+<script>
+	const addBtn = document.querySelector(".add-button");
+	const bannerBgAdd = document.querySelector('.banner-bg-add');
+	
+	addBtn.addEventListener("mouseover", () => {
+		bannerBgAdd.style.opacity = 1;
+	});
+	
+	addBtn.addEventListener("mouseout", () => {
+		bannerBgAdd.style.opacity = 0;
+	});
+</script>
+
+<%- include("../partials/footer") %>

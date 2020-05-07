@@ -10,7 +10,8 @@ const 	express =            	require('express'),
 		passport =              require('passport'),
 		LocalStrategy =         require('passport-local'),
 	  	User = 					require('./server/models/User'),
-		{ startUpdating } =		require('./server/scripts/updater/index.js');
+		{ startUpdating } =		require('./server/scripts/updater/index.js'),
+		path = 					require('path');
 
 // ROUTES
 const 	userRoutes = require('./server/routes/user'),
@@ -33,7 +34,8 @@ mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
-app.use(express.static(__dirname + "/client/dist"));
+app.use(express.static(__dirname + "/client/dist/public"));
+app.set('views', path.join(__dirname, '/client/dist/views'));
 app.set("view engine", "ejs");
 app.use(flash());
 

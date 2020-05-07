@@ -1,0 +1,10 @@
+.box {
+	margin: 0;
+	padding: 30px 40px;
+	background-color: $white;
+	border-radius: 8px;
+
+	&&--outline {
+		@include border();
+	}
+}

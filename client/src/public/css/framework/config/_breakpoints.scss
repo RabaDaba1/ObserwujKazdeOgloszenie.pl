@@ -1,0 +1,14 @@
+// STANDARD BREAKPOINT
+// breakpoint-xs < 600px
+$breakpoint-s: 600px;
+$breakpoint-m: 768px;
+$breakpoint-l: 992px;
+$breakpoint-xl: 1200px;
+// breakpoint xxl > 1200px
+
+// Bigger breakpoints for dashboards
+$db-breakpoint-xs: 520px;
+$db-breakpoint-s: 991px;
+$db-breakpoint-m: 1400px;
+$db-breakpoint-l: 1120px;
+$db-breakpoint-xl: 991px;
