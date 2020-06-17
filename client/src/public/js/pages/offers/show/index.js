@@ -1,3 +1,12 @@
+// Ejs
+import '../../../../../views/offers/show.ejs';
+
+// Framework
+import '../../../../css/framework/_main.scss';
+
+// Scss
+import '../../../../css/pages/offers/show/_main.scss';
+
 const DOMStrings = {
 	chartViewsInfo: document.querySelector('.views-info'),
 	chartPriceInfo: document.querySelector('.price-info'),

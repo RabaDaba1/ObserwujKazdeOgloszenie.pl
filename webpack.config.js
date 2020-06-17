@@ -10,19 +10,9 @@ const configs = [
     {
         context: srcDir,
         entry: {
-            index: [
-                './views/offers/index.ejs',
-                './public/css/pages/offers/index/_main.scss'
-            ],
-            new: [
-                './views/offers/new.ejs',
-                './public/css/pages/offers/new/_main.scss'
-            ],
-            show: [
-                './views/offers/show.ejs',
-                './public/js/pages/offers/show/index.js',
-                './public/css/pages/offers/show/_main.scss'
-            ]
+            index: './public/js/pages/offers/index/index.js',
+            new: './public/js/pages/offers/new/index.js',
+            show: './public/js/pages/offers/show/index.js'
         },
         output: {
             path: distDir,
@@ -38,7 +28,7 @@ const configs = [
     {
         context: srcDir,
         entry: {
-            framework: ['./public/js/framework/index.js', './public/css/framework/_main.scss']
+            framework: ['./public/js/framework/index.js']
         },
         output: {
             path: distDir,
@@ -92,15 +82,17 @@ const ejsLoader = {
     use: ['html-loader']
 };
 
-const ejsFileLoader = {
-    test: /\.ejs$/,
-    use: [{
-        loader: 'file-loader',
-        options: {
-            name: '[name].[ext]',
-            outputPath: 'views/',
-        }
-    }]
+const ejsFileLoader = dir => {
+    return {
+        test: /\.ejs$/,
+        use: [{
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                outputPath: dir,
+            }
+        }]
+    }
 }; 
 
 const configOptions = [
@@ -109,12 +101,13 @@ const configOptions = [
         scssLoader: true,
         fileLoader: true,
         ejsLoader: true,
-        ejsFileLoader: true,
-        miniCssExtractPlugin: {isUsed: true, fileName: 'public/css/pages/[name].[chunkhash].css' }
+        ejsFileLoader: { isUsed: true, dir: '/views' },
+        miniCssExtractPlugin: { isUsed: true, fileName: 'public/css/pages/[name].[chunkhash].css' }
     },
     {
         babelLoader: true,
         scssLoader: true,
+        ejsFileLoader: { isUsed: false },
         miniCssExtractPlugin: { isUsed:true, fileName: 'public/css/framework/main.css' }
     },
 ];
@@ -136,10 +129,10 @@ configOptions.forEach((el, i) => {
     if (el.ejsLoader) pushRule(ejsLoader, i);
 
     // Add EJS File Loader
-    if (el.ejsFileLoader) pushRule(ejsFileLoader, i)
+    if (el.ejsFileLoader.isUsed) pushRule(ejsFileLoader(el.ejsFileLoader.dir), i)
 
     // Add MiniCssExtractPlugin
-    if(el.miniCssExtractPlugin.isUsed) pushPlugin(new MiniCssExtractPlugin({filename: el.miniCssExtractPlugin.fileName}), i);
+    if(el.miniCssExtractPlugin.isUsed) pushPlugin(new MiniCssExtractPlugin({ filename: el.miniCssExtractPlugin.fileName }), i);
 });
 
 module.exports = configs;
