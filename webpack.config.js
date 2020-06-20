@@ -16,7 +16,7 @@ const configs = [
         },
         output: {
             path: distDir,
-            filename: 'public/js/pages/[name].[chunkhash].bundle.js',
+            filename: 'public/js/pages/offers/[name].bundle.js',
             publicPath: '../public/js/offers/'
         },
         module: {
@@ -27,9 +27,7 @@ const configs = [
     // FRAMEWORK
     {
         context: srcDir,
-        entry: {
-            framework: ['./public/js/framework/index.js']
-        },
+        entry: ['./public/js/framework/index.js', './public/css/framework/_main.scss'],
         output: {
             path: distDir,
             filename: 'public/js/framework/[name].bundle.js'
@@ -37,9 +35,38 @@ const configs = [
         module: {
             rules: []
         },
-        plugins: [
-
-        ]
+        plugins: []
+    },
+    // AUTHENTICATION
+    {
+        context: srcDir,
+        entry: './public/js/pages/authentication/index.js',
+        output: {
+            path: distDir,
+            filename: 'public/js/pages/authentication.bundle.js',
+        },
+        module: {
+            rules: []
+        },
+        plugins: []
+    },
+    // PARTIALS
+    {
+        context: srcDir,
+        entry: {
+            header: './views/partials/header.ejs',
+            footer: './views/partials/footer.ejs',
+            messages: './views/partials/messages.ejs'
+        },
+        output: {
+            path: distDir,
+            // filename: 'public/js/pages/partials/[name]/index.bundle.js',
+            // publicPath: '../public/js/partials/'
+        },
+        module: {
+            rules: []
+        },
+        plugins: [new CleanWebpackPlugin()]
     }
 ];
 
@@ -82,34 +109,50 @@ const ejsLoader = {
     use: ['html-loader']
 };
 
-const ejsFileLoader = dir => {
+const ejsFileLoader = outputPath => {
     return {
         test: /\.ejs$/,
         use: [{
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
-                outputPath: dir,
+                outputPath: `/views/${outputPath}`,
             }
         }]
     }
 }; 
 
 const configOptions = [
+    // Offers
     {
         babelLoader: true,
         scssLoader: true,
         fileLoader: true,
         ejsLoader: true,
-        ejsFileLoader: { isUsed: true, dir: '/views' },
-        miniCssExtractPlugin: { isUsed: true, fileName: 'public/css/pages/[name].[chunkhash].css' }
+        ejsFileLoader: { isUsed: true, outputPath: 'offers' },
+        miniCssExtractPlugin: { isUsed: true, fileName: 'public/css/pages/offers/[name].css' }
     },
+    // Framework
     {
         babelLoader: true,
         scssLoader: true,
         ejsFileLoader: { isUsed: false },
-        miniCssExtractPlugin: { isUsed:true, fileName: 'public/css/framework/main.css' }
+        miniCssExtractPlugin: { isUsed: true, fileName: 'public/css/framework/main.css' }
     },
+    // Authentication
+    {
+        babelLoader: true,
+        scssLoader: true,
+        fileLoader: true,
+        ejsLoader: true,
+        ejsFileLoader: { isUsed: true, outputPath: 'authentication' },
+        miniCssExtractPlugin: { isUsed: false }
+    },
+    // Partials
+    {
+        ejsFileLoader: { isUsed: true, outputPath: 'partials' },
+        miniCssExtractPlugin: { isUsed: false }
+    }
 ];
 
 const pushRule = (loader, configIndex) => configs[configIndex].module.rules.push(loader);
@@ -129,7 +172,7 @@ configOptions.forEach((el, i) => {
     if (el.ejsLoader) pushRule(ejsLoader, i);
 
     // Add EJS File Loader
-    if (el.ejsFileLoader.isUsed) pushRule(ejsFileLoader(el.ejsFileLoader.dir), i)
+    if (el.ejsFileLoader.isUsed) pushRule(ejsFileLoader(el.ejsFileLoader.outputPath), i)
 
     // Add MiniCssExtractPlugin
     if(el.miniCssExtractPlugin.isUsed) pushPlugin(new MiniCssExtractPlugin({ filename: el.miniCssExtractPlugin.fileName }), i);

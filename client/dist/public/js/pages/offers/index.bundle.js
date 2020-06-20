@@ -127,7 +127,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _vie
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// Module\nvar code = \"export default __webpack_public_path__ + \\\"/views/index.ejs\\\";\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack:///./views/offers/index.ejs?");
+eval("// Module\nvar code = \"export default __webpack_public_path__ + \\\"/views/offers/index.ejs\\\";\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack:///./views/offers/index.ejs?");
 
 /***/ })
 
