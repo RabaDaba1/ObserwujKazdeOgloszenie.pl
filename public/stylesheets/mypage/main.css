@@ -10,7 +10,7 @@
 }
 
 #directory {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 400;
     color: #888888;
     margin-bottom: 15px;
@@ -39,7 +39,7 @@
 
 #header-text h1 {
     display: inline-block;
-    font-size: 34px;
+    font-size: 25px;
     font-weight: 500;
     color: #272727;
     margin-bottom: 10px;
@@ -47,7 +47,7 @@
 
 #header-text p {
     margin-bottom: 0;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     color: #A2A2A2;
 }

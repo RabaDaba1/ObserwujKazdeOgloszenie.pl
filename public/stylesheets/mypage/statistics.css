@@ -9,16 +9,16 @@
 #main-info p {
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 23px;
+    font-size: 18px;
     color: var(--main-blue);
     margin-bottom: 5px;
 }
 
-#main-info div:last-child h1 { font-size: 44px; }
+#main-info div:last-child h1 { font-size: 34px; }
 
 #main-info h1 {
     font-family: 'Roboto';
     font-weight: 300;
-    font-size: 50px;
+    font-size: 38px;
     color: var(--main-text-color);
 }
