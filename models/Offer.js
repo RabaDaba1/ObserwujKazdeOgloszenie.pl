@@ -61,14 +61,14 @@ offerSchema.statics.scrape = async(link) => {
 
 		const title =				$('#offerdescription > div.offer-titlebox > h1').text().trim(),
 			  description =			$("#textContent").text().trim(),
-			  images =				$(".vtop.bigImage").map((i, el) => $(el).attr('src')).get(),
-			  views =				eval($("#offerbottombar > div:nth-child(3) > strong").text()),
-			  ownerName =			$('#offeractions > div.offer-sidebar__box > div.offer-user__details > h4 > a').text().trim(),
-			  ownerProfileLink =	$('#offeractions > div.offer-sidebar__box > div.offer-user__details > h4 > a').attr('href'),
+			  images =				$("#bigGallery > .fleft > a").map((i, el) => $(el).attr('href')).get(),
+			  views =				eval($("#offerbottombar > ul > li:nth-child(2) > span > strong").text()),
+			  ownerName =			$('#offeractions > div:nth-child(2) > div.offer-user__details > div.offer-user__actions > h4 > a').text().trim(),
+			  ownerProfileLink =	$('#offeractions > div:nth-child(2) > div.offer-user__details > div.offer-user__actions > h4 > a').attr('href'),
 			  ownerProfileImage = 	$('#offeractions > div.offer-sidebar__box > div.offer-user__location > a > div > img').attr('src'),
-			  ownerLocalization =	$('#offeractions > div.offer-sidebar__box > div.offer-user__location > div > address > p').text().trim();
+			  ownerLocalization =	$('#offeractions > div:nth-child(3) > div.offer-user__location > div.offer-user__address > address > p').text().trim();
 
-		let price = $("#offeractions > div.price-label > strong").text().trim().replace('zł', '').replace(' ', '').replace(',', '.'),
+		let price = $("#offerdescription > div.offer-titlebox > div.offer-titlebox__price > div > strong").text().trim().replace('zł', '').replace(' ', '').replace(',', '.'),
 			offerType = "PURCHASE",
 			createdOlx, isNegotiable;
 
@@ -85,10 +85,10 @@ offerSchema.statics.scrape = async(link) => {
 			offerType = "PURCHASE";
 		}
 
-		const negotiations = $("#offeractions > div.price-label > small").text().trim();
+		const negotiations = $("#offerdescription > div.offer-titlebox > div.offer-titlebox__price > div > small").text().trim();
 		negotiations ? isNegotiable = true : isNegotiable = false;
 
-		createdOlx = $('#offerdescription > div.offer-titlebox > div.offer-titlebox__details > em').text().trim();
+		createdOlx = $('#offerbottombar > ul > li:nth-child(1) > em > strong').text().trim();
 
 		return {
 			link: link,
