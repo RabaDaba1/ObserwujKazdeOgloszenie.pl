@@ -1,20 +1,20 @@
 <%- include("./partials/header") %>
 <link rel="stylesheet" href="/stylesheets/landing.css">
 
-
-<div class="main-jumbotron">
-		<h1 class="main-header ">
+<div class="hero">
+	<div class="hero__content">
+		<h1 class="hero__header">
 			<% if(!currentUser) { %>
 				Nie trać czasu na OLX-a!
 			<% } else { %>
 				Miło Cię widzieć <%= currentUser.username %>!
 			<% } %>
 		</h1>
-		<p class="under-header">
+		<p class="hero__paragraph">
 			Kupujesz na OLX? Na bierząco obserwujesz ogłoszenia? Już nie musisz tracić na to czasu, ponieważ my zrobimy to za ciebie! Kliknij guzik na dole żeby dowiedzieć się więcej 
 		</p>
 	
-		<div class="buttons">
+		<div class="hero__cta">
 			<% if(!currentUser) { %>
 			<a class="button-fill btn-large mr-1" href="/login">Zaloguj się</a>
 			<a class="button-fill btn-fill-green btn-large ml-1" href="/register">Zarejestruj się</a>
@@ -22,8 +22,9 @@
 			<a class="button-fill btn-fill-green btn-large" href="/offers">Moje ogłoszenia</a>
 			<% } %>
 		</div>
-
-		<img src="/images/main.png" alt="">
+	</div>
+	<div class="hero__image">
+		<img src="/images/main.png">
 	</div>
 </div>
 
