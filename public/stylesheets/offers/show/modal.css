@@ -27,7 +27,7 @@
 
 .myModal-content {
     background-color: white;
-    border: var(--main-border);
+    border: var(--border);
     border-radius: 8px;
 	margin: 15% auto;
     padding: 40px 40px;

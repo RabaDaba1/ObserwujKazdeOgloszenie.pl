@@ -12,7 +12,7 @@
 	font-family: 'Roboto';
 	font-size: 28px;
 	font-weight: 300;
-	color: var(--main-text-color);
+	color: var(--text-color);
 }
 
 .header a {
@@ -24,7 +24,7 @@
 .highlight { margin: 5px 0 40px; }
 
 /* CARD */
-.offer { border: var(--main-border-gray); }
+.offer { border: var(--border-gray); }
 
 .card-body {
 	transition: .3s;

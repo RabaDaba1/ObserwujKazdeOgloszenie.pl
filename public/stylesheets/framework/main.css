@@ -40,7 +40,7 @@
 }
 
 .box-outline {
-	border: var(--main-border-gray);
+	border: var(--border-gray);
 	background-color: #fff;
 	border-radius: 8px;
 	padding: 30px 40px;
@@ -97,17 +97,17 @@ BUTTONS
     transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 }
 
-.button-simple-gray { border: var(--main-border-gray); color: var(--main-gray); }
-.button-simple-gray:hover { color: white; border-color: var(--main-blue); background-color: var(--main-intense-gray);}
+.button-simple-gray { border: var(--border-gray); color: var(--gray); }
+.button-simple-gray:hover { color: white; border-color: var(--blue); background-color: var(--intense-gray);}
 
-.button-simple-blue { border: var(--main-border-blue); color: var(--main-blue); }
-.button-simple-blue:hover { color: white; border-color: var(--main-intense-blue); background-color: var(--main-intense-blue);}
+.button-simple-blue { border: var(--border-blue); color: var(--blue); }
+.button-simple-blue:hover { color: white; border-color: var(--intense-blue); background-color: var(--intense-blue);}
 
-.button-simple-green { border: var(--main-border-green); color: var(--main-green); }
-.button-simple-green:hover { color: white; border-color: var(--main-intense-green); background-color: var(--main-intense-green);}
+.button-simple-green { border: var(--border-green); color: var(--green); }
+.button-simple-green:hover { color: white; border-color: var(--intense-green); background-color: var(--intense-green);}
 
-.button-simple-red { border: var(--main-border-red); color: var(--main-red); }
-.button-simple-red:hover { color: white; border-color: var(--main-intense-red); background-color: var(--main-red);}
+.button-simple-red { border: var(--border-red); color: var(--red); }
+.button-simple-red:hover { color: white; border-color: var(--intense-red); background-color: var(--red);}
 
 .button-fill {
     font-weight: 600;
@@ -128,7 +128,7 @@ BUTTONS
 .shadow-btn {
     font-size: 1.25rem;
     font-weight: 400;
-	color: var(--main-gray);
+	color: var(--gray);
 }
 .shadow-btn:focus, .shadow-btn:hover  { color: #5e5e5e; }
 

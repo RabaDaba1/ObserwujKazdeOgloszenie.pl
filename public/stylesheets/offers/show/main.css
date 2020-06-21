@@ -6,7 +6,7 @@
 	width: 100%;
 	margin: 70px 0 0;
 	padding: 8px 40px;
-	background-color: var(--main-intense-blue);
+	background-color: var(--intense-blue);
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 	align-items: center;
@@ -21,7 +21,7 @@
 }
 
 #header .back-btn {
-	color: var(--main-gray);
+	color: var(--gray);
 	position: absolute;
 	left: 0;
 	top: -50px;
@@ -33,7 +33,7 @@
 /* ================ */
 .offer-card {
 	background: #fff;
-	border: var(--main-border-gray);
+	border: var(--border-gray);
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	width: 100%;
@@ -70,7 +70,7 @@
 #description p {
 	font-family: 'Roboto';
 	font-weight: 400;
-	color: var(--main-blue);
+	color: var(--blue);
 	font-size: 24px;
 	margin-bottom: 5px;
 	user-select: none;
@@ -101,7 +101,7 @@
 
 #main-info .tag {
 	font-family: 'Roboto' !important;
-	color: var(--main-blue);
+	color: var(--blue);
 	font-size: 22px;
 	margin: 0;
 	user-select: none;
@@ -152,7 +152,7 @@
 }
 
 .chart-info .active {
-	color: var(--main-intense-blue);
+	color: var(--intense-blue);
 }
 
 .chart-info .type {
@@ -193,7 +193,7 @@
 	height: 540px;
 	margin: 0 auto;
 	padding: 30px 40px;
-	background-color: var(--main-blue);
+	background-color: var(--blue);
 	border-radius: 8px;
 	color: white;
 }
@@ -277,7 +277,7 @@
 }
 
 #owner .tag {
-	color: var(--main-blue);
+	color: var(--blue);
 	font-family: 'Roboto';
 	font-size: 22px;
 	cursor: default;
@@ -287,7 +287,7 @@
 #owner img {
 	width: 85px;
 	height: 85px;
-	border: var(--main-border);
+	border: var(--border);
 	border-radius: 100%;
 	margin-right: 15px;
     margin-bottom: auto;
@@ -300,7 +300,7 @@
 	font-family: 'Roboto';
 	font-weight: 400;
 	font-size: 32px;
-	color: var(--main-text-color);
+	color: var(--text-color);
 	margin: 0;
 }
 
@@ -308,7 +308,7 @@
 	font-family: 'Roboto';
 	font-weight: 300;
 	font-size: 20px;
-	color: var(--main-gray);
+	color: var(--gray);
 	margin: 0;
 }
 
@@ -316,12 +316,12 @@
 	width: 80%;
 	padding: 6px 18px;
 	color: white;
-	background-color: var(--main-blue);
+	background-color: var(--blue);
 	transform: translate(6%, 6%);
 }
 
 #owner a:hover {
-	background-color: var(--main-intense-blue);
+	background-color: var(--intense-blue);
 }
 
 /* ================ */

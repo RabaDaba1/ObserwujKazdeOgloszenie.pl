@@ -5,9 +5,9 @@
 	padding: 60px 40px 40px;
 	border-radius: 8px;
 	position: relative;
-	top: 15%;
+	top: 15vh;
 	left: 50%;
-	transform: translate(-50%, 15%);
+	transform: translate(-50%, 15vh);
 }
 
 .form__header {
@@ -15,7 +15,7 @@
 	margin-bottom: 50px;
 }
 
-.form__inputs {
+.form__input-group {
 	border-bottom: 2px solid #adadad;
 	position: relative;
 	margin: 35px 0;
@@ -74,6 +74,13 @@
 	0% { transform: scale(1); }
 	50% { transform: scale(0.9); }
 	100% { transform: scale(1); }
+}
+
+.button--shadow {
+	all: unset;
+	font-weight: 400;
+	color: var(--gray);
+	cursor: pointer;
 }
 
 .button--exit {
