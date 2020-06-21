@@ -1,81 +1,78 @@
 <%- include("./partials/header") %>
-<link rel="stylesheet" href="/stylesheets/mypage/main.css">
-<link rel="stylesheet" href="/stylesheets/mypage/statistics.css">
-<link rel="stylesheet" href="/stylesheets/mypage/profile.css">
+<link rel="stylesheet" href="/css/user-page/main.css">
 
-<div class="mycontainer">
-	<section id="header">
-		<p id="directory">Moja strona • <%= currentUser.username %> </p>
-		<div class="box-outline">
-		<img src="<% if(currentUser.profileImg==='default') { %> /images/user.jpg <% } %>" alt="" class="header-img">
-			<div id="header-text">
-				<h1>Miło Cię widzieć, <%= currentUser.username %>!</h1>
-				<p>Zobacz czy znaleźliśmy coś w twoich ogłoszeniach</p>
+<div class="container">
+	<div class="panel">
+		<section id="user">
+			<p class="user__page-name">Moja strona • <%= currentUser.username %> </p>
+			<div class="user__container">
+				
+				<img src="<% if(currentUser.profileImg==='default') { %> /img/user.jpg <% } %>" alt="" class="user__profile-icon">
+				
+				<div class="user__text">
+					<h1 class="user__header">Miło Cię widzieć, <%= currentUser.username %>!</h1>
+					<p class="user__paragraph">Zobacz czy znaleźliśmy coś w twoich ogłoszeniach</p>
+				</div>
+				
+				<div id="user__buttons">
+					<a href="" class="button button--simple button--blue button--medium">Mój profil</a>
+					<a href="/offers" class="button button--simple button--blue button--medium">Moje ogłoszenia</a>
+				</div>
+				
 			</div>
-			<div id="header-buttons">
-				<a href="" class="button-simple-blue btn-small switch">Mój profil</a>
-				<a href="/offers" class="button-simple-blue btn-small">Moje ogłoszenia</a>
-			</div>
-		</div>
-	</section>
-	<section id="general-info">
-		<div class="row">
-			<div class="col-lg-3 col-md-6 box-outline" id="main-info">
-					<div>
-						<p>Liczba ogłoszeń</p>
-						<h1>
+		</section>
+		<section id="statistics">
+			<div class="statistics__items">
+				<div class="box box--outline statistics__item">
+					<h1 class="statistics__item-header">Liczba ogłoszeń</h1>
+					<p class="statistics__item-data">
 						<%= currentUser.offerCount %> / <% if (currentUser.subscriptionPlan === 'free') { %>
 							3
 						<% } else if (currentUser.subscriptionPlan === 'premium') { %>
 							50
 						<% } else { %>
 							100
-						<% } %> 
-					</h1>
-					</div>
-					<div>
-						<p>Liczba zmian w ostatnim tyg.</p>
-						<h1><%= lastWeekChangeCount %></h1>
-					</div>
-					<div>
-						<p>Zmiany do zobaczenia</p>
-						<h1><%= unseenChanges %></h1>
-					</div>
-					<div>
-						<p>Ostatnia zmiana</p>
-						<h1>
-							<% if (latestChange > 0) { %>
-								<%const changeTimeStamp = Date.now() - latestChange%>
-								<%if (changeTimeStamp < 3600000) { %>
-									Około godziny temu
-								<% } else if(changeTimeStamp < 86400000) { %>
-									<% const hourTimeStamp = Math.round(changeTimeStamp / 3600000); %>
-									<% if(hourTimeStamp > 4 && hourTimeStamp < 22) { %>
+							<% } %> 
+					</p>
+				</div>
+				<div class="box box--outline statistics__item">
+					<h1 class="statistics__item-header">Liczba zmian w ostatnim tyg.</h1>
+					<p class="statistics__item-data"><%= lastWeekChangeCount %></p>
+				</div>
+				<div class="box box--outline statistics__item">
+					<h1 class="statistics__item-header">Zmiany do zobaczenia</h1>
+					<p class="statistics__item-data"><%= unseenChanges %></p>
+				</div>
+				<div class="box box--outline statistics__item">
+					<h1 class="statistics__item-header">Ostatnia zmiana</h1>
+					<p class="statistics__item-data">
+						<% if (latestChange > 0) { %>
+							<%const changeTimeStamp = Date.now() - latestChange%>
+							<%if (changeTimeStamp < 3600000) { %>
+								Około godziny temu
+							<% } else if(changeTimeStamp < 86400000) { %>
+								<% const hourTimeStamp = Math.round(changeTimeStamp / 3600000); %>
+								<% if(hourTimeStamp > 4 && hourTimeStamp < 22) { %>
+									<%= hourTimeStamp %> godzin temu
+								<% } else { %>
 										<%= hourTimeStamp %> godzin temu
-									<% } else { %>
-										<%= hourTimeStamp %> godzin temu
-									<% } %>
-								<% } else if(changeTimeStamp > 86400000) { %>
-									<% const dayTimeStamp = Math.round(changeTimeStamp / 86400000); %>
-									<% if(dayTimeStamp < 1) { %>
-										<%=dayTimeStamp%> dzień temu
-									<% } else { %>
-										<%=dayTimeStamp%> dni temu
-									<% } %>
+								<% } %>
+							<% } else if(changeTimeStamp > 86400000) { %>
+								<% const dayTimeStamp = Math.round(changeTimeStamp / 86400000); %>
+								<% if(dayTimeStamp < 1) { %>
+									<%=dayTimeStamp%> dzień temu
+								<% } else { %>
+									<%=dayTimeStamp%> dni temu
 								<% } %>
 							<% } else { %>
 								Nie zaszła 
 							<% } %> 
-						</h1>
-					</div>
+						<% } %> 
+					</p>
+				</div>
 			</div>
-			<div class="col-lg-5">
-
-			</div>
-		</div>
-	</section>
+		</section>
+	</div>
 </div>
-
-
-<script src="/js/mypage.js"></script>
+												
 <%- include("./partials/footer") %>
