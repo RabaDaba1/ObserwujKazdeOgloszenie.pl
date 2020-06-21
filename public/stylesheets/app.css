@@ -14,30 +14,6 @@
 	--main-border-red: .6px solid #DF3737;
 }
 
-body {
-	font-family: 'Montserrat', sans-serif;
-	color: var(--main-text-color);
-}
-
-#brand {
-	font-size: 1.3rem;
-	font-weight: 500;
-	color: white;
-}
-
-.nav-link {
-	font-size: 1.1rem;
-	font-weight: 400;
-	color: white;
-	opacity: 0.95;
-}
-
-.navbar {
-	background: rgb(16,81,217);
-	background: linear-gradient(0deg, #256FF2 0%, #3674F7 100%);
-	min-height: 60px;
-}
-
 /* #btn-login {
 	background: linear-gradient(270deg, rgba(136,72,209,1) 0%, rgba(84,119,231,1) 98%);
 	border-radius: 25px;
@@ -45,17 +21,3 @@ body {
 	border: none;
 	font-weight: 500;
 } */
-
-@media only screen and (max-width: 994px) {
-	.nav-link { padding-left: 0 !important;}
-}
-
-@media only screen and (max-width: 600px) {
-	.nav-link {
-		font-size: 1rem;
-	}
-	
-	#brand {
-		font-size: 1rem;
-	}
-}
