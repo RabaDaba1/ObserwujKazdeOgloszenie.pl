@@ -1,19 +1,19 @@
 <%- include("../partials/header") %>
-<link rel="stylesheet" href="/stylesheets/framework/form.css">
+<link rel="stylesheet" href="/css/framework/dist/main.css">
 
-<form action="/forgot" method="POST" class="myui-form">
-	<h1>Podaj adres email</h1>
+<form action="/forgot" method="POST" class="form">
+	<h1 class="form__header">Podaj adres email</h1>
 	
 	<%- include("../partials/messages") %>
 	
-	<div class="form-field">
-		<input name="email" type="email" required="required"/>
-		<span data-placeholder="Email"></span>
+	<div class="form__input-group">
+		<input class="form__input" name="email" type="email" required="required"/>
+		<span class="form__input-placeholder" data-placeholder="Email"></span>
 	</div>
 
-	<button type="submit" class="button btn-fine btn-form">Wyślij</button>
+	<button type="submit" class="form__button button button--form">Wyślij</button>
 	
-	<a href="/" class="form shadow-btn"><i class="fas fa-arrow-left"></i> Wróć</a>
+	<a href="/" class="form button button--exit"><i class="fas fa-arrow-left"></i> Wróć</a>
 </form>
 
 <script src="/js/framework/form.js"></script>
