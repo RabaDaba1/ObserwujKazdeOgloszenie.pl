@@ -28,11 +28,11 @@
 			</ul>
 			<div class="ctas">
 				<% if(!currentUser) { %>
-					<li><a class="button-outline cta" id="btn-login" href="/login">Zaloguj się</a></li>
-					<li><a class="button-outline cta" href="/register">Zarejestruj się</a></li>
+					<li><a class="button--outline cta" id="btn-login" href="/login">Zaloguj się</a></li>
+					<li><a class="button--outline cta" href="/register">Zarejestruj się</a></li>
 					<% } else { %>
 					<li><a class="text-light cta">Zalogowano jako <%= currentUser.username %></a></li>
-					<li><a class="button-outline cta" href="/logout">Wyloguj się</a></li>
+					<li><a class="button--outline cta" href="/logout">Wyloguj się</a></li>
 				<% } %>
 			</div>
 		</nav>
