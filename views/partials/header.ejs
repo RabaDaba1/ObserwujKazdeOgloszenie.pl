@@ -22,18 +22,16 @@
         <nav>
             <ul class="nav__links">
                 <% if(currentUser) { %>
-					<li><a class="nav-link" href="/mypage">Moja strona</a></li>
-					<li><a class="nav-link" href="/offers">Moje ogłoszenia</a></li>
+					<li><a class="nav__link" href="/mypage">Moja strona</a></li>
+					<li><a class="nav__link" href="/offers">Moje ogłoszenia</a></li>
 				<% } %>
 			</ul>
-			<div class="ctas">
-				<% if(!currentUser) { %>
-					<li><a class="button--outline cta" id="btn-login" href="/login">Zaloguj się</a></li>
-					<li><a class="button--outline cta" href="/register">Zarejestruj się</a></li>
-					<% } else { %>
-					<li><a class="text-light cta">Zalogowano jako <%= currentUser.username %></a></li>
-					<li><a class="button--outline cta" href="/logout">Wyloguj się</a></li>
-				<% } %>
-			</div>
 		</nav>
+		<% if(!currentUser) { %>
+			<a class="button--outline cta" id="btn-login" href="/login">Zaloguj się</a>
+			<a class="button--outline cta" href="/register">Zarejestruj się</a>
+			<% } else { %>
+			<a class="text-light cta">Zalogowano jako <%= currentUser.username %></a>
+			<a class="button--outline cta" href="/logout">Wyloguj się</a>
+		<% } %>
     </header>

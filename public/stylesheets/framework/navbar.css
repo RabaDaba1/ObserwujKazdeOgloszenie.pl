@@ -3,13 +3,13 @@ header {
     position: fixed;
     top: 0;
     width: 100vw;
-    height: calc(50px + 2vh);
+    height: calc(50px + 1.5vh);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -26,7 +26,7 @@ header {
 .logo,
 .logo:visited {
     all: unset;
-    margin-right: auto;
+    margin-right: 30px;
     font-size: calc((100% + 0.25vw));
     cursor: pointer;
     color: white;
@@ -35,39 +35,36 @@ header {
     transition: 0.3s ease;
 }
 
-.nav__links, .ctas {
+.nav__links {
     display: flex;
     list-style: none;
     display: -webkit-box;
     display: -ms-flexbox;
 }
 
-.nav__links {
-    margin-right: auto;
+.nav__links li {
+    margin-right: 10px;
 }
 
-.nav__links a,
-.nav__links a:visited  {
-    text-decoration: none;
-    color: white;
-}
-
-.nav__link {
+.nav__link,
+.nav__link:visited {
     padding-right: 40px;
     font-size: calc((100% + 0.25vw) * 0.8);
+    text-decoration: none;
+    color: white;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .nav__link:last-of-type {
     padding-right: 0;
 }
 
-.nav__link a,
-.nav__link a:visited {
-    -webkit-transition: 0.3s ease;
-    -o-transition: 0.3s ease;
-    transition: 0.3s ease;
-}
-
 .cta {
     margin-left: 10px;
+}
+
+.cta:nth-child(2n - 1) {
+    margin-left: auto;
 }
