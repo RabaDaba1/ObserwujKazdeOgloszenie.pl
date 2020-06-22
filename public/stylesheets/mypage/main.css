@@ -1,12 +1,13 @@
-.mybox {
-    background-color: #FCFCFC !important;
+/* PANEL */
+.panel {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 50px;
 }
 
-.row { margin: 0 !important; }
-
 /* PROFILE SECTION */
-.user {
-    margin-bottom: 40px;
+#user {
+    grid-row: 1/2;
 }
 
 .user__page-name {
@@ -16,7 +17,7 @@
     margin-bottom: 15px;
 }
 
-.user__content {
+.user__container {
     display: flex;
     align-items: center;
     padding: 15px 30px !important;
@@ -55,17 +56,32 @@
 .user__buttons {
     margin-left: auto;
     margin-bottom: auto;
-    float: right;
 }
 
 .user__buttons a {
     margin-left: 10px;
 }
 
+/* STATISTICS */
+#statistics {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 50px;
+    grid-row: 2/6;
+}
+
+.statistics__items {
+    grid-column: 1/2;
+}
+
+.statistics__item {
+    margin-bottom: 20px;
+}
+
 .statistics__item-header {
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 23px;
+    font-size: 20px;
     color: var(--blue);
     margin-bottom: 5px;
 }
@@ -73,7 +89,16 @@
 .statistics__item-data {
     font-family: 'Roboto';
     font-weight: 300;
-    font-size: 50px;
+    font-size: 40px;
     color: var(--color-text);
 }
-.statistics__item-data:last-child { font-size: 44px; }
+.statistics__item-data:last-child { font-size: 38px; }
+
+/* CHART */
+.statistics__charts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 25px;
+    grid-column: 2/6;
+}

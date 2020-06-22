@@ -1,11 +1,11 @@
 <%- include("./partials/header") %>
-<link rel="stylesheet" href="/css/user-page/main.css">
+<link rel="stylesheet" href="/stylesheets/mypage/main.css">
 
 <div class="container">
 	<div class="panel">
 		<section id="user">
 			<p class="user__page-name">Moja strona • <%= currentUser.username %> </p>
-			<div class="user__container">
+			<div class="user__container box--outline">
 				
 				<img src="<% if(currentUser.profileImg==='default') { %> /img/user.jpg <% } %>" alt="" class="user__profile-icon">
 				
@@ -14,7 +14,7 @@
 					<p class="user__paragraph">Zobacz czy znaleźliśmy coś w twoich ogłoszeniach</p>
 				</div>
 				
-				<div id="user__buttons">
+				<div class="user__buttons">
 					<a href="" class="button button--simple button--blue button--medium">Mój profil</a>
 					<a href="/offers" class="button button--simple button--blue button--medium">Moje ogłoszenia</a>
 				</div>
@@ -70,6 +70,12 @@
 						<% } %> 
 					</p>
 				</div>
+			</div>
+			<div class="statistics__charts">
+				<div class="chart box--outline"></div>
+				<div class="chart box--outline"></div>
+				<div class="chart box--outline"></div>
+				<div class="chart box--outline"></div>
 			</div>
 		</section>
 	</div>
