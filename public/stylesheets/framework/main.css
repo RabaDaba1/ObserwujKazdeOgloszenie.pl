@@ -40,7 +40,7 @@
 }
 
 .box--outline {
-	border: var(--border-gray);
+	border: var(--border);
 	background-color: #fff;
 	border-radius: 8px;
 	padding: 30px 40px;
@@ -96,7 +96,7 @@ BUTTONS
     transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 }
 
-.button--gray { border: var(--border-gray); color: var(--gray); }
+.button--gray { border: var(--border); color: var(--gray); }
 .button--gray:hover { color: white; border-color: var(--blue); background-color: var(--intense-gray);}
 
 .button--blue { border: var(--border-blue); color: var(--blue); }

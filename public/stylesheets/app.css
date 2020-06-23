@@ -6,9 +6,9 @@
 	--intense-red: #df2121;
 	--green: #37DF53;
 	--intense-green: #1ddb3d;
-	--border-color: #DADCE0;
 	--text-color: #272727;
-	--border-gray: .6px solid #DADCE0;
+	--border: .6px solid #DADCE0;
+	--border-color: #DADCE0;
 	--border-blue: .6px solid #4285F4;
 	--border-green: .6px solid #37DF53;
 	--border-red: .6px solid #DF3737;

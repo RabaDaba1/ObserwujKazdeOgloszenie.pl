@@ -33,7 +33,7 @@
 /* ================ */
 .offer-card {
 	background: #fff;
-	border: var(--border-gray);
+	border: var(--border);
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	width: 100%;

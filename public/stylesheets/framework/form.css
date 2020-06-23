@@ -1,7 +1,7 @@
 .form {
 	width: 560px;
 	background: #fff;
-	border: var(--border-gray);
+	border: var(--border);
 	padding: 60px 40px 40px;
 	border-radius: 8px;
 	position: relative;

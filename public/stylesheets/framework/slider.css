@@ -1,0 +1,138 @@
+.slider {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    position: relative;
+ }
+ 
+ .slider input[type=radio] {
+    display: none;
+ }
+ 
+ .slider label {
+    cursor:pointer;
+    text-decoration: none;
+ }
+
+ .slides {
+    position: relative;
+    z-index: 1;
+ }
+
+ .overflow {
+    width: 100%;
+    overflow: hidden;
+ }
+
+ .slide1:checked ~ .slides .inner {
+    margin-left: 0;
+ }
+ .slide2:checked ~ .slides .inner {
+    margin-left: -100%;
+ }
+ .slide3:checked ~ .slides .inner {
+    margin-left: -200%;
+ }
+ .slide4:checked ~ .slides .inner {
+    margin-left: -300%;
+ }
+ .slide5:checked ~ .slides .inner {
+    margin-left: -400%;
+ }
+ .slide6:checked ~ .slides .inner {
+    margin-left: -500%;
+ }
+ .slide7:checked ~ .slides .inner {
+    margin-left: -600%;
+ }
+ .slide8:checked ~ .slides .inner {
+    margin-left: -700%;
+ }
+
+ .slides .inner {
+    transition: margin-left 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    width: auto;
+    line-height: 0;
+    height: 200px;
+ }
+ .slides .slide {
+    width: 100%;
+    float:left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+ }
+ .slides .slide_1 {
+    background: #00171F;
+ }
+ 
+ .controls {
+    margin: -180px 0 0 0;
+    width: 100%;
+    height: 50px;
+    z-index: 3;
+    position: relative;
+ }
+ .controls label {
+    transition: opacity 0.2s ease-out;
+    display: none;
+    width: 50px;
+    height: 50px;
+    opacity: .4;
+ }
+ .controls label:hover {
+    opacity: 1;
+ }
+ .slide1:checked ~ .controls label:nth-child(2),
+ .slide2:checked ~ .controls label:nth-child(3),
+ .slide3:checked ~ .controls label:nth-child(4),
+ .slide4:checked ~ .controls label:nth-child(1) {
+    float:right;
+    margin: 0;
+    display: block;
+ }
+ .slide1:checked ~ .controls label:nth-last-child(2),
+ .slide2:checked ~ .controls label:nth-last-child(3),
+ .slide3:checked ~ .controls label:nth-last-child(4),
+ .slide4:checked ~ .controls label:nth-last-child(1) {
+    float:left;
+    margin: 0;
+    display: block;
+ }
+ .bullets {
+    position: absolute;
+    z-index: 3;
+    top: 80%;
+    right: 50%;
+    transform: translate(50%, 50%);
+ }
+ .bullets label {
+    display: inline-block;
+    width: 20px;
+    height: 4px;
+    background: #ccc;
+    margin: 0 5px;
+ }
+ .slide1:checked ~ .bullets label:nth-child(1),
+ .slide2:checked ~ .bullets label:nth-child(2),
+ .slide3:checked ~ .bullets label:nth-child(3),
+ .slide4:checked ~ .bullets label:nth-child(4) {
+    background: #444;
+ }
+ @media screen and (max-width: 900px) {
+    .slide1:checked ~ .controls label:nth-child(2),
+    .slide2:checked ~ .controls label:nth-child(3),
+    .slide3:checked ~ .controls label:nth-child(4),
+    .slide4:checked ~ .controls label:nth-child(1),
+    .slide1:checked ~ .controls label:nth-last-child(2),
+    .slide2:checked ~ .controls label:nth-last-child(3),
+    .slide3:checked ~ .controls label:nth-last-child(4),
+    .slide4:checked ~ .controls label:nth-last-child(1) {
+       margin: 0;
+    }
+    .slides {
+       margin: 0 auto;
+    }
+ }
