@@ -49,7 +49,7 @@
 /*
 BUTTONS
 */
-.button, .button-fill, .button--outline, .button--shadow, .button--blue, .button--gray, .button--green, .button--red {
+.button {
 	all: unset;
 	display: inline-block;
 	text-align: center;
@@ -67,13 +67,13 @@ BUTTONS
 	border: none;
 }
 
-.button:hover,.button-fill:hover,.button--outline:hover,.button-fill:hover,.button--shadow:hover,.button--gray:hover,.button--blue:hover,.button--green:hover,.button--red:hover {
+.button:hover {
 	outline: none;
 	text-decoration: none;
 	color: white;
 }
 
-.button:focus,.button-fill:focus,.button--outline:focus,.button-fill:focus,.button--shadow:focus,.button--gray:focus,.button--blue:focus,.button--green:focus,.button--red:focus {
+.button:focus {
 	outline: none;
 	text-decoration: none;
 }

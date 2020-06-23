@@ -2,25 +2,23 @@
 <link rel="stylesheet" href="/stylesheets/framework/form.css">
 <link rel="stylesheet" href="/stylesheets/offers/new.css">
 
-<div class="container">	
-	<form class="myui-form" action="/offers" method="POST">
-		<h1>Dodaj ogłoszenie</h1>
-		<%- include("../partials/messages") %>
-		<div class="form-field">
-			<input type="url" aria-describedby="link" name="link" required>
-			<span data-placeholder="Link do ogłoszenia"></span>
-		</div>
-		
-		<div class="form-field">
-			<input type="text" aria-describedby="title" name="title">
-			<span data-placeholder="Twój tytuł ogłoszenia"></span>
-		</div>
-		
-	  	<button type="submit" class="button button--update btn-fine btn-form">Dodaj</button>
-		
-		<a href="/offers" class="form button--shadow"><i class="fas fa-arrow-left"></i> Wróć</a>
-	</form>
-</div>
+<form class="form" action="/offers" method="POST">
+	<h1 class="form__header">Dodaj ogłoszenie</h1>
+	<%- include("../partials/messages") %>
+	<div class="form__input-group">
+		<input class="form__input" type="url" aria-describedby="link" name="link" required>
+		<span class="form__input-placeholder" data-placeholder="Link do ogłoszenia"></span>
+	</div>
+	
+	<div class="form__input-group">
+		<input class="form__input" type="text" aria-describedby="title" name="title">
+		<span class="form__input-placeholder" data-placeholder="Twój tytuł ogłoszenia"></span>
+	</div>
+	
+	<button type="submit" class="button button--default button--update form__button">Dodaj</button>
+	
+	<a href="/offers" class="button--shadow button--exit"><i class="fas fa-arrow-left"></i> Wróć</a>
+</form>
 
 <script src="/js/framework/form.js"></script>
 <%- include("../partials/footer") %>
