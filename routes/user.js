@@ -4,7 +4,7 @@ const express = 			  	require("express"),
 	  passportLocalMongoose = 	require("passport-local-mongoose"),
 	  User =				  	require("../models/User"),
 	  Offer = 					require('../models/Offer'),
-	  email =					require("../public/js/email/index"),
+	  email =					require("../scripts/email/index"),
 	  middleware = 				require("../middleware");
 
 router.get('/mypage', middleware.isLoggedIn, async(req, res) => {

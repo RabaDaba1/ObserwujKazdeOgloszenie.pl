@@ -3,7 +3,7 @@ const express = 			  require("express"),
 	  passport =              require("passport"),
 	  passportLocalMongoose = require("passport-local-mongoose"),
 	  User =				  require("../models/User"),
-	  email =				require("../public/js/email/index");
+	  email =				require("../scripts/email/index");
 
 router.get("/", (req, res) => {
     res.render("landing");
