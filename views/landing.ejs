@@ -16,10 +16,10 @@
 	
 		<div class="hero__cta">
 			<% if(!currentUser) { %>
-			<a class="button button-fill button--large mr-1" href="/login">Zaloguj się</a>
-			<a class="button button-fill button--fill-green button--large ml-1" href="/register">Zarejestruj się</a>
+			<a class="hero__button button button-fill button--large" href="/login">Zaloguj się</a>
+			<a class="hero__button button button-fill button--fill-green button--large" href="/register">Zarejestruj się</a>
 			<% } else { %>
-			<a class="button button-fill button--fill-green button--large" href="/offers">Moje ogłoszenia</a>
+			<a class="hero__button button button-fill button--fill-green button--large" href="/offers">Moje ogłoszenia</a>
 			<% } %>
 		</div>
 	</div>
@@ -28,7 +28,7 @@
 	</div>
 </div>
 
-<div class="container mt-5 msg">
+<div class="container msg">
 	<%- include("./partials/messages") %>
 </div>
 

@@ -4,7 +4,7 @@
 <div class="container">
 	<section id="heading">
 		<h1 class="heading__title">Twoje ogłoszenia</h1>
-		<a class="heading__button button--blue" role="button" href="/offers/new" <% if(!currentUser.isVerified) { %> disabled <% } %>>Dodaj ogłoszenie</a>
+		<a class="heading__button button button--blue" role="button" href="/offers/new" <% if(!currentUser.isVerified) { %> disabled <% } %>>Dodaj ogłoszenie</a>
 	</section>
 
 	<hr class="highlight">
@@ -80,14 +80,14 @@
 						<p class="offer__description"><%= offer.description %>...</p>
 						
 						<div class="offer__buttons">
-							<a href="/offers/<%=offer._id %>" class="offer__button button--blue">
+							<a href="/offers/<%=offer._id %>" class="offer__button button button--blue">
 								<i class="fas fa-file-contract"></i> Więcej
 							</a>
-							<a href="<%= offer.link %>" class="offer__button button--blue" id="offer__link">
+							<a href="<%= offer.link %>" class="offer__button button button--blue">
 								<i class="fas fa-share-square"></i>
 							</a>
 							<form class="offer__delete-form" action="/offers/<%= offer._id %>?_method=DELETE" method="POST">
-								<button class="offer__button button--blue float-right ml-1">
+								<button class="offer__button button button--blue">
 									<i class="fas fa-trash"></i>
 								</button>
 							</form>
