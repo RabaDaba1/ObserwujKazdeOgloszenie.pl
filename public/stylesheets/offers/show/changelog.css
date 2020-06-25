@@ -1,0 +1,221 @@
+#changelog {
+	position: relative;
+	width: 460px;
+	height: 540px;
+	margin: 0 auto;
+	padding: 30px 40px;
+	background-color: var(--blue);
+	border-radius: 8px;
+	color: white;
+}
+
+#changelog * {
+	cursor: default;
+}
+
+#changelog .changelog__count h1 {
+	font-size: 30px;
+	font-weight: 300;
+}
+
+#changelog .changelog__count h2 {
+	font-family: 'Roboto';
+	font-size: 65px;
+	font-weight: 100;
+}
+
+#changelog .changelog__changes{
+	padding-bottom: 2rem;
+	margin-top: 30px;
+	color: white;
+}
+
+#changelog .changelog__changesh3 {
+	font-size: 20px;
+	font-weight: 300;
+}
+
+#changelog .changelog__changeschangelog__changes{
+	overflow-y: auto;
+	width: 100%;
+	font-size: 17px;
+}
+
+#changelog .changelog__changestable, th, td {
+	border-collapse: collapse;
+	border: 0 !important;
+	padding: 0 !important;
+	text-align: left;
+	font-weight: 100;
+	padding: 5px 0 !important;
+	border-bottom: 1px solid white !important;
+}
+
+#changelog .changelog__changesth {
+    position: sticky;
+    top: 0;
+	color: rgba(255, 255, 255, .8);
+}
+
+#changelog .changelog__changesth:nth-child(1) {
+    width: 35%;
+}
+#changelog .changelog__changestd:nth-child(1) {
+    width: 35%;
+}
+
+#changelog changelog__changesbutton {
+	all: unset;
+	cursor: pointer !important;
+}
+
+.changelog__error-msg {
+	position: absolute;
+	bottom: 30%; right: 50%;
+	transform: translate(50%, 30%);
+	text-align: center;
+	font-size: 20px;
+	color: rgba(255, 255, 255, .8);
+}
+
+@media only screen and (max-width: 1920px) {
+	#changelog {
+		width: 370px;
+		height: 435px;
+		padding: 25px 33px;
+	}
+	
+	#changelog .changelog__count h1 {
+        font-size: 25px;
+    }
+	#changelog .changelog__count h2 {
+        font-size: 52px;
+    }
+	
+	/* TABLE */
+	#changelog .changelog__changes{
+		padding-bottom: 28px;
+		margin-top: 25px;
+	}
+	#changelog .changelog__changesh3 {
+        font-size: 18px;
+    }
+	#changelog .changelog__changeschangelog__changes{
+        font-size: 15px;
+    }
+
+	.changelog__error-msg {
+		bottom: 20%;
+		transform: translate(50%, 20%);
+		font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+	#offer__data {
+        margin-top: 26px;
+    }
+
+	#changelog {
+		width: 300px;
+		height: 350px;
+		padding: 22px 29px;
+	}
+	
+	#changelog .changelog__count h1 {
+        font-size: 22px;
+    }
+	#changelog .changelog__count h2 {
+        font-size: 45px;
+    }
+	
+	/* TABLE */
+	#changelog .changelog__changes{
+		padding-bottom: 24px;
+		margin-top: 22px;
+	}
+	#changelog .changelog__changesh3 {
+        font-size: 16px;
+    }
+	#changelog .changelog__changeschangelog__changes{
+        font-size: 14px;
+    }
+
+	#changelog .changelog__changesth:nth-child(1) {
+        width: 25%;
+    }
+	#changelog .changelog__changestd:nth-child(1) {
+        width: 25%;
+    }
+
+
+	.changelog__error-msg {
+		bottom: 15%;
+		transform: translate(50%, 15%);
+		font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1120px) {
+	#offer__data {
+        margin-top: 24px;
+    }
+
+	#changelog {
+		width: 260px;
+		height: 300px;
+		padding: 19px 25px;
+	}
+	
+	#changelog .changelog__count h1 {
+        font-size: 20px;
+    }
+	#changelog .changelog__count h2 {
+        font-size: 40px;
+    }
+	
+	/* TABLE */
+	#changelog .changelog__changes{
+		padding-bottom: 20px;
+		margin-top: 19px;
+	}
+	#changelog .changelog__changesh3 {
+        font-size: 15px;
+    }
+	#changelog .changelog__changeschangelog__changes{
+        font-size: 13px;
+    }
+
+	#changelog .changelog__changesth:nth-child(1) {
+        width: 20%;
+    }
+	#changelog .changelog__changestd:nth-child(1) {
+        width: 20%;
+    }
+
+	.changelog__error-msg {
+		bottom: 12.5%;
+		transform: translate(50%, 12.5%);
+		font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+	#changelog {
+		width: 95%;
+		height: 450px;
+		margin-top: 20px;
+	}
+
+	#changelog .changelog__changesth:nth-child(1) {
+        width: 30%;
+    }
+	#changelog .changelog__changestd:nth-child(1) {
+        width: 30%;
+    }
+
+    .changelog__error-msg {
+        bottom: 30%;
+        transform: translate(50%, 30%);
+    }
+}

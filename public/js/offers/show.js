@@ -1,16 +1,16 @@
 const DOMStrings = {
-	chartViewsInfo: document.querySelector('.views-info'),
-	chartPriceInfo: document.querySelector('.price-info'),
-	priceChart: document.querySelector('#priceChart'),
-	viewChart: document.querySelector('#viewsChart'),
-	viewsChartData: JSON.parse(document.querySelector('#viewsChartData').textContent),
-	price: document.querySelector("#main-info .tab:nth-child(1) .value").textContent,
-	modal: document.getElementById("myModal"),
-	modalDataNew: document.querySelector("#myModalData .new").textContent,
-	modalDataOld: document.querySelector("#myModalData .old").textContent,
-	openModal: Array.from(document.querySelectorAll(".open-myModal")),
-	closeModal: document.querySelector(".close-myModal"),
-	changesTableRows: Array.from(document.querySelectorAll("#changes table .data"))
+	chartViewsInfo: document.querySelector('.chart__num-views'),
+	chartPriceInfo: document.querySelector('.chart__num-price'),
+	priceChart: document.querySelector('#chart__price'),
+	viewChart: document.querySelector('#chart__views'),
+	viewsChartData: JSON.parse(document.querySelector('.chart__data-views').textContent),
+	price: document.querySelector('.offer__stats-value:nth-of-type(1)').textContent,
+	modal: document.querySelector('.modal'),
+	modalDataNew: document.querySelector('modal__data--new').textContent,
+	modalDataOld: document.querySelector('modal__data--old').textContent,
+	openModal: Array.from(document.querySelectorAll('.modal__open')),
+	closeModal: document.querySelector('.modal__close'),
+	changesTableRows: Array.from(document.querySelectorAll('.changelog__table-data'))
 };
 
 const chartObjects = {};
@@ -165,13 +165,13 @@ const UIController = (function() {
 			difference.lines.forEach(el => {
 				if(el.bIndex === -1) {
 					let markup;
-					lastOldChanged ? markup = processedOldData[el.aIndex] : markup = `<span class="highlight-deleted">${processedOldData[el.aIndex]}`;
+					lastOldChanged ? markup = processedOldData[el.aIndex] : markup = `<span class="modal__deleted">${processedOldData[el.aIndex]}`;
 
 					processedOldData[el.aIndex] = markup;
 					lastOldChanged = true;
 				} else if (el.aIndex === -1) {
 					let markup;
-					lastNewChanged ? markup = processedNewData[el.bIndex] : markup = `<span class="highlight-added">${processedNewData[el.bIndex]}`
+					lastNewChanged ? markup = processedNewData[el.bIndex] : markup = `<span class="modal__added">${processedNewData[el.bIndex]}`
 					
 					processedNewData[el.bIndex] = markup;
 					lastNewChanged = true;
@@ -188,14 +188,14 @@ const UIController = (function() {
 				}
 			});
 			
-			document.querySelector(".myModal-content .old").insertAdjacentHTML('beforeend', `<p class="modal-text">${processedOldData.join(" ")}</p>`);
-			document.querySelector(".myModal-content .new").insertAdjacentHTML('beforeend', `<p class="modal-text">${processedNewData.join(" ")}</p>`);
+			document.querySelector(".modal__text--old").insertAdjacentHTML('beforeend', `<p>${processedOldData.join(" ")}</p>`);
+			document.querySelector(".modal__text--new").insertAdjacentHTML('beforeend', `<p>${processedNewData.join(" ")}</p>`);
 
-			document.querySelector(".myModal-content .old h3").textContent = `Stary ${button.dataset.offertype}`
-			document.querySelector(".myModal-content .new h3").textContent = `Nowy ${button.dataset.offertype}`
+			document.querySelector(".modal__text-old .modal__text-heading").textContent = `Stary ${button.dataset.offertype}`
+			document.querySelector(".modal__text-new .modal__text-heading").textContent = `Nowy ${button.dataset.offertype}`
 
-			document.querySelector(".myModal-content .line-count-deleted").textContent = ' ' + difference.lineCountDeleted;
-			document.querySelector(".myModal-content .line-count-inserted").textContent = ' ' + difference.lineCountInserted;
+			document.querySelector(".modal__count--deleted").textContent = ' ' + difference.lineCountDeleted;
+			document.querySelector(".modal__count--inserted").textContent = ' ' + difference.lineCountInserted;
 
 			DOMStrings.modal.style.display = 'block';
 		},
@@ -242,7 +242,7 @@ const controller = (function(UIController) {
 			if(DOMStrings.price.includes('brak')) {
 				DOMStrings.chartPriceInfo.style.display = 'none';
 			} else {
-				DOMStrings.priceChartData = JSON.parse(document.querySelector('#priceChartData').textContent);
+				DOMStrings.priceChartData = JSON.parse(document.querySelector('.chart__data-price').textContent);
 				chartObjects.priceChart = UIController.renderChart("PRICE");
 			}
 		}

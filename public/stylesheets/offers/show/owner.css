@@ -1,0 +1,140 @@
+#owner {
+	margin-top: 25px;
+}
+
+#owner .owner__profile {
+	display: flex;
+	margin-bottom: 30px;
+}
+
+#owner .tag {
+	color: var(--blue);
+	font-family: 'Roboto';
+	font-size: 22px;
+	cursor: default;
+	user-select: none;
+}
+
+#owner img {
+	width: 85px;
+	height: 85px;
+	border: var(--border);
+	border-radius: 100%;
+	margin-right: 15px;
+    margin-bottom: auto;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#owner .owner__name {
+	font-family: 'Roboto';
+	font-weight: 400;
+	font-size: 32px;
+	color: var(--text-color);
+	margin: 0;
+}
+
+#owner .owner__localization {
+	font-family: 'Roboto';
+	font-weight: 300;
+	font-size: 20px;
+	color: var(--gray);
+	margin: 0;
+}
+
+#owner a {
+	width: 80%;
+	padding: 6px 18px;
+	color: white;
+	background-color: var(--blue);
+	transform: translate(6%, 6%);
+}
+
+#owner a:hover {
+	background-color: var(--intense-blue);
+}
+
+@media only screen and (max-width: 1920px) {
+	#owner .tag {
+        font-size: 20px;
+    }
+	#owner .owner__name {
+        font-size: 27px;
+    }
+	#owner .owner__localization {
+        font-size: 18px;
+    }
+    #owner a {
+        transform: translate(5%, 5%);
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+	#offer__data {
+        margin-top: 26px;
+    }
+
+	#owner .tag {
+        font-size: 18px;
+    }
+	#owner .owner__profile {
+        margin-bottom: 20px;
+    }
+	#owner .owner__name {
+        font-size: 23px;
+    }
+	#owner .owner__localization {
+        font-size: 15px;
+    }
+    #owner a {
+        transform: translate(4%, 4%);
+    }
+}
+
+@media only screen and (max-width: 1120px) {
+	#offer__data {
+        margin-top: 24px;
+    }
+
+	#owner .tag {
+        font-size: 16px;
+    }
+	#owner img {
+        height: 70px;
+        width: 70px;
+    }
+	#owner .owner__name {
+        font-size: 20px;
+    }
+	#owner .owner__localization {
+        font-size: 13px;
+    }
+    #owner a {
+        font-size: 14px;
+        transform: translate(3%, 3%);
+    }
+}
+
+@media only screen and (max-width: 991px) {
+	#owner {
+        width: 95%;
+    }
+	#owner .tag {
+        font-size: 19px;
+    }
+	#owner img {
+        height: 70px;
+        width: 70px;
+    }
+	#owner .owner__name {
+        font-size: 24px;
+    }
+	#owner .owner__localization {
+        font-size: 16px;
+    }
+    #owner a {
+        font-size: 16px;
+        transform: translate(10%, 0); margin-bottom: 10px;
+    }
+}

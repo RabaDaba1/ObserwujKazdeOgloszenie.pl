@@ -1,4 +1,4 @@
-#myModal {
+.modal {
 	display: none;
 	position: fixed;
 	z-index: 1000;
@@ -11,21 +11,21 @@
 	background-color: rgba(0,0,0,0.4);
 }
 
-.close-myModal {
+.modal__close {
 	color: #aaa;
 	float: right;
 	font-size: 20px;
     font-weight: bold;
 }
 
-.close-myModal:hover,
-.close-myModal:focus {
+.modal__close:hover,
+.modal__close:focus {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
 }
 
-.myModal-content {
+.modal__content {
     background-color: white;
     border: var(--border);
     border-radius: 8px;
@@ -34,20 +34,20 @@
 	width: 80%;
 }
 
-.myModal-content .header {
+.modal__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
 }
 
-.myModal-content h1 {
+.modal__heading {
 	display: inline-block;
 	font-size: 42px;
 	font-weight: 500;
 }
 
-.myModal-content .info {
+.modal__word-info {
 	float: right;
 	font-size: 25px;
     font-weight: 400;
@@ -55,7 +55,7 @@
     margin-right: 5vw;
 }
 
-.myModal-content .line-count-deleted, .myModal-content .line-count-inserted {
+.modal__line-count {
 	position: relative;
 	left: 10px;
 	top: 50%;
@@ -64,78 +64,128 @@
 	font-size: 36px;
 }
 
-.myModal-content .line-count-inserted {
+.modal__line-count--inserted {
 	color: #40DC3B;
 }
 
-.myModal-content .line-count-deleted { color: #DF3737; }
-
-.myModal-content .old, .myModal-content .new {
-    overflow-y: auto;
-    overflow-x: hidden;
+.modal__line-count--deleted {
+    color: #DF3737;
 }
 
-.myModal-content .old h3, .myModal-content .new h3 {
+.modal__text {
+    overflow-y: auto;
+    overflow-x: anywhere;
+}
+
+.modal__text-heading {
     font-size: 34px;
     font-weight: 400;
 }
 
-.myModal-content .old p, .myModal-content .new p {
+.modal__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.modal__main p {
     font-size: 25px; 
     font-weight: 300;
     font-family: 'Roboto'; }
 
-.highlight-deleted { background-color: rgb(223, 55, 55, 0.55); }
+.modal__deleted {
+    background-color: rgb(223, 55, 55, 0.55);
+}
 
-.highlight-added { background-color: rgb(55, 223, 61, 0.55); }
+.modal__added {
+    background-color: rgb(55, 223, 61, 0.55);
+}
 
-.myModal-content .separator { display: none;
+.modal__content .separator {
+    display: none;
     width: 100%;
     margin: .5rem;
 }
 
+.modal__data {
+    display: none;
+}
+
 @media only screen and (max-width: 1400px) {
-    .myModal-content { width: 70%; }
+    .modal__content {
+        width: 70%;
+    }
 
-    .myModal-content h1 { font-size: 35px;  }
+    .modal__heading {
+        font-size: 35px; 
+    }
 
-    .myModal-content .info {
+    .modal__word-info {
         font-size: 20px;
         margin-right: 2vw;
     }
 
-    .myModal-content .line-count-deleted, .myModal-content .line-count-inserted {
+    .modal__line-count {
         font-size: 28px;
     }
 
-    .myModal-content .old h3, .myModal-content .new h3 { font-size: 27px; }
-    .myModal-content .old p, .myModal-content .new p { font-size: 20px; }
+    .modal__text-heading {
+        font-size: 27px;
+    }
+    .modal__main p {
+        font-size: 20px;
+    }
 }
 
 @media only screen and (max-width: 1220px) {
-    .myModal-content h1 { font-size: 30px; }
+    .modal__heading {
+        font-size: 30px;
+    }
 
-    .myModal-content .info { font-size: 18px; }
+    .modal__word-info {
+        font-size: 18px;
+    }
 
-    .myModal-content .line-count-deleted, .myModal-content .line-count-inserted {  font-size: 24px;  }
+    .modal__line-count { 
+        font-size: 24px; 
+    }
 
-    .myModal-content .old h3, .myModal-content .new h3 { font-size: 23px; }
-    .myModal-content .old p, .myModal-content .new p { font-size: 17px; }
+    .modal__text-heading {
+        font-size: 23px;
+    }
+    .modal__main p {
+        font-size: 17px;
+    }
 }
 
 @media only screen and (max-width: 990px) {
-    .myModal-content { width: 90%; }
+    .modal__content {
+        width: 90%;
+    }
 
-    .myModal-content .header { margin-bottom: 10px; }
+    .modal__header {
+        margin-bottom: 10px;
+    }
 
-    .myModal-content h1 { font-size: 25px; }
+    .modal__heading {
+        font-size: 25px;
+    }
 
-    .myModal-content .info { display: none; }
+    .modal__word-info {
+        display: none;
+    }
 
-    .myModal-content .line-count-deleted, .myModal-content .line-count-inserted {  display: none;  }
+    .modal__line-count { 
+        display: none; 
+    }
 
-    .myModal-content .old h3, .myModal-content .new h3 { font-size: 19px; }
-    .myModal-content .old p, .myModal-content .new p { font-size: 15px; }
+    .modal__text-heading {
+        font-size: 19px;
+    }
+    .modal__main p {
+        font-size: 15px;
+    }
 
-    .myModal-content .separator { display: block; }
+    .modal__content .separator {
+        display: block;
+    }
 }

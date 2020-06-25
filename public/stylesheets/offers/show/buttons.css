@@ -1,0 +1,72 @@
+#buttons {
+	width: 460px;
+	height: 80px;
+	margin-top: 30px;
+	float: right;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-family: 'Roboto' !important;
+}
+
+#buttons form {
+	display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+	outline: none;
+	border: none !important;
+}
+
+#buttons a, #buttons button {
+	padding: 5px 15px !important;
+	font-size: 21px;
+	font-family: "Roboto", sans-serif;
+}
+
+@media only screen and (max-width: 1920px) {
+	#buttons {
+		width: 370px;
+		height: 65px;
+		padding: 20px 8px !important;
+	}
+	
+	#buttons a, #buttons button {
+		font-size: 20px;
+		padding: 4px 12px !important;
+	}
+}
+
+@media only screen and (max-width: 1400px) {
+	#buttons {
+		width: 300px;
+		height: 55px;
+		margin-top: 15px;
+		padding: 10px 5px !important;
+	}
+	
+	#buttons a, #buttons button {
+		font-size: 18px;
+		padding: 3px 10px !important;
+	}
+}
+
+@media only screen and (max-width: 1120px) {
+	#buttons {
+		width: 260px;
+		height: 50px;
+		margin-top: 14px;
+		padding: 8px 4px !important;
+	}
+	
+	#buttons a, #buttons button {
+		font-size: 16px;
+		padding: 2px 8px !important;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	#buttons {
+        width: 95%;
+        float: none;
+    }
+}

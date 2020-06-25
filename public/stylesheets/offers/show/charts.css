@@ -1,0 +1,155 @@
+#chart {
+	height: 650px;
+	padding-top: 40px;
+}
+
+#chart .chart__text {
+	padding-left: 50px;
+	margin-bottom: 25px;
+}
+
+.chart__num-views, .chart__num-price {
+	display: inline-block;
+	margin: 0 40px 0 0 !important;
+	color: rgba(110, 110, 110, .65);
+	user-select: none;
+	cursor: pointer;
+}
+
+.chart__text .active {
+	color: var(--intense-blue);
+}
+
+.chart__text .chart__type {
+	font-family: 'Roboto';
+	font-weight: 300;
+	font-size: 20px;
+	margin-bottom: 5px !important;
+}
+
+.chart__text .chart__num {
+	font-family: 'Roboto';
+	font-weight: 100;
+	font-size: 32px;
+	margin: 0 !important;
+}
+
+.chart__text .chart__num span {
+	font-size: 22px;
+}
+
+#chart canvas {
+	display: none !important;
+	height: 450px !important;
+}
+
+#chart canvas.active {
+	display: block !important;
+}
+
+@media only screen and (max-width: 1920px) {
+	#chart__num {
+		margin-top: 32px;
+	}
+
+	#chart .chart__text {
+		padding-left: 60px;
+		margin-bottom: 20px;
+	}
+	
+	.chart__text .chart__type {
+        font-size: 22px;
+    }
+	.chart__text .chart__num {
+        font-size: 26px;
+    }
+	.chart__text .chart__num span {
+        font-size: 18px;
+    }
+	
+    #chart canvas {
+        height: 360px !important;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+	#offer__data {
+		margin-top: 26px;
+	}
+
+	#chart .chart__text {
+		padding-left: 50px;
+		margin-bottom: 18px;
+	}
+	
+	.chart__text .chart__type {
+        font-size: 19px;
+    }
+	.chart__text .chart__num {
+        font-size: 22px;
+    }
+	.chart__text .chart__num span {
+        font-size: 15px;
+    }
+	
+    #chart canvas {
+        height: 290px !important;
+    }
+}
+
+@media only screen and (max-width: 1120px) {
+	#offer__data {
+		margin-top: 24px;
+	}
+
+	#chart .chart__text {
+		padding-left: 42px;
+		margin-bottom: 16px;
+	}
+	
+	.chart__text .chart__type {
+        font-size: 16px;
+    }
+	.chart__text .chart__num {
+        font-size: 19px;
+    }
+	.chart__text .chart__num span {
+        font-size: 14px;
+    }
+	
+    #chart canvas {
+		height: 250px !important;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	#chart {
+        height: 300px;
+        width: 95%;
+        padding-top: 20px;
+    }
+
+	#chart canvas {
+        height: 200px !important;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+
+	#chart .chart__text {
+		display: flex;
+		justify-content: space-around;
+		padding-left: 10px;
+	}
+
+	.chart__text .chart__type {
+		font-size: 14px;
+		margin-bottom: 1px !important;
+	}
+	.chart__text .chart__num {
+		font-size: 16px;
+	}
+	.chart__text .chart__num span {
+		font-size: 13px;
+	}
+}

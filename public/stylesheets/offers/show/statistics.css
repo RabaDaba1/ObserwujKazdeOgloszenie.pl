@@ -1,0 +1,63 @@
+#offer__stats {
+	position: relative;
+	display: flex;
+	margin: 0 auto;
+	justify-content: space-between;
+}
+
+.offer__stats-tab {
+	display: flex;
+	flex-direction: column;
+	padding-right: 65px;
+	margin: 0;
+	font-weight: 400;
+}
+
+.box__tag {
+	font-family: 'Roboto' !important;
+	color: var(--blue);
+	font-size: 22px;
+	margin: 0;
+	user-select: none;
+	cursor: default;
+}
+
+.offer__stats-value {
+	font-family: 'Roboto' !important;
+	font-weight: 300;
+	font-size: 45px;
+	color: #272727;
+	margin: 0;
+	cursor: default;
+}
+
+.offer__stats-currency {
+	font-family: 'Roboto' !important;
+	color: #272727;
+	font-size: 22px;
+	display: inline;
+}
+
+@media only screen and (max-width: 1920px) {
+    .offer__stats-tab {
+        padding-right: 40px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+	.offer__stats-tab {
+        padding-right: 25px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+	#offer__stats {
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+	.offer__stats-tab {
+		padding-right: 12px;
+	}
+}
