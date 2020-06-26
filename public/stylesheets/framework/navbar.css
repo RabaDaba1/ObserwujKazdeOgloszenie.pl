@@ -26,7 +26,7 @@ header {
 .logo,
 .logo:visited {
     all: unset;
-    margin-right: 30px;
+    margin-right: 40px;
     font-size: calc((100% + 0.25vw));
     cursor: pointer;
     color: white;
@@ -43,13 +43,14 @@ header {
 }
 
 .nav__links li {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .nav__link,
 .nav__link:visited {
     padding-right: 40px;
     font-size: calc((100% + 0.25vw) * 0.8);
+    font-weight: 400;
     text-decoration: none;
     color: white;
     -webkit-transition: 0.3s ease;
