@@ -10,7 +10,7 @@ const 	express =            	require('express'),
 		passport =              require('passport'),
 		LocalStrategy =         require('passport-local'),
 	  	User = 					require('./models/User'),
-		{ startUpdating } =		require('./public/js/scripts');
+		{ startUpdating } =		require('./scripts/update/index');
 
 // ROUTES
 const 	userRoutes = require('./routes/user'),
